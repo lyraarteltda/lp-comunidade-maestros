@@ -88,7 +88,7 @@ function FAQItem({ faq, index }: { faq: (typeof faqs)[0]; index: number }) {
 
 export default function FAQ() {
   return (
-    <section id="faq" className="relative py-20 md:py-28 bg-surface-1">
+    <section id="faq" className="relative py-16 md:py-24 bg-surface-1">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/[0.04] to-transparent" />
 
       <div className="max-w-3xl mx-auto px-6">

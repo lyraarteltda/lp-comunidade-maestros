@@ -6,7 +6,7 @@ const CHECKOUT_URL = "https://pay.onprofit.com.br/M5Ene7El?off=ZNpmS2";
 
 export default function FinalCTA() {
   return (
-    <section className="relative py-28 md:py-40 bg-surface-0 overflow-hidden">
+    <section className="relative py-16 md:py-24 bg-surface-0 overflow-hidden">
       {/* Dramatic ambient glow */}
       <div className="absolute inset-0">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] rounded-full bg-brand-gold/[0.06] blur-[200px]" />

@@ -126,7 +126,7 @@ export default function KnowledgeBlocks() {
   }, { scope: gridRef });
 
   return (
-    <section id="trilhas" className="relative py-24 md:py-36 bg-surface-1 overflow-hidden">
+    <section id="trilhas" className="relative py-16 md:py-24 bg-surface-1 overflow-hidden">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/[0.04] to-transparent" />
 
       <div className="max-w-6xl mx-auto px-6">

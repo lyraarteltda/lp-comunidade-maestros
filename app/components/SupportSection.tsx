@@ -38,7 +38,7 @@ function StatCounter({ value, suffix, label, delay }: { value: number; suffix: s
 
 export default function SupportSection() {
   return (
-    <section className="relative py-28 md:py-36 bg-surface-1 noise-bg overflow-hidden">
+    <section className="relative py-16 md:py-24 bg-surface-1 noise-bg overflow-hidden">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/[0.04] to-transparent" />
 
       <div className="max-w-6xl mx-auto px-6">

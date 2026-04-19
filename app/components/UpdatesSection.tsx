@@ -35,7 +35,7 @@ const updates = [
 
 export default function UpdatesSection() {
   return (
-    <section className="relative py-24 md:py-36 bg-surface-2 noise-bg overflow-hidden">
+    <section className="relative py-16 md:py-24 bg-surface-2 noise-bg overflow-hidden">
       <div className="relative z-10 max-w-6xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           {/* Left: headline */}

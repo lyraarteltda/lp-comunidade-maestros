@@ -35,7 +35,7 @@ const topicExamples = [
 
 export default function LivesSection() {
   return (
-    <section id="lives" className="relative py-28 md:py-40 bg-surface-2 overflow-hidden">
+    <section id="lives" className="relative py-16 md:py-24 bg-surface-2 overflow-hidden">
       <div className="absolute -top-1/4 right-0 w-[600px] h-[600px] rounded-full bg-violet-500/[0.025] blur-[140px]" />
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-brand-gold/[0.02] blur-[120px]" />
 

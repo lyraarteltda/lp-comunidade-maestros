@@ -58,7 +58,7 @@ const accentMap: Record<string, { icon: string; border: string; tag: string }> =
 
 export default function PillarsSection() {
   return (
-    <section id="pilares" className="relative py-28 md:py-40 bg-surface-2 noise-bg overflow-hidden">
+    <section id="pilares" className="relative py-16 md:py-24 bg-surface-2 noise-bg overflow-hidden">
       <div className="absolute -top-1/3 left-1/3 w-[700px] h-[700px] rounded-full bg-brand-gold/[0.02] blur-[150px]" />
 
       <div className="relative z-10 max-w-6xl mx-auto px-6">
