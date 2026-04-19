@@ -74,12 +74,30 @@ body {
   color: transparent;
 }
 
-/* Ensure gradient text works through child elements (SplitText chars, etc.) */
-.gradient-text-gold *,
-.gradient-text-white *,
-.gradient-text-white-strong * {
-  -webkit-text-fill-color: inherit;
-  color: inherit;
+/* SplitText chars are inline-block (needed for GSAP transforms), which breaks
+   parent background-clip:text in Safari. Apply gradient directly to each char. */
+.gradient-text-gold .char {
+  background: linear-gradient(135deg, #FFD666 0%, #F5A623 50%, #CC8400 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+.gradient-text-white .char {
+  background: linear-gradient(180deg, #F0F6FC 0%, rgba(184, 196, 212, 0.7) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+.gradient-text-white-strong .char {
+  background: linear-gradient(180deg, #FFFFFF 0%, #E0E6EF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
 }
 
 /* CTA shimmer — auto-sweeping highlight */
