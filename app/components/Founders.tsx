@@ -32,11 +32,14 @@ export default function Founders() {
     const counters = statsRef.current.querySelectorAll(".founder-stat");
     counters.forEach((el) => {
       const target = Number(el.getAttribute("data-value"));
-      gsap.from(el, {
-        textContent: 0,
+      const obj = { val: 0 };
+      gsap.to(obj, {
+        val: target,
         duration: 2,
         ease: "power2.out",
-        snap: { textContent: 1 },
+        onUpdate: () => {
+          (el as HTMLElement).textContent = Math.round(obj.val).toLocaleString("pt-BR");
+        },
         scrollTrigger: {
           trigger: el,
           start: "top 85%",
@@ -85,7 +88,7 @@ export default function Founders() {
           >
             <div className="text-center">
               <div className="font-[var(--font-display)] font-bold text-2xl md:text-3xl gradient-text-gold">
-                <span className="founder-stat" data-value="2500000">2500000</span>
+                <span className="founder-stat" data-value="2500000">2.500.000</span>
               </div>
               <div className="text-text-muted text-xs mt-1">Faturamento em R$</div>
             </div>

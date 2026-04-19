@@ -170,7 +170,7 @@ export default function Hero() {
         <div className="text-center mb-8">
           <h1
             className="font-[var(--font-display)] font-extrabold leading-[0.95] tracking-[-0.04em]"
-            style={{ fontSize: "clamp(2.5rem, 6.5vw, 5.5rem)" }}
+            style={{ fontSize: "clamp(1.85rem, 6.5vw, 5.5rem)" }}
           >
             <span className="block gradient-text-white-strong">
               <SplitText text="A Comunidade Que" delay={0.2} />
