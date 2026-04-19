@@ -88,7 +88,7 @@ function FAQItem({ faq, index }: { faq: (typeof faqs)[0]; index: number }) {
 
 export default function FAQ() {
   return (
-    <section id="faq" className="relative py-16 md:py-24 bg-surface-1">
+    <section id="faq" aria-labelledby="faq-heading" className="relative py-12 md:py-16 bg-surface-1">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/[0.04] to-transparent" />
 
       <div className="max-w-3xl mx-auto px-6">
@@ -102,6 +102,7 @@ export default function FAQ() {
             Dúvidas frequentes
           </motion.p>
           <motion.h2
+            id="faq-heading"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}

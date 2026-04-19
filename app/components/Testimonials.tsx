@@ -196,7 +196,7 @@ export default function Testimonials() {
   const textCards = [...textTestimonials, ...textTestimonials, ...textTestimonials, ...textTestimonials];
 
   return (
-    <section id="depoimentos" className="relative py-16 md:py-24 bg-surface-1 overflow-hidden">
+    <section id="depoimentos" className="relative py-24 md:py-32 bg-surface-1 overflow-hidden">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/[0.03] to-transparent" />
 
       <div className="max-w-6xl mx-auto px-6">

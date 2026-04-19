@@ -22,7 +22,7 @@ const comingSoon = [
 
 export default function Pricing() {
   return (
-    <section id="pricing" className="relative py-20 md:py-28 bg-surface-0 noise-bg overflow-hidden">
+    <section id="pricing" aria-labelledby="pricing-heading" className="relative py-24 md:py-32 bg-surface-0 noise-bg overflow-hidden">
       {/* Layered background atmosphere */}
       <div className="absolute inset-0">
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[800px] rounded-full bg-brand-gold/[0.04] blur-[200px]" />
@@ -41,6 +41,7 @@ export default function Pricing() {
             Faça parte
           </motion.p>
           <motion.h2
+            id="pricing-heading"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
