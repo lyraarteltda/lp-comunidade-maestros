@@ -2,8 +2,6 @@
 import SmoothScroll from "./components/SmoothScroll";
 import ScrollProgress from "./components/ScrollProgress";
 import Header from "./components/Header";
-import FloatingCTA from "./components/FloatingCTA";
-import WhatsAppButton from "./components/WhatsAppButton";
 
 import Hero from "./components/Hero";
 import ProblemSection from "./components/ProblemSection";
@@ -45,8 +43,6 @@ export default function Home() {
       </main>
       <Footer />
 
-      <FloatingCTA />
-      <WhatsAppButton />
     </SmoothScroll>
   );
 }
