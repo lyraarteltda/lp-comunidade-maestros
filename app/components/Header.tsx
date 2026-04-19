@@ -1,9 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, Menu, X } from "lucide-react";
-
-const CHECKOUT_URL = "https://pay.onprofit.com.br/M5Ene7El?off=ZNpmS2";
+import { Menu, X } from "lucide-react";
 
 const navLinks = [
   { label: "Pilares", href: "#pilares" },
@@ -52,31 +50,13 @@ export default function Header() {
             ))}
           </nav>
 
-          <div className="flex items-center gap-4">
-            <motion.a
-              href={CHECKOUT_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
-              className={`hidden md:inline-flex items-center gap-2 text-sm font-semibold px-5 py-2 rounded-lg transition-all duration-300 ${
-                scrolled
-                  ? "bg-brand-gold text-surface-0 cta-shimmer"
-                  : "bg-white/[0.06] text-text-primary hover:bg-white/[0.1] border border-white/[0.06]"
-              }`}
-            >
-              Fazer Parte
-              <ArrowRight className="w-3.5 h-3.5" />
-            </motion.a>
-
-            <button
-              onClick={() => setMobileOpen(!mobileOpen)}
-              className="md:hidden text-text-primary p-2"
-              aria-label="Menu"
-            >
-              {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-            </button>
-          </div>
+          <button
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className="md:hidden text-text-primary p-2"
+            aria-label="Menu"
+          >
+            {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
         </div>
       </motion.header>
 
@@ -100,16 +80,6 @@ export default function Header() {
                   {link.label}
                 </a>
               ))}
-              <a
-                href={CHECKOUT_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => setMobileOpen(false)}
-                className="mt-4 inline-flex items-center gap-2 bg-brand-gold text-surface-0 font-bold px-8 py-3 rounded-xl"
-              >
-                Quero Fazer Parte
-                <ArrowRight className="w-5 h-5" />
-              </a>
             </nav>
           </motion.div>
         )}
