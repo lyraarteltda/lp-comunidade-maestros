@@ -130,7 +130,8 @@ function VideoCard({ t }: { t: VideoTestimonial }) {
       <div className="relative aspect-[9/14] bg-surface-3 cursor-pointer" onClick={togglePlay}>
         <video
           ref={videoRef}
-          src={`${t.videoSrc}#t=0.1`}
+          src={t.videoSrc}
+          poster={t.videoSrc.replace('.mp4', '-poster.jpg')}
           playsInline
           preload="metadata"
           muted
