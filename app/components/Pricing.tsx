@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { ArrowRight, Check, Sparkles, Shield, Lock, RefreshCw, Clock } from "lucide-react";
+import { ArrowRight, Check, Sparkles, Shield, Lock, RefreshCw, Clock, AlertTriangle, MessageCircle } from "lucide-react";
 
 const CHECKOUT_URL = "https://pay.onprofit.com.br/M5Ene7El?off=ZNpmS2";
 
@@ -62,6 +62,23 @@ export default function Pricing() {
             Um investimento que se paga no primeiro mês.
           </motion.p>
         </div>
+
+        {/* Scarcity callout */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.15 }}
+          className="max-w-lg mx-auto mb-8 rounded-xl border border-amber-500/20 bg-amber-500/[0.06] px-5 py-4 flex items-start gap-3"
+        >
+          <AlertTriangle className="w-5 h-5 text-amber-400 shrink-0 mt-0.5" />
+          <p className="text-sm text-text-secondary leading-relaxed">
+            <span className="font-bold text-text-primary">Estamos em 117/120 vagas.</span>{" "}
+            Quando chegarmos em 120, a mensalidade sobe. Quem entrar agora tem{" "}
+            <span className="font-bold text-brand-gold">assinatura congelada</span>{" "}
+            no preço atual — para sempre.
+          </p>
+        </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 40, scale: 0.97 }}
@@ -167,6 +184,21 @@ export default function Pricing() {
               </div>
             </div>
           </div>
+        </motion.div>
+
+        {/* Support guarantee */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
+          className="max-w-lg mx-auto mt-8 flex items-center justify-center gap-2.5 text-text-tertiary"
+        >
+          <MessageCircle className="w-4 h-4 text-emerald-400/60" />
+          <p className="text-xs">
+            <span className="font-semibold text-text-secondary">Garantia de suporte</span>{" "}
+            — todas as dúvidas respondidas. Sem tíquete perdido.
+          </p>
         </motion.div>
       </div>
     </section>

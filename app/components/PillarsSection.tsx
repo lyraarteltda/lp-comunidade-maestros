@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { Video, BookOpen, Headphones, RefreshCw } from "lucide-react";
+import { Video, BookOpen, Headphones, RefreshCw, Gift } from "lucide-react";
 
 const pillars = [
   {
@@ -44,7 +44,18 @@ const pillars = [
     accent: "blue",
     gradient: "from-blue-500 to-cyan-600",
     bgGlow: "bg-blue-500/[0.06]",
-    span: "md:col-span-2",
+    span: "",
+    featured: false,
+  },
+  {
+    icon: Gift,
+    title: "1 Sorteio por Mês",
+    description: "Implementações práticas feitas ao vivo para membros da comunidade. Todo mês, um membro é selecionado para ter seu projeto implementado.",
+    detail: "Exclusivo para membros",
+    accent: "rose",
+    gradient: "from-rose-500 to-pink-600",
+    bgGlow: "bg-rose-500/[0.06]",
+    span: "",
     featured: false,
   },
 ];
@@ -54,6 +65,7 @@ const accentMap: Record<string, { icon: string; border: string; tag: string }> =
   gold: { icon: "text-brand-gold", border: "border-brand-gold/20", tag: "bg-brand-gold/10 text-brand-gold" },
   emerald: { icon: "text-emerald-400", border: "border-emerald-500/20", tag: "bg-emerald-500/10 text-emerald-300" },
   blue: { icon: "text-blue-400", border: "border-blue-500/20", tag: "bg-blue-500/10 text-blue-300" },
+  rose: { icon: "text-rose-400", border: "border-rose-500/20", tag: "bg-rose-500/10 text-rose-300" },
 };
 
 export default function PillarsSection() {
@@ -80,7 +92,7 @@ export default function PillarsSection() {
             className="font-[var(--font-display)] font-bold gradient-text-white tracking-[-0.02em]"
             style={{ fontSize: "clamp(1.8rem, 4vw, 3rem)" }}
           >
-            Os 4 Pilares da Comunidade
+            Os 5 Pilares da Comunidade
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 15 }}
