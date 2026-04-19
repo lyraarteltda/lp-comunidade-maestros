@@ -4,7 +4,9 @@ import { motion } from "framer-motion";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Sparkles } from "lucide-react";
+import { Sparkles, ArrowRight } from "lucide-react";
+
+const CHECKOUT_URL = "https://pay.onprofit.com.br/M5Ene7El?off=ZNpmS2";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -28,15 +30,18 @@ function SplitText({ text, className, delay = 0 }: { text: string; className?: s
 
   return (
     <span ref={ref} className={className}>
-      {text.split("").map((char, i) => (
-        <span
-          key={i}
-          className="char inline-block"
-          style={{ transformOrigin: "bottom center" }}
-        >
-          {char === " " ? "\u00A0" : char}
-        </span>
-      ))}
+      <span className="sr-only">{text}</span>
+      <span aria-hidden="true">
+        {text.split("").map((char, i) => (
+          <span
+            key={i}
+            className="char inline-block"
+            style={{ transformOrigin: "bottom center" }}
+          >
+            {char === " " ? "\u00A0" : char}
+          </span>
+        ))}
+      </span>
     </span>
   );
 }
@@ -46,12 +51,15 @@ function CounterStat({ value, suffix, label, delay }: { value: number; suffix: s
 
   useGSAP(() => {
     if (!ref.current) return;
-    gsap.from(ref.current, {
-      textContent: 0,
+    const obj = { val: 0 };
+    gsap.to(obj, {
+      val: value,
       duration: 2,
       delay,
       ease: "power2.out",
-      snap: { textContent: 1 },
+      onUpdate: () => {
+        if (ref.current) ref.current.textContent = String(Math.round(obj.val));
+      },
     });
   });
 
@@ -194,6 +202,33 @@ export default function Hero() {
           100+ agentes plug &amp; play e conteúdo que evolui com o mercado. Tudo que você precisa
           pra dominar IA — sem ficar pra trás.
         </motion.p>
+
+        {/* CTA buttons */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 1, ease: [0.22, 1, 0.36, 1] }}
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
+        >
+          <motion.a
+            href={CHECKOUT_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
+            className="cta-shimmer inline-flex items-center gap-2.5 bg-brand-gold text-surface-0 font-bold text-sm md:text-base px-8 py-3.5 rounded-xl shadow-lg shadow-brand-gold/20"
+          >
+            Garantir Minha Vaga
+            <ArrowRight className="w-4 h-4" />
+          </motion.a>
+          <a
+            href="#pricing"
+            className="inline-flex items-center gap-1.5 text-text-secondary hover:text-brand-gold text-sm font-medium transition-colors duration-200"
+          >
+            Ver o que inclui
+            <span aria-hidden="true">→</span>
+          </a>
+        </motion.div>
 
         {/* Stats bar */}
         <motion.div

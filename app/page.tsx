@@ -1,6 +1,9 @@
 "use client";
 import SmoothScroll from "./components/SmoothScroll";
 import ScrollProgress from "./components/ScrollProgress";
+import Header from "./components/Header";
+import FloatingCTA from "./components/FloatingCTA";
+import WhatsAppButton from "./components/WhatsAppButton";
 
 import Hero from "./components/Hero";
 import ProblemSection from "./components/ProblemSection";
@@ -20,8 +23,13 @@ export default function Home() {
   return (
     <SmoothScroll>
       <ScrollProgress />
+      <Header />
 
-      <main>
+      <a href="#conteudo" className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[60] focus:bg-brand-gold focus:text-surface-0 focus:px-4 focus:py-2 focus:rounded-lg focus:font-semibold">
+        Pular para o conteúdo
+      </a>
+
+      <main id="conteudo">
         <Hero />
         <ProblemSection />
         <PillarsSection />
@@ -36,6 +44,9 @@ export default function Home() {
         <FinalCTA />
       </main>
       <Footer />
+
+      <FloatingCTA />
+      <WhatsAppButton />
     </SmoothScroll>
   );
 }

@@ -13,15 +13,18 @@ function StatCounter({ value, suffix, label, delay }: { value: number; suffix: s
 
   useGSAP(() => {
     if (!ref.current) return;
-    gsap.from(ref.current, {
-      textContent: 0,
+    const obj = { val: 0 };
+    gsap.to(obj, {
+      val: value,
       duration: 1.8,
       delay,
       ease: "power2.out",
-      snap: { textContent: 1 },
       scrollTrigger: {
         trigger: ref.current,
         start: "top 85%",
+      },
+      onUpdate: () => {
+        if (ref.current) ref.current.textContent = String(Math.round(obj.val));
       },
     });
   });
