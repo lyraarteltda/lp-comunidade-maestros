@@ -66,7 +66,7 @@ export default function ProblemSection() {
   }, { scope: sectionRef });
 
   return (
-    <section ref={sectionRef} className="relative py-16 md:py-24 bg-surface-1 noise-bg overflow-hidden">
+    <section ref={sectionRef} className="relative pt-8 md:pt-12 lg:pt-16 pb-16 md:pb-24 bg-surface-1 noise-bg overflow-hidden">
       {/* Decorative gradient */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-red-500/[0.03] blur-[150px]" />
 

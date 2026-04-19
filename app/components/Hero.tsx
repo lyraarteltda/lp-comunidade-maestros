@@ -84,7 +84,7 @@ export default function Hero() {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-surface-0 noise-bg"
+      className="relative flex items-center justify-center overflow-hidden bg-surface-0 noise-bg"
     >
       {/* Layered mesh gradient background with parallax */}
       <div className="absolute inset-0">
@@ -127,7 +127,7 @@ export default function Hero() {
         style={{ animation: "breathe 6s ease-in-out infinite 2s" }}
       />
 
-      <div className="relative z-10 max-w-5xl mx-auto px-6 pt-20 pb-12 md:pt-28 md:pb-16 lg:pt-36 lg:pb-20">
+      <div className="relative z-10 max-w-5xl mx-auto px-6 pt-28 pb-8 md:pt-36 md:pb-12 lg:pt-44 lg:pb-16">
         {/* Overline badge */}
         <motion.div
           initial={{ opacity: 0, y: 20, scale: 0.95 }}
@@ -177,7 +177,7 @@ export default function Hero() {
       </div>
 
       {/* Bottom gradient fade to next section */}
-      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-surface-1 to-transparent pointer-events-none" />
+      <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-surface-1 to-transparent pointer-events-none" />
 
     </section>
   );
