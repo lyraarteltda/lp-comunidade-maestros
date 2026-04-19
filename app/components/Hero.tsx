@@ -1,122 +1,274 @@
 "use client";
+import { useRef } from "react";
 import { motion } from "framer-motion";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowRight, Sparkles } from "lucide-react";
 
-export default function Hero() {
+gsap.registerPlugin(ScrollTrigger);
+
+const CHECKOUT_URL = "https://pay.onprofit.com.br/M5Ene7El?off=ZNpmS2";
+
+function SplitText({ text, className, delay = 0 }: { text: string; className?: string; delay?: number }) {
+  const ref = useRef<HTMLSpanElement>(null);
+
+  useGSAP(() => {
+    if (!ref.current) return;
+    const chars = ref.current.querySelectorAll(".char");
+    gsap.from(chars, {
+      y: 80,
+      opacity: 0,
+      rotateX: -40,
+      stagger: 0.025,
+      duration: 0.7,
+      delay,
+      ease: "power3.out",
+    });
+  }, { scope: ref });
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-surface-0 noise-bg">
-      {/* Mesh gradient background */}
+    <span ref={ref} className={className}>
+      {text.split("").map((char, i) => (
+        <span
+          key={i}
+          className="char inline-block"
+          style={{ transformOrigin: "bottom center" }}
+        >
+          {char === " " ? "\u00A0" : char}
+        </span>
+      ))}
+    </span>
+  );
+}
+
+function CounterStat({ value, suffix, label, delay }: { value: number; suffix: string; label: string; delay: number }) {
+  const ref = useRef<HTMLSpanElement>(null);
+
+  useGSAP(() => {
+    if (!ref.current) return;
+    gsap.from(ref.current, {
+      textContent: 0,
+      duration: 2,
+      delay,
+      ease: "power2.out",
+      snap: { textContent: 1 },
+    });
+  });
+
+  return (
+    <div className="text-center">
+      <div className="font-[var(--font-display)] font-bold text-2xl md:text-3xl text-text-primary">
+        <span ref={ref}>{value}</span>{suffix}
+      </div>
+      <div className="text-text-muted text-xs mt-1">{label}</div>
+    </div>
+  );
+}
+
+export default function Hero() {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useGSAP(() => {
+    if (!sectionRef.current) return;
+    gsap.to(".hero-orb-1", {
+      y: -60,
+      ease: "none",
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top top",
+        end: "bottom top",
+        scrub: 1,
+      },
+    });
+    gsap.to(".hero-orb-2", {
+      y: -100,
+      ease: "none",
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top top",
+        end: "bottom top",
+        scrub: 1.5,
+      },
+    });
+    gsap.to(".hero-orb-3", {
+      y: -40,
+      ease: "none",
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top top",
+        end: "bottom top",
+        scrub: 0.8,
+      },
+    });
+  }, { scope: sectionRef });
+
+  return (
+    <section
+      ref={sectionRef}
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-surface-0 noise-bg"
+    >
+      {/* Layered mesh gradient background with parallax */}
       <div className="absolute inset-0">
-        <div className="absolute -top-1/3 -left-1/4 w-[900px] h-[900px] rounded-full bg-amber-500/[0.06] blur-[150px]" />
-        <div className="absolute -bottom-1/4 -right-1/4 w-[700px] h-[700px] rounded-full bg-orange-500/[0.04] blur-[120px]" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-yellow-500/[0.03] blur-[100px]" />
+        <div className="hero-orb-1 orb -top-[20%] -left-[10%] w-[700px] h-[700px] bg-amber-500/[0.07] blur-[180px]" />
+        <div className="hero-orb-2 orb top-[10%] right-[-5%] w-[500px] h-[500px] bg-orange-500/[0.05] blur-[140px]" />
+        <div className="hero-orb-3 orb bottom-[5%] left-[30%] w-[400px] h-[400px] bg-yellow-500/[0.04] blur-[120px]" />
       </div>
 
-      {/* Subtle grid */}
+      {/* Subtle grid lines */}
       <div
-        className="absolute inset-0 pointer-events-none opacity-[0.03]"
+        className="absolute inset-0 pointer-events-none opacity-[0.025]"
         style={{
           backgroundImage: `
-            linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)
+            linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px)
           `,
-          backgroundSize: "72px 72px",
+          backgroundSize: "80px 80px",
         }}
       />
 
-      <div className="relative z-10 max-w-5xl mx-auto px-6 py-32 md:py-40 lg:py-48 text-center">
+      {/* Floating decorative elements */}
+      <div
+        className="absolute top-[15%] right-[12%] w-24 h-24 rounded-2xl border border-brand-gold/10 rotate-12 opacity-20"
+        style={{ animation: "float 8s ease-in-out infinite" }}
+      />
+      <div
+        className="absolute bottom-[20%] left-[8%] w-16 h-16 rounded-full border border-white/[0.06] opacity-15"
+        style={{ animation: "float-slow 10s ease-in-out infinite" }}
+      />
+      <div
+        className="absolute top-[40%] left-[5%] w-2 h-2 rounded-full bg-brand-gold/40"
+        style={{ animation: "breathe 4s ease-in-out infinite" }}
+      />
+      <div
+        className="absolute top-[30%] right-[8%] w-1.5 h-1.5 rounded-full bg-white/20"
+        style={{ animation: "breathe 5s ease-in-out infinite 1s" }}
+      />
+      <div
+        className="absolute bottom-[35%] right-[15%] w-2.5 h-2.5 rounded-full bg-amber-400/30"
+        style={{ animation: "breathe 6s ease-in-out infinite 2s" }}
+      />
+
+      <div className="relative z-10 max-w-5xl mx-auto px-6 pt-32 pb-20 md:pt-40 md:pb-28 lg:pt-48 lg:pb-32">
+        {/* Overline badge */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          initial={{ opacity: 0, y: 20, scale: 0.95 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="flex justify-center mb-8"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-gold/[0.1] border border-brand-gold/20 mb-8">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-gold/[0.08] border border-brand-gold/15">
             <Sparkles className="w-3.5 h-3.5 text-brand-gold" />
-            <span className="text-xs font-semibold text-brand-gold tracking-wide uppercase">
+            <span className="text-[11px] font-bold text-brand-gold tracking-[0.12em] uppercase">
               Comunidade Exclusiva
             </span>
           </div>
         </motion.div>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-          className="font-[var(--font-display)] font-bold leading-[1.05] tracking-[-0.03em] mb-6"
-          style={{ fontSize: "clamp(2.5rem, 6vw, 5.5rem)" }}
-        >
-          <span className="gradient-text-white">A Comunidade Que</span>
-          <br />
-          <span className="gradient-text-white">Te Mantém na </span>
-          <span className="gradient-text-gold">Vanguarda da IA</span>
-        </motion.h1>
+        {/* Headline — massive, split text animated */}
+        <div className="text-center mb-8">
+          <h1
+            className="font-[var(--font-display)] font-extrabold leading-[0.95] tracking-[-0.04em]"
+            style={{ fontSize: "clamp(2.8rem, 7vw, 6rem)" }}
+          >
+            <span className="block gradient-text-white-strong">
+              <SplitText text="A Comunidade Que" delay={0.2} />
+            </span>
+            <span className="block mt-1 md:mt-2">
+              <SplitText text="Te Mantém na " delay={0.4} className="gradient-text-white-strong" />
+              <SplitText text="Vanguarda" delay={0.55} className="gradient-text-gold" />
+            </span>
+          </h1>
+        </div>
 
+        {/* Subheadline */}
         <motion.p
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
-          className="max-w-2xl mx-auto text-text-secondary leading-relaxed mb-10"
-          style={{ fontSize: "clamp(1rem, 1.8vw, 1.25rem)" }}
+          transition={{ duration: 0.7, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          className="max-w-2xl mx-auto text-center text-text-secondary leading-relaxed mb-12"
+          style={{ fontSize: "clamp(1rem, 1.6vw, 1.2rem)" }}
         >
-          Acesso contínuo a lives semanais, +20 horas de conteúdo estruturado,
-          suporte diário de especialistas e atualizações constantes. Tudo que
-          você precisa para dominar IA — sem ficar pra trás.
+          Lives semanais com especialistas, +20 horas de sistemas prontos pra implementar,
+          suporte em até 24h e conteúdo que evolui com o mercado. Tudo que você precisa
+          pra dominar IA — sem ficar pra trás.
         </motion.p>
 
+        {/* CTA cluster */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.4 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
+          transition={{ duration: 0.6, delay: 1 }}
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6"
         >
           <motion.a
-            href="#pricing"
+            href={CHECKOUT_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             whileHover={{ scale: 1.03, y: -2 }}
             whileTap={{ scale: 0.97 }}
             transition={{ type: "spring", stiffness: 400, damping: 17 }}
-            className="cta-shimmer inline-flex items-center gap-3 bg-brand-gold text-surface-0 font-bold px-8 py-4 rounded-xl text-lg"
+            className="cta-shimmer group inline-flex items-center gap-3 bg-brand-gold text-surface-0 font-bold px-9 py-4 rounded-xl text-lg shadow-lg shadow-brand-gold/20"
             style={{ animation: "pulse-gold 3s infinite" }}
           >
-            Quero Fazer Parte
-            <ArrowRight className="w-5 h-5" />
+            <span>Quero Fazer Parte</span>
+            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
           </motion.a>
 
           <a
             href="#pilares"
-            className="inline-flex items-center gap-2 text-text-tertiary hover:text-text-primary transition-colors text-sm font-medium"
+            className="inline-flex items-center gap-2 text-text-tertiary hover:text-text-primary transition-colors text-sm font-medium group"
           >
             Conheça os pilares
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg className="w-4 h-4 group-hover:translate-y-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
             </svg>
           </a>
         </motion.div>
 
-        <motion.div
+        {/* Trust line */}
+        <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.8, duration: 1 }}
-          className="mt-16 flex items-center justify-center gap-8 text-text-muted"
+          transition={{ delay: 1.2, duration: 0.6 }}
+          className="text-center text-text-muted text-xs mb-16"
         >
-          <div className="flex items-center gap-2 text-xs">
-            <div className="w-2 h-2 rounded-full bg-emerald-400/80" />
-            Lives toda semana
-          </div>
-          <div className="h-3 w-px bg-white/[0.08]" />
-          <div className="flex items-center gap-2 text-xs">
-            <div className="w-2 h-2 rounded-full bg-brand-gold/80" />
-            +20h de conteúdo
-          </div>
-          <div className="h-3 w-px bg-white/[0.08] hidden sm:block" />
-          <div className="hidden sm:flex items-center gap-2 text-xs">
-            <div className="w-2 h-2 rounded-full bg-blue-400/80" />
-            Suporte diário
+          Cancele quando quiser &middot; Acesso imediato &middot; Garantia de 7 dias
+        </motion.p>
+
+        {/* Stats bar */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.3, duration: 0.7 }}
+          className="glass-card rounded-2xl p-6 md:p-8 max-w-2xl mx-auto"
+        >
+          <div className="grid grid-cols-3 gap-6 md:gap-12 divide-x divide-white/[0.06]">
+            <CounterStat value={20} suffix="h+" label="Conteúdo estruturado" delay={1.5} />
+            <CounterStat value={500} suffix="+" label="Membros ativos" delay={1.7} />
+            <CounterStat value={7} suffix="" label="Trilhas de conhecimento" delay={1.9} />
           </div>
         </motion.div>
       </div>
 
-      {/* Bottom fade to next section */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-surface-1 to-transparent" />
+      {/* Bottom gradient fade to next section */}
+      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-surface-1 to-transparent pointer-events-none" />
+
+      {/* Scroll indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 2 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
+      >
+        <motion.div
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+          className="w-5 h-8 rounded-full border border-white/[0.15] flex items-start justify-center pt-1.5"
+        >
+          <div className="w-1 h-1.5 rounded-full bg-white/30" />
+        </motion.div>
+      </motion.div>
     </section>
   );
 }

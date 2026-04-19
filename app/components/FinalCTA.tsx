@@ -1,48 +1,95 @@
 "use client";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
-import AnimatedSection from "./AnimatedSection";
+import { ArrowRight, Sparkles, Users, TrendingUp, Clock } from "lucide-react";
+
+const CHECKOUT_URL = "https://pay.onprofit.com.br/M5Ene7El?off=ZNpmS2";
 
 export default function FinalCTA() {
   return (
-    <section className="relative py-24 md:py-32 bg-surface-0 overflow-hidden">
+    <section className="relative py-28 md:py-40 bg-surface-0 overflow-hidden">
+      {/* Dramatic ambient glow */}
       <div className="absolute inset-0">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-brand-gold/[0.05] blur-[160px]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] rounded-full bg-brand-gold/[0.06] blur-[200px]" />
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-amber-500/[0.03] blur-[100px]" />
       </div>
 
+      {/* Subtle grid */}
+      <div
+        className="absolute inset-0 pointer-events-none opacity-[0.02]"
+        style={{
+          backgroundImage: `
+            linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px)
+          `,
+          backgroundSize: "80px 80px",
+        }}
+      />
+
       <div className="relative z-10 max-w-3xl mx-auto px-6 text-center">
-        <AnimatedSection>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+        >
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-gold/[0.08] border border-brand-gold/15 mb-8">
+            <Sparkles className="w-3.5 h-3.5 text-brand-gold" />
+            <span className="text-[11px] font-bold text-brand-gold tracking-[0.1em] uppercase">
+              Sua vez de agir
+            </span>
+          </div>
+
           <h2
-            className="font-[var(--font-display)] font-bold tracking-tight mb-6"
-            style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)" }}
+            className="font-[var(--font-display)] font-extrabold tracking-[-0.03em] mb-6"
+            style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)" }}
           >
-            <span className="gradient-text-white">O Futuro É de</span>
+            <span className="gradient-text-white-strong">O Futuro É de</span>
             <br />
             <span className="gradient-text-gold">Quem Age Agora</span>
           </h2>
 
-          <p className="text-text-secondary leading-relaxed mb-10 max-w-xl mx-auto text-lg">
-            A cada semana que passa, novas ferramentas surgem, novas estratégias
-            são validadas e novas oportunidades aparecem. Quem está dentro,
-            aproveita. Quem está fora, fica pra trás.
+          <p className="text-text-secondary leading-relaxed mb-10 max-w-xl mx-auto" style={{ fontSize: "clamp(1rem, 1.5vw, 1.125rem)" }}>
+            A cada semana, novas ferramentas surgem, estratégias são validadas e
+            oportunidades aparecem. Quem está dentro, aproveita.
+            Quem está fora, fica pra trás.
           </p>
 
+          {/* Urgency indicators */}
+          <div className="flex items-center justify-center gap-6 mb-10 text-text-tertiary">
+            <div className="flex items-center gap-2 text-xs">
+              <Users className="w-3.5 h-3.5 text-brand-gold" />
+              <span>+500 membros</span>
+            </div>
+            <div className="h-3 w-px bg-white/[0.08]" />
+            <div className="flex items-center gap-2 text-xs">
+              <TrendingUp className="w-3.5 h-3.5 text-emerald-400" />
+              <span>Preço de lançamento</span>
+            </div>
+            <div className="h-3 w-px bg-white/[0.08] hidden sm:block" />
+            <div className="hidden sm:flex items-center gap-2 text-xs">
+              <Clock className="w-3.5 h-3.5 text-blue-400" />
+              <span>Acesso imediato</span>
+            </div>
+          </div>
+
           <motion.a
-            href="#pricing"
+            href={CHECKOUT_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             whileHover={{ scale: 1.04, y: -3 }}
             whileTap={{ scale: 0.97 }}
             transition={{ type: "spring", stiffness: 400, damping: 17 }}
-            className="cta-shimmer inline-flex items-center gap-3 bg-brand-gold text-surface-0 font-bold px-10 py-5 rounded-xl text-lg"
+            className="cta-shimmer inline-flex items-center gap-3 bg-brand-gold text-surface-0 font-bold px-12 py-5 rounded-xl text-lg shadow-xl shadow-brand-gold/25"
             style={{ animation: "pulse-gold 3s infinite" }}
           >
             Quero Fazer Parte da Comunidade
             <ArrowRight className="w-5 h-5" />
           </motion.a>
 
-          <p className="text-text-muted text-sm mt-6">
-            Junte-se a centenas de profissionais que já estão dominando IA.
+          <p className="text-text-muted text-xs mt-6">
+            Garantia incondicional de 7 dias &middot; Cancele quando quiser
           </p>
-        </AnimatedSection>
+        </motion.div>
       </div>
     </section>
   );

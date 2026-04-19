@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Menu, X } from "lucide-react";
 
+const CHECKOUT_URL = "https://pay.onprofit.com.br/M5Ene7El?off=ZNpmS2";
+
 const navLinks = [
   { label: "Pilares", href: "#pilares" },
   { label: "Conteúdo", href: "#trilhas" },
@@ -29,13 +31,13 @@ export default function Header() {
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled
-            ? "bg-surface-0/80 backdrop-blur-xl border-b border-white/[0.06]"
+            ? "bg-surface-0/80 backdrop-blur-xl border-b border-white/[0.06] shadow-lg shadow-black/10"
             : "bg-transparent"
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           <a href="#" className="font-[var(--font-display)] font-bold text-lg tracking-tight text-text-primary">
-            Maestros da IA
+            Maestros<span className="text-brand-gold">.</span>
           </a>
 
           <nav className="hidden md:flex items-center gap-8">
@@ -43,7 +45,7 @@ export default function Header() {
               <a
                 key={link.href}
                 href={link.href}
-                className="text-sm text-text-tertiary hover:text-text-primary transition-colors duration-200"
+                className="text-[13px] text-text-tertiary hover:text-text-primary transition-colors duration-200 font-medium"
               >
                 {link.label}
               </a>
@@ -52,17 +54,19 @@ export default function Header() {
 
           <div className="flex items-center gap-4">
             <motion.a
-              href="#pricing"
+              href={CHECKOUT_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
-              className={`hidden md:inline-flex items-center gap-2 text-sm font-semibold px-5 py-2.5 rounded-lg transition-all duration-300 ${
+              className={`hidden md:inline-flex items-center gap-2 text-sm font-semibold px-5 py-2 rounded-lg transition-all duration-300 ${
                 scrolled
                   ? "bg-brand-gold text-surface-0 cta-shimmer"
-                  : "bg-white/[0.08] text-text-primary hover:bg-white/[0.12]"
+                  : "bg-white/[0.06] text-text-primary hover:bg-white/[0.1] border border-white/[0.06]"
               }`}
             >
-              Quero Fazer Parte
-              <ArrowRight className="w-4 h-4" />
+              Fazer Parte
+              <ArrowRight className="w-3.5 h-3.5" />
             </motion.a>
 
             <button
@@ -97,9 +101,11 @@ export default function Header() {
                 </a>
               ))}
               <a
-                href="#pricing"
+                href={CHECKOUT_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={() => setMobileOpen(false)}
-                className="mt-4 inline-flex items-center gap-2 bg-brand-gold text-surface-0 font-semibold px-8 py-3 rounded-lg"
+                className="mt-4 inline-flex items-center gap-2 bg-brand-gold text-surface-0 font-bold px-8 py-3 rounded-xl"
               >
                 Quero Fazer Parte
                 <ArrowRight className="w-5 h-5" />

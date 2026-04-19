@@ -1,5 +1,9 @@
 "use client";
+import { useRef } from "react";
 import { motion } from "framer-motion";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
   Sparkles,
   Target,
@@ -10,7 +14,8 @@ import {
   Megaphone,
   type LucideIcon,
 } from "lucide-react";
-import AnimatedSection from "./AnimatedSection";
+
+gsap.registerPlugin(ScrollTrigger);
 
 interface Block {
   icon: LucideIcon;
@@ -19,6 +24,7 @@ interface Block {
   gradient: string;
   iconBg: string;
   iconColor: string;
+  borderColor: string;
 }
 
 const blocks: Block[] = [
@@ -26,142 +32,164 @@ const blocks: Block[] = [
     icon: Sparkles,
     title: "Sistema de Predição de Conteúdo",
     benefit: "Produza conteúdo em escala com IA — posts, vídeos, roteiros, tudo automatizado.",
-    gradient: "from-violet-500/30 via-purple-500/10 to-transparent",
+    gradient: "from-violet-500/25 via-purple-500/5 to-transparent",
     iconBg: "bg-violet-500/10",
     iconColor: "text-violet-400",
+    borderColor: "border-violet-500/15",
   },
   {
     icon: Target,
-    title: "Sistema de Anúncios Inteligentes",
+    title: "Anúncios Inteligentes",
     benefit: "Campanhas que se otimizam sozinhas com inteligência artificial.",
-    gradient: "from-rose-500/30 via-pink-500/10 to-transparent",
+    gradient: "from-rose-500/25 via-pink-500/5 to-transparent",
     iconBg: "bg-rose-500/10",
     iconColor: "text-rose-400",
+    borderColor: "border-rose-500/15",
   },
   {
     icon: ShoppingCart,
-    title: "Ecossistema de Vendas Autônomas",
-    benefit: "Agentes de vendas que trabalham 24/7 no WhatsApp, recuperando carrinhos e fechando negócios.",
-    gradient: "from-emerald-500/30 via-green-500/10 to-transparent",
+    title: "Vendas Autônomas",
+    benefit: "Agentes de vendas 24/7 no WhatsApp, recuperando carrinhos e fechando negócios.",
+    gradient: "from-emerald-500/25 via-green-500/5 to-transparent",
     iconBg: "bg-emerald-500/10",
     iconColor: "text-emerald-400",
+    borderColor: "border-emerald-500/15",
   },
   {
     icon: Wrench,
-    title: "Arsenal de Ferramentas de IA",
-    benefit: "Acesso a mais de 100 ferramentas, prompts e templates prontos para uso imediato.",
-    gradient: "from-amber-500/30 via-yellow-500/10 to-transparent",
+    title: "Arsenal de Ferramentas",
+    benefit: "100+ ferramentas, prompts e templates prontos para uso imediato.",
+    gradient: "from-amber-500/25 via-yellow-500/5 to-transparent",
     iconBg: "bg-amber-500/10",
     iconColor: "text-amber-400",
+    borderColor: "border-amber-500/15",
   },
   {
     icon: BarChart3,
-    title: "Dashboard CEO & Business Intelligence",
-    benefit: "Tome decisões com dados em tempo real — dashboards inteligentes e análises preditivas.",
-    gradient: "from-blue-500/30 via-cyan-500/10 to-transparent",
+    title: "Dashboard CEO",
+    benefit: "Decisões com dados em tempo real — dashboards inteligentes e análises preditivas.",
+    gradient: "from-blue-500/25 via-cyan-500/5 to-transparent",
     iconBg: "bg-blue-500/10",
     iconColor: "text-blue-400",
+    borderColor: "border-blue-500/15",
   },
   {
     icon: Cpu,
-    title: "Agentes Inteligentes & Automação",
+    title: "Agentes & Automação",
     benefit: "Construa e orquestre agentes de IA que executam tarefas complexas autonomamente.",
-    gradient: "from-cyan-500/30 via-teal-500/10 to-transparent",
+    gradient: "from-cyan-500/25 via-teal-500/5 to-transparent",
     iconBg: "bg-cyan-500/10",
     iconColor: "text-cyan-400",
+    borderColor: "border-cyan-500/15",
   },
   {
     icon: Megaphone,
     title: "Marketing Automatizado",
     benefit: "Funis, redes sociais e captação de leads no piloto automático.",
-    gradient: "from-orange-500/30 via-red-500/10 to-transparent",
+    gradient: "from-orange-500/25 via-red-500/5 to-transparent",
     iconBg: "bg-orange-500/10",
     iconColor: "text-orange-400",
+    borderColor: "border-orange-500/15",
   },
 ];
 
-function BlockCard({ block, className, iconSize = "w-12 h-12", iconInner = "w-6 h-6" }: { block: Block; className?: string; iconSize?: string; iconInner?: string }) {
-  const Icon = block.icon;
-  return (
-    <div className="relative z-10">
-      <div className={`${iconSize} rounded-xl ${block.iconBg} flex items-center justify-center mb-4`}>
-        <Icon className={`${iconInner} ${block.iconColor}`} />
-      </div>
-      <h3 className={`font-[var(--font-display)] font-semibold text-text-primary mb-2 ${className?.includes("large") ? "text-xl" : "text-lg"}`}>
-        {block.title}
-      </h3>
-      <p className="text-text-secondary text-sm leading-relaxed">
-        {block.benefit}
-      </p>
-    </div>
-  );
-}
+const gridPositions = [
+  "md:col-span-2",
+  "",
+  "",
+  "md:col-span-2",
+  "",
+  "",
+  "md:col-span-3",
+];
 
 export default function KnowledgeBlocks() {
+  const gridRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    if (!gridRef.current) return;
+    gsap.from(gridRef.current.querySelectorAll(".kb-card"), {
+      scale: 0.92,
+      opacity: 0,
+      stagger: 0.08,
+      duration: 0.6,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: gridRef.current,
+        start: "top 75%",
+      },
+    });
+  }, { scope: gridRef });
+
   return (
-    <section id="trilhas" className="relative py-24 md:py-32 bg-surface-1">
+    <section id="trilhas" className="relative py-24 md:py-36 bg-surface-1 overflow-hidden">
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/[0.04] to-transparent" />
+
       <div className="max-w-6xl mx-auto px-6">
-        <AnimatedSection className="text-center mb-16">
-          <p className="text-xs font-bold tracking-[0.15em] uppercase text-brand-gold mb-4">
+        <div className="text-center mb-16">
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="text-[11px] font-bold tracking-[0.15em] uppercase text-brand-gold mb-4"
+          >
             Trilhas de conhecimento
-          </p>
-          <h2
-            className="font-[var(--font-display)] font-bold gradient-text-white tracking-tight"
-            style={{ fontSize: "clamp(1.75rem, 3.5vw, 2.75rem)" }}
+          </motion.p>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="font-[var(--font-display)] font-bold gradient-text-white tracking-[-0.02em]"
+            style={{ fontSize: "clamp(1.8rem, 4vw, 3rem)" }}
           >
             Os Sistemas que Você Vai Dominar
-          </h2>
-          <p className="mt-4 text-text-secondary max-w-xl mx-auto">
-            Mais de 20 horas de conteúdo organizado em blocos de conhecimento prático.
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="mt-4 text-text-secondary max-w-xl mx-auto"
+          >
+            +20 horas organizadas em blocos de conhecimento prático.
             Cada trilha é um sistema completo — não aulas soltas.
-          </p>
-        </AnimatedSection>
+          </motion.p>
+        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-          {/* Featured block - spans 2 cols */}
-          <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.6 }}
-            className="md:col-span-2 group relative glass-card glass-card-hover rounded-2xl p-8 overflow-hidden transition-all duration-300"
-          >
-            <div className={`absolute inset-0 bg-gradient-to-br ${blocks[0].gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
-            <BlockCard block={blocks[0]} className="large" iconSize="w-14 h-14 rounded-2xl" iconInner="w-7 h-7" />
-          </motion.div>
-
-          {/* Second block */}
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="group relative glass-card glass-card-hover rounded-2xl p-7 overflow-hidden transition-all duration-300"
-          >
-            <div className={`absolute inset-0 bg-gradient-to-br ${blocks[1].gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
-            <BlockCard block={blocks[1]} />
-          </motion.div>
-
-          {/* Remaining blocks */}
-          {blocks.slice(2).map((block, i) => (
-            <motion.div
-              key={block.title}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.5, delay: i * 0.08 }}
-              className={`group relative glass-card glass-card-hover rounded-2xl p-7 overflow-hidden transition-all duration-300 ${
-                i === 3 ? "md:col-span-2" : ""
-              }`}
-            >
-              <div className={`absolute inset-0 bg-gradient-to-br ${block.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
-              <BlockCard block={block} />
-            </motion.div>
-          ))}
+        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {blocks.map((block, i) => {
+            const Icon = block.icon;
+            const isWide = gridPositions[i]?.includes("col-span-2") || gridPositions[i]?.includes("col-span-3");
+            return (
+              <div
+                key={block.title}
+                className={`kb-card group relative glass-card glass-card-hover rounded-2xl overflow-hidden transition-all duration-300 ${gridPositions[i]} ${
+                  isWide ? "p-7 md:p-8" : "p-6 md:p-7"
+                }`}
+              >
+                <div className={`absolute inset-0 bg-gradient-to-br ${block.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+                <div className="relative z-10 flex items-start gap-4">
+                  <div className={`w-11 h-11 rounded-xl ${block.iconBg} flex items-center justify-center shrink-0 border ${block.borderColor}`}>
+                    <Icon className={`w-5 h-5 ${block.iconColor}`} />
+                  </div>
+                  <div>
+                    <h3 className={`font-[var(--font-display)] font-semibold text-text-primary mb-1.5 ${
+                      isWide ? "text-lg" : "text-base"
+                    }`}>
+                      {block.title}
+                    </h3>
+                    <p className="text-text-secondary text-sm leading-relaxed">
+                      {block.benefit}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" />
+      <div className="section-connector absolute bottom-0 left-0 right-0" />
     </section>
   );
 }

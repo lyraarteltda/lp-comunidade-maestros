@@ -1,29 +1,73 @@
 "use client";
+import { useRef } from "react";
 import { motion } from "framer-motion";
-import { MessageSquare, Clock, CheckCircle2, Shield } from "lucide-react";
-import AnimatedSection from "./AnimatedSection";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { MessageSquare, Clock, CheckCircle2, Shield, Zap } from "lucide-react";
+
+gsap.registerPlugin(ScrollTrigger);
+
+function StatCounter({ value, suffix, label, delay }: { value: number; suffix: string; label: string; delay: number }) {
+  const ref = useRef<HTMLSpanElement>(null);
+
+  useGSAP(() => {
+    if (!ref.current) return;
+    gsap.from(ref.current, {
+      textContent: 0,
+      duration: 1.8,
+      delay,
+      ease: "power2.out",
+      snap: { textContent: 1 },
+      scrollTrigger: {
+        trigger: ref.current,
+        start: "top 85%",
+      },
+    });
+  });
+
+  return (
+    <div className="text-center">
+      <div className="font-[var(--font-display)] font-bold text-xl text-text-primary">
+        <span ref={ref}>{value}</span>{suffix}
+      </div>
+      <div className="text-text-muted text-[11px] mt-0.5">{label}</div>
+    </div>
+  );
+}
 
 export default function SupportSection() {
   return (
-    <section className="relative py-24 md:py-32 bg-surface-1">
+    <section className="relative py-28 md:py-36 bg-surface-1 noise-bg overflow-hidden">
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/[0.04] to-transparent" />
+
       <div className="max-w-6xl mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          {/* Left: visual */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+          {/* Left: chat mockup */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+            whileInView={{ opacity: 1, scale: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.7 }}
-            className="relative"
+            className="lg:col-span-6 relative"
           >
-            <div className="glass-card rounded-2xl p-6 space-y-4">
+            {/* Glow behind */}
+            <div className="absolute -inset-4 rounded-3xl bg-emerald-500/[0.04] blur-[40px]" />
+
+            <div className="relative glass-card rounded-2xl p-5 md:p-6 space-y-3.5 border-emerald-500/10">
+              {/* Header */}
+              <div className="flex items-center gap-2 pb-3 border-b border-white/[0.06]">
+                <div className="w-2 h-2 rounded-full bg-emerald-400" />
+                <span className="text-text-tertiary text-xs font-medium">Suporte Maestros — Online</span>
+              </div>
+
               {/* Question */}
               <div className="flex items-start gap-3">
-                <div className="w-9 h-9 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 shrink-0 flex items-center justify-center text-xs font-bold text-white">
-                  M
+                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 shrink-0 flex items-center justify-center">
+                  <span className="text-white text-[10px] font-bold">M</span>
                 </div>
-                <div className="bg-surface-3 rounded-xl rounded-tl-none px-4 py-3 max-w-xs">
-                  <p className="text-text-primary text-sm">
+                <div className="bg-surface-3 rounded-xl rounded-tl-sm px-4 py-2.5 max-w-[280px]">
+                  <p className="text-text-primary text-[13px] leading-relaxed">
                     Como faço pra conectar meu agente no WhatsApp com n8n? Está dando erro de webhook.
                   </p>
                   <p className="text-text-muted text-[10px] mt-1">14:32</p>
@@ -32,17 +76,17 @@ export default function SupportSection() {
 
               {/* Answer */}
               <div className="flex items-start gap-3 flex-row-reverse">
-                <div className="w-9 h-9 rounded-full bg-gradient-to-br from-brand-gold to-amber-600 shrink-0 flex items-center justify-center text-xs font-bold text-surface-0">
-                  E
+                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-brand-gold to-amber-600 shrink-0 flex items-center justify-center">
+                  <span className="text-surface-0 text-[10px] font-bold">E</span>
                 </div>
-                <div className="bg-brand-gold/[0.08] border border-brand-gold/20 rounded-xl rounded-tr-none px-4 py-3 max-w-sm">
-                  <p className="text-text-primary text-sm">
+                <div className="bg-brand-gold/[0.06] border border-brand-gold/15 rounded-xl rounded-tr-sm px-4 py-2.5 max-w-[320px]">
+                  <p className="text-text-primary text-[13px] leading-relaxed">
                     Opa! Isso acontece quando o webhook não está registrado. Faz o seguinte:
-                    1. Abre o n8n → Webhook node
-                    2. Copia a URL de produção
-                    3. Cola no Evolution API...
+                    <br />1. Abre o n8n → Webhook node
+                    <br />2. Copia a URL de produção
+                    <br />3. Cola no Evolution API...
                   </p>
-                  <p className="text-brand-gold text-[10px] mt-1 flex items-center gap-1">
+                  <p className="text-emerald-400 text-[10px] mt-1.5 flex items-center gap-1">
                     <CheckCircle2 className="w-3 h-3" /> Respondido em 2h
                   </p>
                 </div>
@@ -50,53 +94,77 @@ export default function SupportSection() {
 
               {/* Resolved */}
               <div className="flex items-start gap-3">
-                <div className="w-9 h-9 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 shrink-0 flex items-center justify-center text-xs font-bold text-white">
-                  M
+                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 shrink-0 flex items-center justify-center">
+                  <span className="text-white text-[10px] font-bold">M</span>
                 </div>
-                <div className="bg-surface-3 rounded-xl rounded-tl-none px-4 py-3">
-                  <p className="text-text-primary text-sm">
-                    Funcionou!! Obrigado, era exatamente isso 🚀
+                <div className="bg-surface-3 rounded-xl rounded-tl-sm px-4 py-2.5">
+                  <p className="text-text-primary text-[13px]">
+                    Funcionou!! Era exatamente isso 🚀
                   </p>
                 </div>
               </div>
             </div>
+
+            {/* Stats below chat */}
+            <div className="mt-4 glass-card rounded-xl p-4 grid grid-cols-3 gap-4 divide-x divide-white/[0.06]">
+              <StatCounter value={24} suffix="h" label="Tempo de resposta" delay={0} />
+              <StatCounter value={98} suffix="%" label="Satisfação" delay={0.15} />
+              <StatCounter value={7} suffix="/7" label="Dias por semana" delay={0.3} />
+            </div>
           </motion.div>
 
           {/* Right: content */}
-          <AnimatedSection>
-            <p className="text-xs font-bold tracking-[0.15em] uppercase text-emerald-400 mb-4">
-              Suporte diário
-            </p>
-            <h2
-              className="font-[var(--font-display)] font-bold gradient-text-white tracking-tight mb-6"
-              style={{ fontSize: "clamp(1.75rem, 3vw, 2.5rem)" }}
+          <div className="lg:col-span-6">
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
             >
-              Nunca Mais Fique Travado
-            </h2>
-            <p className="text-text-secondary leading-relaxed mb-8">
-              Você nunca está sozinho. Cada dúvida é respondida por quem já
-              implementou — especialistas que vivem IA todos os dias. Sem robô,
-              sem FAQ genérica, sem esperar semanas.
-            </p>
+              <p className="text-[11px] font-bold tracking-[0.15em] uppercase text-emerald-400 mb-4">
+                Suporte real
+              </p>
+              <h2
+                className="font-[var(--font-display)] font-bold tracking-[-0.02em] mb-6"
+                style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}
+              >
+                <span className="gradient-text-white">Nunca Mais</span>
+                <br />
+                <span className="gradient-text-white">Fique Travado</span>
+              </h2>
+              <p className="text-text-secondary leading-relaxed mb-8 max-w-md">
+                Cada dúvida respondida por quem já implementou — especialistas
+                que vivem IA todos os dias. Sem robô, sem FAQ genérica,
+                sem esperar semanas.
+              </p>
 
-            <div className="space-y-4">
-              {[
-                { icon: Clock, text: "Resposta em menos de 24 horas" },
-                { icon: Shield, text: "Especialistas dedicados, não voluntários" },
-                { icon: MessageSquare, text: "Todos os dias, inclusive finais de semana" },
-              ].map((item, i) => {
-                const Icon = item.icon;
-                return (
-                  <div key={i} className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-lg bg-emerald-500/[0.1] flex items-center justify-center">
-                      <Icon className="w-4 h-4 text-emerald-400" />
-                    </div>
-                    <span className="text-text-primary text-sm font-medium">{item.text}</span>
-                  </div>
-                );
-              })}
-            </div>
-          </AnimatedSection>
+              <div className="space-y-4">
+                {[
+                  { icon: Clock, text: "Resposta em menos de 24 horas", color: "text-emerald-400", bg: "bg-emerald-500/10" },
+                  { icon: Shield, text: "Especialistas dedicados, não voluntários", color: "text-emerald-400", bg: "bg-emerald-500/10" },
+                  { icon: MessageSquare, text: "Todos os dias, inclusive finais de semana", color: "text-emerald-400", bg: "bg-emerald-500/10" },
+                  { icon: Zap, text: "Contexto do SEU negócio, não resposta genérica", color: "text-emerald-400", bg: "bg-emerald-500/10" },
+                ].map((item, i) => {
+                  const Icon = item.icon;
+                  return (
+                    <motion.div
+                      key={i}
+                      initial={{ opacity: 0, x: 20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: i * 0.08 }}
+                      className="flex items-center gap-3.5"
+                    >
+                      <div className={`w-9 h-9 rounded-lg ${item.bg} flex items-center justify-center shrink-0`}>
+                        <Icon className={`w-4 h-4 ${item.color}`} />
+                      </div>
+                      <span className="text-text-primary text-sm font-medium">{item.text}</span>
+                    </motion.div>
+                  );
+                })}
+              </div>
+            </motion.div>
+          </div>
         </div>
       </div>
     </section>
