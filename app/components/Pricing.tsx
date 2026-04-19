@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { ArrowRight, Check, Sparkles, Shield, Lock, RefreshCw, Clock, AlertTriangle, MessageCircle } from "lucide-react";
+import { ArrowRight, Check, Sparkles, Shield, Lock, RefreshCw, AlertTriangle, MessageCircle, Gift } from "lucide-react";
 
 const CHECKOUT_URL = "https://pay.onprofit.com.br/M5Ene7El?off=ZNpmS2";
 
@@ -16,9 +16,6 @@ const included = [
   "100+ agentes de IA prontos pra copiar, colar e rodar",
 ];
 
-const comingSoon = [
-  "Curso exclusivo de Claude Code (em breve — só pros próximos 10)",
-];
 
 export default function Pricing() {
   return (
@@ -69,15 +66,27 @@ export default function Pricing() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.15 }}
-          className="max-w-lg mx-auto mb-8 rounded-xl border border-amber-500/20 bg-amber-500/[0.06] px-5 py-4 flex items-start gap-3"
+          className="max-w-lg mx-auto mb-8 rounded-xl border border-amber-500/20 bg-amber-500/[0.06] px-5 py-4 space-y-3"
         >
-          <AlertTriangle className="w-5 h-5 text-amber-400 shrink-0 mt-0.5" />
-          <p className="text-sm text-text-secondary leading-relaxed">
-            <span className="font-bold text-text-primary">Estamos em 117/120 vagas.</span>{" "}
-            Quando chegarmos em 120, a mensalidade sobe. Quem entrar agora tem{" "}
-            <span className="font-bold text-brand-gold">assinatura congelada</span>{" "}
-            no preço atual — para sempre.
-          </p>
+          <div className="flex items-start gap-3">
+            <AlertTriangle className="w-5 h-5 text-amber-400 shrink-0 mt-0.5" />
+            <p className="text-sm text-text-secondary leading-relaxed">
+              <span className="font-bold text-text-primary">Estamos em 117/120 vagas.</span>{" "}
+              Quando chegarmos em 120, a mensalidade sobe. Quem entrar agora tem{" "}
+              <span className="font-bold text-brand-gold">assinatura congelada</span>{" "}
+              no preço atual — para sempre.
+            </p>
+          </div>
+          <div className="h-px bg-amber-500/15" />
+          <div className="flex items-start gap-3">
+            <Gift className="w-5 h-5 text-brand-gold shrink-0 mt-0.5" />
+            <p className="text-sm text-text-secondary leading-relaxed">
+              <span className="font-semibold text-brand-gold">Bônus para os 3 últimos:</span>{" "}
+              curso completo de{" "}
+              <span className="font-bold text-text-primary">Claude Code: do zero ao avançado</span>{" "}
+              (em breve).
+            </p>
+          </div>
         </motion.div>
 
         <motion.div
@@ -134,17 +143,7 @@ export default function Pricing() {
                 ))}
               </div>
 
-              {/* Coming soon */}
-              <div className="space-y-3.5 mb-10 pt-4 border-t border-white/[0.04]">
-                {comingSoon.map((item) => (
-                  <div key={item} className="flex items-start gap-3">
-                    <div className="w-5 h-5 rounded-full bg-violet-500/10 border border-violet-500/15 flex items-center justify-center shrink-0 mt-0.5">
-                      <Clock className="w-3 h-3 text-violet-400" />
-                    </div>
-                    <span className="text-violet-300/90 text-sm font-medium">{item}</span>
-                  </div>
-                ))}
-              </div>
+              <div className="mb-10" />
 
               {/* CTA */}
               <motion.a
