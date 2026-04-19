@@ -12,7 +12,7 @@ gsap.registerPlugin(ScrollTrigger);
 const founders = [
   {
     name: "Arthur Endo",
-    role: "Co-founder & CEO",
+    role: "Co-founder & COO",
     image: "/founders/arthur.jpg",
     bio: "Pioneiro em IA aplicada a negócios. Doutor Honoris Causa e especialista no desenvolvimento de sistemas autônomos para médias e grandes empresas. Criador do único curso de violão 5 estrelas entre os top 5 da Hotmart, com 20.000+ alunos e 6.000+ afiliados — escalado inteiramente com IA.",
     highlight: "Sistemas autônomos para empresas",
