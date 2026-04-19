@@ -31,7 +31,7 @@ const blocks: Block[] = [
   {
     icon: Sparkles,
     title: "Sistema de Predição de Conteúdo",
-    benefit: "Produza conteúdo em escala com IA — posts, vídeos, roteiros, tudo automatizado.",
+    benefit: "O mesmo sistema que levou nossos canais de 0 a 4M+ views/mês. Produza posts, vídeos e roteiros em escala — com IA fazendo o trabalho pesado.",
     gradient: "from-violet-500/25 via-purple-500/5 to-transparent",
     iconBg: "bg-violet-500/10",
     iconColor: "text-violet-400",
@@ -40,7 +40,7 @@ const blocks: Block[] = [
   {
     icon: Target,
     title: "Anúncios Inteligentes",
-    benefit: "Campanhas que se otimizam sozinhas com inteligência artificial.",
+    benefit: "Campanhas que se otimizam sozinhas. Criativos, segmentação e orçamento geridos por IA — o mesmo framework usado em operações de R$500k+/mês.",
     gradient: "from-rose-500/25 via-pink-500/5 to-transparent",
     iconBg: "bg-rose-500/10",
     iconColor: "text-rose-400",
@@ -49,7 +49,7 @@ const blocks: Block[] = [
   {
     icon: ShoppingCart,
     title: "Vendas Autônomas",
-    benefit: "Agentes de vendas 24/7 no WhatsApp, recuperando carrinhos e fechando negócios.",
+    benefit: "Agentes de vendas no WhatsApp que prospectam, qualificam e fecham 24/7. Recuperação de carrinho, follow-up e atendimento — tudo no piloto automático.",
     gradient: "from-emerald-500/25 via-green-500/5 to-transparent",
     iconBg: "bg-emerald-500/10",
     iconColor: "text-emerald-400",
@@ -58,7 +58,7 @@ const blocks: Block[] = [
   {
     icon: Wrench,
     title: "Arsenal de Ferramentas",
-    benefit: "100+ ferramentas, prompts e templates prontos para uso imediato.",
+    benefit: "100+ ferramentas, prompts e templates validados em operações reais. Copie, cole e adapte — cada um já foi testado e refinado por especialistas.",
     gradient: "from-amber-500/25 via-yellow-500/5 to-transparent",
     iconBg: "bg-amber-500/10",
     iconColor: "text-amber-400",
@@ -67,7 +67,7 @@ const blocks: Block[] = [
   {
     icon: BarChart3,
     title: "Dashboard CEO",
-    benefit: "Decisões com dados em tempo real — dashboards inteligentes e análises preditivas.",
+    benefit: "Visão 360° do seu negócio em tempo real. Dashboards inteligentes com análises preditivas que transformam dados em decisões de alto impacto.",
     gradient: "from-blue-500/25 via-cyan-500/5 to-transparent",
     iconBg: "bg-blue-500/10",
     iconColor: "text-blue-400",
@@ -76,7 +76,7 @@ const blocks: Block[] = [
   {
     icon: Cpu,
     title: "Agentes & Automação",
-    benefit: "Construa e orquestre agentes de IA que executam tarefas complexas autonomamente.",
+    benefit: "Construa agentes autônomos que executam operações complexas sem supervisão. O mesmo tipo de tecnologia por trás do Galaria AI Operational System.",
     gradient: "from-cyan-500/25 via-teal-500/5 to-transparent",
     iconBg: "bg-cyan-500/10",
     iconColor: "text-cyan-400",
@@ -85,7 +85,7 @@ const blocks: Block[] = [
   {
     icon: Megaphone,
     title: "Marketing Automatizado",
-    benefit: "Funis, redes sociais e captação de leads no piloto automático.",
+    benefit: "Funis completos, gestão de redes sociais e captação de leads — tudo orquestrado por IA. Da atração ao fechamento, sem gargalos manuais.",
     gradient: "from-orange-500/25 via-red-500/5 to-transparent",
     iconBg: "bg-orange-500/10",
     iconColor: "text-orange-400",

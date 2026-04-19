@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Building2, Users, Eye, TrendingUp, Cpu } from "lucide-react";
+import { Building2, Users, Eye, TrendingUp, Cpu, DollarSign } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -13,7 +13,7 @@ const founders = [
     name: "Arthur Endo",
     role: "Co-founder & CEO",
     gradient: "from-brand-gold via-amber-500 to-orange-600",
-    bio: "Pioneiro em IA aplicada a negócios. Doutor Honoris Causa e especialista no desenvolvimento de sistemas autônomos para médias e grandes empresas. Transformou uma das escolas de violão online que mais cresce no Brasil usando conhecimento potencializado por IA.",
+    bio: "Pioneiro em IA aplicada a negócios. Doutor Honoris Causa e especialista no desenvolvimento de sistemas autônomos para médias e grandes empresas. Criador do único curso de violão 5 estrelas entre os top 5 da Hotmart, com 20.000+ alunos e 6.000+ afiliados — escalado inteiramente com IA.",
     highlight: "Sistemas autônomos para empresas",
   },
   {
@@ -26,10 +26,11 @@ const founders = [
 ];
 
 const sharedAchievements = [
+  { icon: DollarSign, text: "Ecossistema de R$5M+ de faturamento anual construído em menos de 2 anos" },
   { icon: Building2, text: "Projetos com Hostinger, Pipefy e outras empresas de tecnologia" },
   { icon: Eye, text: "De 0 a 4M+ de visualizações/mês e 170k+ seguidores em menos de 1 ano" },
   { icon: Users, text: "Criadores de uma comunidade com centenas de CEOs e donos de negócio" },
-  { icon: Cpu, text: "Criadores da Galeria AI — sistema operacional proprietário com agentes autônomos gerindo departamentos inteiros em holdings bilionárias" },
+  { icon: Cpu, text: "Criadores do Galaria AI Operational System — sistema operacional proprietário com agentes autônomos gerindo departamentos inteiros em holdings bilionárias" },
 ];
 
 export default function Founders() {

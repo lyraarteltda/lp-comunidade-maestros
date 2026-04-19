@@ -5,15 +5,15 @@ import { ArrowRight, Check, Sparkles, Shield, Lock, RefreshCw, Clock } from "luc
 const CHECKOUT_URL = "https://pay.onprofit.com.br/M5Ene7El?off=ZNpmS2";
 
 const included = [
-  "Lives semanais estratégicas ao vivo",
-  "+20 horas de conteúdo estruturado",
-  "7 trilhas de conhecimento prático",
-  "Suporte rápido com especialistas",
-  "Atualizações constantes de conteúdo",
-  "Comunidade exclusiva de membros",
-  "Acesso a gravações de todas as lives",
-  "Arsenal de 100+ ferramentas e templates",
-  "100+ agentes prontos pra usar (copiar e colar)",
+  "Lives semanais ao vivo com fundadores e especialistas convidados",
+  "+20h de sistemas prontos para implementar no seu negócio",
+  "7 trilhas completas: de automação a vendas autônomas com IA",
+  "Suporte rápido com quem já faturou milhões usando IA",
+  "Conteúdo atualizado toda semana — acompanha o ritmo do mercado",
+  "Rede exclusiva de CEOs e empreendedores que usam IA na prática",
+  "Biblioteca completa de gravações — assista quando e onde quiser",
+  "Arsenal de 100+ ferramentas, prompts e templates testados",
+  "100+ agentes de IA prontos pra copiar, colar e rodar",
 ];
 
 const comingSoon = [
