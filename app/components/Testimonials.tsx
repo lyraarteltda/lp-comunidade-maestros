@@ -1,50 +1,83 @@
 "use client";
+import { useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { Star, Quote } from "lucide-react";
+import { Star, Quote, Play, Pause } from "lucide-react";
 
-const testimonials = [
+interface VideoTestimonial {
+  name: string;
+  role: string;
+  videoSrc: string;
+  quote: string;
+  gradient: string;
+}
+
+interface TextTestimonial {
+  name: string;
+  role: string;
+  quote: string;
+  gradient: string;
+}
+
+const videoTestimonials: VideoTestimonial[] = [
   {
     name: "Rodrigo",
     role: "Empresário",
-    quote: "Formação bem clara e prática. Comunidade WhatsApp muito forte — o suporte faz diferença real. Já apliquei os sistemas no meu negócio.",
+    videoSrc: "/Rodrigo.mp4",
+    quote: "Formação bem clara e prática. Comunidade WhatsApp muito forte — o suporte faz diferença real.",
     gradient: "from-violet-500 to-purple-600",
   },
   {
     name: "Lucas",
-    quote: "Melhor aquisição que poderia ter feito. Conteúdo direto ao ponto e suporte que realmente resolve.",
     role: "Consultor",
+    videoSrc: "/Lucas.mp4",
+    quote: "Melhor aquisição que poderia ter feito. Conteúdo direto ao ponto e suporte que realmente resolve.",
     gradient: "from-blue-500 to-cyan-600",
   },
   {
     name: "Alice",
     role: "Empreendedora",
-    quote: "Muito mais do que esperava. IA como aliada estratégica — mudou a forma como eu enxergo meu negócio. O suporte é absurdo de bom.",
+    videoSrc: "/Alice.mp4",
+    quote: "IA como aliada estratégica — mudou a forma como eu enxergo meu negócio.",
     gradient: "from-emerald-500 to-teal-600",
   },
   {
     name: "Bruno",
     role: "Gestor de Tráfego",
-    quote: "Processo que levava uma semana, hoje em 4-6 horas com automação. O ROI se pagou no primeiro mês.",
+    videoSrc: "/Bruno.mp4",
+    quote: "Processo que levava uma semana, hoje em 4-6 horas com automação.",
     gradient: "from-amber-500 to-orange-600",
   },
   {
     name: "Ricardo",
     role: "Analista de Dados",
-    quote: "Metade do que eu achava impossível, hoje faço em casa e no trabalho. A comunidade abriu minha cabeça.",
+    videoSrc: "/Ricardo.mp4",
+    quote: "Metade do que eu achava impossível, hoje faço em casa e no trabalho.",
     gradient: "from-rose-500 to-pink-600",
   },
   {
     name: "André",
     role: "Freelancer",
-    quote: "Pouco tempo de curso, já vendi projetos com ticket médio considerável. O arsenal de ferramentas é absurdo.",
+    videoSrc: "/Andre.mp4",
+    quote: "Pouco tempo de curso, já vendi projetos com ticket médio considerável.",
     gradient: "from-cyan-500 to-blue-600",
   },
   {
     name: "Rodrigo Eve",
     role: "Membro desde Jan/2026",
+    videoSrc: "/RodrigoEve.mp4",
     quote: "Se eu consegui, você vai conseguir também. A comunidade te carrega quando você trava.",
     gradient: "from-brand-gold to-amber-600",
   },
+  {
+    name: "Ivan",
+    role: "Empreendedor",
+    videoSrc: "/Ivan.mp4",
+    quote: "A comunidade entrega o que promete — e vai muito além.",
+    gradient: "from-indigo-500 to-violet-600",
+  },
+];
+
+const textTestimonials: TextTestimonial[] = [
   {
     name: "Fernanda",
     role: "CEO · E-commerce",
@@ -77,29 +110,79 @@ const testimonials = [
   },
 ];
 
-function TestimonialCard({ t }: { t: (typeof testimonials)[0] }) {
+function VideoCard({ t }: { t: VideoTestimonial }) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const togglePlay = () => {
+    if (!videoRef.current) return;
+    if (isPlaying) {
+      videoRef.current.pause();
+      setIsPlaying(false);
+    } else {
+      videoRef.current.play();
+      setIsPlaying(true);
+    }
+  };
+
   return (
-    <div className="shrink-0 w-[300px] md:w-[340px] rounded-2xl p-6 mx-2 border border-white/[0.04] bg-surface-2/40 backdrop-blur-sm hover:border-white/[0.08] transition-all duration-500 group">
-      <div className="flex items-center justify-between mb-4">
+    <div className="shrink-0 w-[280px] md:w-[300px] rounded-2xl overflow-hidden mx-2 border border-white/[0.06] bg-surface-2/60 backdrop-blur-sm group">
+      <div className="relative aspect-[9/14] bg-surface-3 cursor-pointer" onClick={togglePlay}>
+        <video
+          ref={videoRef}
+          src={t.videoSrc}
+          playsInline
+          preload="metadata"
+          className="w-full h-full object-cover"
+          onEnded={() => setIsPlaying(false)}
+        />
+        <div className={`absolute inset-0 bg-gradient-to-t from-surface-0/90 via-surface-0/20 to-transparent transition-opacity duration-300 ${isPlaying ? "opacity-0 hover:opacity-100" : "opacity-100"}`}>
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className={`w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center transition-all duration-300 ${isPlaying ? "scale-75 opacity-0 group-hover:scale-100 group-hover:opacity-100" : "scale-100 opacity-100"}`}>
+              {isPlaying ? (
+                <Pause className="w-5 h-5 text-white" />
+              ) : (
+                <Play className="w-5 h-5 text-white ml-0.5" />
+              )}
+            </div>
+          </div>
+          <div className="absolute bottom-0 left-0 right-0 p-4">
+            <p className="text-white text-xs leading-relaxed mb-2 line-clamp-2">&ldquo;{t.quote}&rdquo;</p>
+            <div className="flex items-center gap-2">
+              <div className={`w-6 h-6 rounded-full bg-gradient-to-br ${t.gradient} shrink-0 opacity-80`} />
+              <div>
+                <p className="text-white text-xs font-medium">{t.name}</p>
+                <p className="text-white/50 text-[10px]">{t.role}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function TextCard({ t }: { t: TextTestimonial }) {
+  return (
+    <div className="shrink-0 w-[280px] md:w-[300px] rounded-2xl p-5 mx-2 border border-white/[0.04] bg-surface-2/40 backdrop-blur-sm hover:border-white/[0.08] transition-all duration-500 group">
+      <div className="flex items-center justify-between mb-3">
         <div className="flex gap-0.5">
           {Array.from({ length: 5 }).map((_, i) => (
             <Star key={i} className="w-3 h-3 fill-brand-gold/80 text-brand-gold/80" />
           ))}
         </div>
-        <Quote className="w-4 h-4 text-white/[0.06] group-hover:text-white/[0.1] transition-colors duration-500" />
+        <Quote className="w-3.5 h-3.5 text-white/[0.06] group-hover:text-white/[0.1] transition-colors duration-500" />
       </div>
-
-      <p className="text-text-secondary text-[13px] leading-relaxed mb-5 line-clamp-4">
+      <p className="text-text-secondary text-[13px] leading-relaxed mb-4 line-clamp-4">
         &ldquo;{t.quote}&rdquo;
       </p>
-
-      <div className="flex items-center gap-3 pt-4 border-t border-white/[0.04]">
-        <div className={`w-8 h-8 rounded-full bg-gradient-to-br ${t.gradient} shrink-0 opacity-80`}>
+      <div className="flex items-center gap-2.5 pt-3 border-t border-white/[0.04]">
+        <div className={`w-7 h-7 rounded-full bg-gradient-to-br ${t.gradient} shrink-0 opacity-80`}>
           <div className="w-full h-full rounded-full bg-gradient-to-t from-black/20 to-transparent" />
         </div>
         <div>
           <p className="text-text-primary text-sm font-medium">{t.name}</p>
-          <p className="text-text-muted text-[11px]">{t.role}</p>
+          <p className="text-text-muted text-[10px]">{t.role}</p>
         </div>
       </div>
     </div>
@@ -107,7 +190,8 @@ function TestimonialCard({ t }: { t: (typeof testimonials)[0] }) {
 }
 
 export default function Testimonials() {
-  const allCards = [...testimonials, ...testimonials, ...testimonials];
+  const videoCards = [...videoTestimonials, ...videoTestimonials, ...videoTestimonials];
+  const textCards = [...textTestimonials, ...textTestimonials, ...textTestimonials, ...textTestimonials];
 
   return (
     <section id="depoimentos" className="relative py-20 md:py-28 bg-surface-1 overflow-hidden">
@@ -135,16 +219,32 @@ export default function Testimonials() {
         </div>
       </div>
 
-      <div className="relative">
-        <div className="absolute left-0 top-0 bottom-0 w-24 md:w-40 bg-gradient-to-r from-surface-1 via-surface-1/80 to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-24 md:w-40 bg-gradient-to-l from-surface-1 via-surface-1/80 to-transparent z-10 pointer-events-none" />
+      {/* Video testimonials row — scrolls left */}
+      <div className="relative mb-5">
+        <div className="absolute left-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-r from-surface-1 via-surface-1/80 to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-l from-surface-1 via-surface-1/80 to-transparent z-10 pointer-events-none" />
         <motion.div
           className="flex"
-          animate={{ x: [0, -(testimonials.length * 356)] }}
-          transition={{ x: { repeat: Infinity, repeatType: "loop", duration: 50, ease: "linear" } }}
+          animate={{ x: [0, -(videoTestimonials.length * 316)] }}
+          transition={{ x: { repeat: Infinity, repeatType: "loop", duration: 45, ease: "linear" } }}
         >
-          {allCards.map((t, i) => (
-            <TestimonialCard key={`t-${i}`} t={t} />
+          {videoCards.map((t, i) => (
+            <VideoCard key={`v-${i}`} t={t} />
+          ))}
+        </motion.div>
+      </div>
+
+      {/* Text testimonials row — scrolls right */}
+      <div className="relative">
+        <div className="absolute left-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-r from-surface-1 via-surface-1/80 to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-l from-surface-1 via-surface-1/80 to-transparent z-10 pointer-events-none" />
+        <motion.div
+          className="flex"
+          animate={{ x: [-(textTestimonials.length * 316), 0] }}
+          transition={{ x: { repeat: Infinity, repeatType: "loop", duration: 40, ease: "linear" } }}
+        >
+          {textCards.map((t, i) => (
+            <TextCard key={`t-${i}`} t={t} />
           ))}
         </motion.div>
       </div>
