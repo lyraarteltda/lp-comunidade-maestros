@@ -130,11 +130,13 @@ function VideoCard({ t }: { t: VideoTestimonial }) {
       <div className="relative aspect-[9/14] bg-surface-3 cursor-pointer" onClick={togglePlay}>
         <video
           ref={videoRef}
-          src={t.videoSrc}
+          src={`${t.videoSrc}#t=0.1`}
           playsInline
           preload="metadata"
+          muted
           className="w-full h-full object-cover"
           onEnded={() => setIsPlaying(false)}
+          onPlay={() => { if (videoRef.current) videoRef.current.muted = false; }}
         />
         <div className={`absolute inset-0 bg-gradient-to-t from-surface-0/90 via-surface-0/20 to-transparent transition-opacity duration-300 ${isPlaying ? "opacity-0 hover:opacity-100" : "opacity-100"}`}>
           <div className="absolute inset-0 flex items-center justify-center">
