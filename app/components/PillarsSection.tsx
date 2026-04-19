@@ -27,9 +27,9 @@ const pillars = [
   },
   {
     icon: Headphones,
-    title: "Suporte Diário",
-    description: "Cada dúvida respondida em até 24h por quem já implementou.",
-    detail: "Inclusive finais de semana",
+    title: "Suporte Rápido",
+    description: "Suporte rápido com especialistas que já implementaram na prática.",
+    detail: "Respostas reais de quem vive IA",
     accent: "emerald",
     gradient: "from-emerald-500 to-teal-600",
     bgGlow: "bg-emerald-500/[0.06]",

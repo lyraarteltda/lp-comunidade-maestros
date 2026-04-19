@@ -150,7 +150,7 @@ export default function Hero() {
         style={{ animation: "breathe 6s ease-in-out infinite 2s" }}
       />
 
-      <div className="relative z-10 max-w-5xl mx-auto px-6 pt-32 pb-20 md:pt-40 md:pb-28 lg:pt-48 lg:pb-32">
+      <div className="relative z-10 max-w-5xl mx-auto px-6 pt-20 pb-20 md:pt-28 md:pb-28 lg:pt-36 lg:pb-32">
         {/* Overline badge */}
         <motion.div
           initial={{ opacity: 0, y: 20, scale: 0.95 }}
@@ -193,7 +193,7 @@ export default function Hero() {
           style={{ fontSize: "clamp(1rem, 1.6vw, 1.2rem)" }}
         >
           Lives semanais com especialistas, +20 horas de sistemas prontos pra implementar,
-          suporte em até 24h e conteúdo que evolui com o mercado. Tudo que você precisa
+          100+ agentes plug &amp; play e conteúdo que evolui com o mercado. Tudo que você precisa
           pra dominar IA — sem ficar pra trás.
         </motion.p>
 

@@ -17,11 +17,11 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Comunidade Maestros da IA — Vanguarda em Inteligência Artificial",
   description:
-    "Acesso contínuo a lives semanais, +20h de conteúdo estruturado em blocos de conhecimento, suporte diário de especialistas e atualizações constantes.",
+    "Acesso contínuo a lives semanais, +20h de conteúdo estruturado em blocos de conhecimento, suporte de especialistas e atualizações constantes.",
   openGraph: {
     title: "Comunidade Maestros da IA — Vanguarda em Inteligência Artificial",
     description:
-      "Acesso contínuo a lives semanais, +20h de conteúdo estruturado em blocos de conhecimento, suporte diário de especialistas e atualizações constantes.",
+      "Acesso contínuo a lives semanais, +20h de conteúdo estruturado em blocos de conhecimento, suporte de especialistas e atualizações constantes.",
     type: "website",
     locale: "pt_BR",
     url: "https://comunidade.maestrosdaia.com",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Comunidade Maestros da IA",
     description:
-      "Acesso contínuo a lives semanais, +20h de conteúdo estruturado, suporte diário de especialistas.",
+      "Acesso contínuo a lives semanais, +20h de conteúdo estruturado, suporte de especialistas.",
   },
 };
 

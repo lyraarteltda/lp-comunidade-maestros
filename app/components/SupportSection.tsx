@@ -87,7 +87,7 @@ export default function SupportSection() {
                     <br />3. Cola no Evolution API...
                   </p>
                   <p className="text-emerald-400 text-[10px] mt-1.5 flex items-center gap-1">
-                    <CheckCircle2 className="w-3 h-3" /> Respondido em 2h
+                    <CheckCircle2 className="w-3 h-3" /> Resolvido
                   </p>
                 </div>
               </div>
@@ -107,8 +107,8 @@ export default function SupportSection() {
 
             {/* Stats below chat */}
             <div className="mt-4 glass-card rounded-xl p-4 grid grid-cols-3 gap-4 divide-x divide-white/[0.06]">
-              <StatCounter value={24} suffix="h" label="Tempo de resposta" delay={0} />
-              <StatCounter value={98} suffix="%" label="Satisfação" delay={0.15} />
+              <StatCounter value={98} suffix="%" label="Respostas rápidas" delay={0} />
+              <StatCounter value={100} suffix="%" label="Humanos reais" delay={0.15} />
               <StatCounter value={7} suffix="/7" label="Dias por semana" delay={0.3} />
             </div>
           </motion.div>
@@ -133,17 +133,17 @@ export default function SupportSection() {
                 <span className="gradient-text-white">Fique Travado</span>
               </h2>
               <p className="text-text-secondary leading-relaxed mb-8 max-w-md">
-                Cada dúvida respondida por quem já implementou — especialistas
+                Dúvidas respondidas por quem já implementou — especialistas
                 que vivem IA todos os dias. Sem robô, sem FAQ genérica,
                 sem esperar semanas.
               </p>
 
               <div className="space-y-4">
                 {[
-                  { icon: Clock, text: "Resposta em menos de 24 horas", color: "text-emerald-400", bg: "bg-emerald-500/10" },
+                  { icon: Zap, text: "Respostas rápidas de quem já implementou", color: "text-emerald-400", bg: "bg-emerald-500/10" },
                   { icon: Shield, text: "Especialistas dedicados, não voluntários", color: "text-emerald-400", bg: "bg-emerald-500/10" },
-                  { icon: MessageSquare, text: "Todos os dias, inclusive finais de semana", color: "text-emerald-400", bg: "bg-emerald-500/10" },
-                  { icon: Zap, text: "Contexto do SEU negócio, não resposta genérica", color: "text-emerald-400", bg: "bg-emerald-500/10" },
+                  { icon: MessageSquare, text: "Suporte ativo todos os dias", color: "text-emerald-400", bg: "bg-emerald-500/10" },
+                  { icon: Clock, text: "Contexto do SEU negócio, não resposta genérica", color: "text-emerald-400", bg: "bg-emerald-500/10" },
                 ].map((item, i) => {
                   const Icon = item.icon;
                   return (

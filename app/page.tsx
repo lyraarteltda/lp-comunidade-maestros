@@ -1,7 +1,7 @@
 "use client";
 import SmoothScroll from "./components/SmoothScroll";
 import ScrollProgress from "./components/ScrollProgress";
-import Header from "./components/Header";
+
 import Hero from "./components/Hero";
 import ProblemSection from "./components/ProblemSection";
 import PillarsSection from "./components/PillarsSection";
@@ -22,7 +22,7 @@ export default function Home() {
   return (
     <SmoothScroll>
       <ScrollProgress />
-      <Header />
+
       <main>
         <Hero />
         <ProblemSection />

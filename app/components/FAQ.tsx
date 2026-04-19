@@ -10,7 +10,7 @@ const faqs = [
   },
   {
     question: "Qual a diferença da Comunidade para a Formação?",
-    answer: "A Comunidade é um acesso contínuo com lives semanais, suporte diário e atualizações constantes. A Formação é um programa intensivo de 10 semanas com mentoria individual. A Comunidade é ideal para quem quer se manter atualizado a longo prazo.",
+    answer: "A Comunidade é um acesso contínuo com lives semanais, suporte de especialistas e atualizações constantes. A Formação é um programa intensivo de 10 semanas. A Comunidade é ideal para quem quer se manter atualizado a longo prazo.",
   },
   {
     question: "Por quanto tempo tenho acesso?",
@@ -22,11 +22,11 @@ const faqs = [
   },
   {
     question: "Como funciona o suporte?",
-    answer: "Você envia sua dúvida na comunidade e nossa equipe de especialistas responde em até 24 horas. São profissionais que já implementaram tudo o que ensinam — não é suporte genérico.",
+    answer: "Você envia sua dúvida na comunidade e nossa equipe de especialistas responde com agilidade. São profissionais que já implementaram tudo o que ensinam — não é suporte genérico.",
   },
   {
     question: "E se eu já fiz a Formação?",
-    answer: "A Comunidade é o próximo passo perfeito. Você continua aprendendo com lives semanais, recebe atualizações de conteúdo que evolui, e mantém acesso ao suporte diário de especialistas.",
+    answer: "A Comunidade é o próximo passo perfeito. Você continua aprendendo com lives semanais, recebe atualizações de conteúdo que evolui, e mantém acesso ao suporte de especialistas.",
   },
   {
     question: "Posso cancelar a qualquer momento?",

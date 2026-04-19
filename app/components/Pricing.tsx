@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { ArrowRight, Check, Sparkles, Shield, Lock, RefreshCw } from "lucide-react";
+import { ArrowRight, Check, Sparkles, Shield, Lock, RefreshCw, Clock } from "lucide-react";
 
 const CHECKOUT_URL = "https://pay.onprofit.com.br/M5Ene7El?off=ZNpmS2";
 
@@ -8,11 +8,16 @@ const included = [
   "Lives semanais estratégicas ao vivo",
   "+20 horas de conteúdo estruturado",
   "7 trilhas de conhecimento prático",
-  "Suporte diário de especialistas",
+  "Suporte rápido com especialistas",
   "Atualizações constantes de conteúdo",
   "Comunidade exclusiva de membros",
   "Acesso a gravações de todas as lives",
   "Arsenal de 100+ ferramentas e templates",
+  "100+ agentes prontos pra usar (copiar e colar)",
+];
+
+const comingSoon = [
+  "Curso exclusivo de Claude Code (em breve — só pros próximos 10)",
 ];
 
 export default function Pricing() {
@@ -96,13 +101,25 @@ export default function Pricing() {
               <div className="h-px bg-gradient-to-r from-transparent via-white/[0.08] to-transparent mb-8" />
 
               {/* Included list */}
-              <div className="space-y-3.5 mb-8">
+              <div className="space-y-3.5 mb-6">
                 {included.map((item) => (
                   <div key={item} className="flex items-start gap-3">
                     <div className="w-5 h-5 rounded-full bg-brand-gold/10 flex items-center justify-center shrink-0 mt-0.5">
                       <Check className="w-3 h-3 text-brand-gold" />
                     </div>
                     <span className="text-text-secondary text-sm">{item}</span>
+                  </div>
+                ))}
+              </div>
+
+              {/* Coming soon */}
+              <div className="space-y-3.5 mb-8 pt-4 border-t border-white/[0.06]">
+                {comingSoon.map((item) => (
+                  <div key={item} className="flex items-start gap-3">
+                    <div className="w-5 h-5 rounded-full bg-violet-500/15 flex items-center justify-center shrink-0 mt-0.5">
+                      <Clock className="w-3 h-3 text-violet-400" />
+                    </div>
+                    <span className="text-violet-300 text-sm font-medium">{item}</span>
                   </div>
                 ))}
               </div>
