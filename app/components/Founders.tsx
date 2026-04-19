@@ -92,22 +92,22 @@ export default function Founders() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="glass-card rounded-2xl p-6 md:p-8 mb-10 grid grid-cols-3 gap-6 divide-x divide-white/[0.06]"
+            className="glass-card rounded-2xl p-4 md:p-8 mb-10 grid grid-cols-3 gap-3 md:gap-6 divide-x divide-white/[0.06]"
           >
             <div className="text-center">
-              <div className="font-[var(--font-display)] font-bold text-lg md:text-3xl gradient-text-gold">
+              <div className="font-[var(--font-display)] font-bold text-sm md:text-3xl gradient-text-gold">
                 <span className="founder-stat" data-value="5000000">5.000.000</span>
               </div>
               <div className="text-text-muted text-xs mt-1">Faturamento anual em R$</div>
             </div>
             <div className="text-center">
-              <div className="font-[var(--font-display)] font-bold text-2xl md:text-3xl text-text-primary">
+              <div className="font-[var(--font-display)] font-bold text-xl md:text-3xl text-text-primary">
                 <span className="founder-stat" data-value="170">170</span>k+
               </div>
               <div className="text-text-muted text-xs mt-1">Seguidores em &lt;1 ano</div>
             </div>
             <div className="text-center">
-              <div className="font-[var(--font-display)] font-bold text-2xl md:text-3xl text-text-primary">
+              <div className="font-[var(--font-display)] font-bold text-xl md:text-3xl text-text-primary">
                 4M+
               </div>
               <div className="text-text-muted text-xs mt-1">Views/mês</div>
