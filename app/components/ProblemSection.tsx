@@ -48,12 +48,16 @@ export default function ProblemSection() {
 
   useGSAP(() => {
     if (!sectionRef.current) return;
-    gsap.from(sectionRef.current.querySelectorAll(".pain-card"), {
+    gsap.fromTo(sectionRef.current.querySelectorAll(".pain-card"), {
       x: -60,
       opacity: 0,
+    }, {
+      x: 0,
+      opacity: 1,
       stagger: 0.12,
       duration: 0.7,
       ease: "power3.out",
+      clearProps: "transform,opacity",
       scrollTrigger: {
         trigger: sectionRef.current,
         start: "top 70%",

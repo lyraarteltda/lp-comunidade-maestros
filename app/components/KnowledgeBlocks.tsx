@@ -108,12 +108,16 @@ export default function KnowledgeBlocks() {
 
   useGSAP(() => {
     if (!gridRef.current) return;
-    gsap.from(gridRef.current.querySelectorAll(".kb-card"), {
+    gsap.fromTo(gridRef.current.querySelectorAll(".kb-card"), {
       scale: 0.92,
       opacity: 0,
+    }, {
+      scale: 1,
+      opacity: 1,
       stagger: 0.08,
       duration: 0.6,
       ease: "power3.out",
+      clearProps: "transform,opacity",
       scrollTrigger: {
         trigger: gridRef.current,
         start: "top 75%",

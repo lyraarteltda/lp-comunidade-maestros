@@ -18,12 +18,13 @@ function SplitText({ text, className, delay = 0 }: { text: string; className?: s
     const chars = ref.current.querySelectorAll(".char");
     gsap.from(chars, {
       y: 80,
-      opacity: 0,
       rotateX: -40,
+      filter: "blur(8px)",
       stagger: 0.025,
       duration: 0.7,
       delay,
       ease: "power3.out",
+      clearProps: "transform,filter",
     });
   }, { scope: ref });
 
