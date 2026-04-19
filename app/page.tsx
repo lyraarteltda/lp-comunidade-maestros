@@ -15,7 +15,6 @@ import Pricing from "./components/Pricing";
 import FAQ from "./components/FAQ";
 import FinalCTA from "./components/FinalCTA";
 import Footer from "./components/Footer";
-import WhatsAppButton from "./components/WhatsAppButton";
 import FloatingCTA from "./components/FloatingCTA";
 
 export default function Home() {
@@ -38,7 +37,7 @@ export default function Home() {
         <FinalCTA />
       </main>
       <Footer />
-      <WhatsAppButton />
+
       <FloatingCTA />
     </SmoothScroll>
   );
