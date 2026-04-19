@@ -1,1 +1,4 @@
-<!-- validation commit 2026-04-19T14:57:14Z -->
+User-agent: *
+Allow: /
+
+Sitemap: https://comunidade.maestrosdaia.com/sitemap.xml
