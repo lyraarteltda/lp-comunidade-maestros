@@ -166,18 +166,20 @@ export default function Hero() {
           </div>
         </motion.div>
 
-        {/* Headline — massive, split text animated */}
+        {/* Headline — massive, split text animated, 3-line layout */}
         <div className="text-center mb-8">
           <h1
             className="font-[var(--font-display)] font-extrabold leading-[0.95] tracking-[-0.04em]"
-            style={{ fontSize: "clamp(2.8rem, 7vw, 6rem)" }}
+            style={{ fontSize: "clamp(2.5rem, 6.5vw, 5.5rem)" }}
           >
             <span className="block gradient-text-white-strong">
               <SplitText text="A Comunidade Que" delay={0.2} />
             </span>
+            <span className="block mt-1 md:mt-2 gradient-text-white-strong">
+              <SplitText text="Te Mantém na" delay={0.4} />
+            </span>
             <span className="block mt-1 md:mt-2">
-              <SplitText text="Te Mantém na " delay={0.4} className="gradient-text-white-strong" />
-              <SplitText text="Vanguarda" delay={0.55} className="gradient-text-gold" />
+              <SplitText text="Vanguarda da IA" delay={0.55} className="gradient-text-gold" />
             </span>
           </h1>
         </div>
