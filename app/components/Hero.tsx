@@ -4,11 +4,9 @@ import { motion } from "framer-motion";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { Sparkles } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
-
-const CHECKOUT_URL = "https://pay.onprofit.com.br/M5Ene7El?off=ZNpmS2";
 
 function SplitText({ text, className, delay = 0 }: { text: string; className?: string; delay?: number }) {
   const ref = useRef<HTMLSpanElement>(null);
@@ -195,48 +193,6 @@ export default function Hero() {
           Lives semanais com especialistas, +20 horas de sistemas prontos pra implementar,
           100+ agentes plug &amp; play e conteúdo que evolui com o mercado. Tudo que você precisa
           pra dominar IA — sem ficar pra trás.
-        </motion.p>
-
-        {/* CTA cluster */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 1 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6"
-        >
-          <motion.a
-            href={CHECKOUT_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            whileHover={{ scale: 1.03, y: -2 }}
-            whileTap={{ scale: 0.97 }}
-            transition={{ type: "spring", stiffness: 400, damping: 17 }}
-            className="cta-shimmer group inline-flex items-center gap-3 bg-brand-gold text-surface-0 font-bold px-9 py-4 rounded-xl text-lg shadow-lg shadow-brand-gold/20"
-            style={{ animation: "pulse-gold 3s infinite" }}
-          >
-            <span>Quero Fazer Parte</span>
-            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
-          </motion.a>
-
-          <a
-            href="#pilares"
-            className="inline-flex items-center gap-2 text-text-tertiary hover:text-text-primary transition-colors text-sm font-medium group"
-          >
-            Conheça os pilares
-            <svg className="w-4 h-4 group-hover:translate-y-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-            </svg>
-          </a>
-        </motion.div>
-
-        {/* Trust line */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.2, duration: 0.6 }}
-          className="text-center text-text-muted text-xs mb-16"
-        >
-          Cancele quando quiser &middot; Acesso imediato &middot; Garantia de 7 dias
         </motion.p>
 
         {/* Stats bar */}

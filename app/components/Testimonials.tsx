@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { Star } from "lucide-react";
+import { Star, Quote } from "lucide-react";
 
 const testimonials = [
   {
@@ -79,24 +79,27 @@ const testimonials = [
 
 function TestimonialCard({ t }: { t: (typeof testimonials)[0] }) {
   return (
-    <div className="shrink-0 w-[320px] md:w-[360px] glass-card rounded-2xl p-6 mx-2.5 hover:border-brand-gold/15 transition-colors duration-300">
-      <div className="flex gap-0.5 mb-3">
-        {Array.from({ length: 5 }).map((_, i) => (
-          <Star key={i} className="w-3.5 h-3.5 fill-brand-gold text-brand-gold" />
-        ))}
+    <div className="shrink-0 w-[300px] md:w-[340px] rounded-2xl p-6 mx-2 border border-white/[0.04] bg-surface-2/40 backdrop-blur-sm hover:border-white/[0.08] transition-all duration-500 group">
+      <div className="flex items-center justify-between mb-4">
+        <div className="flex gap-0.5">
+          {Array.from({ length: 5 }).map((_, i) => (
+            <Star key={i} className="w-3 h-3 fill-brand-gold/80 text-brand-gold/80" />
+          ))}
+        </div>
+        <Quote className="w-4 h-4 text-white/[0.06] group-hover:text-white/[0.1] transition-colors duration-500" />
       </div>
 
-      <p className="text-text-primary text-sm leading-relaxed mb-5">
+      <p className="text-text-secondary text-[13px] leading-relaxed mb-5 line-clamp-4">
         &ldquo;{t.quote}&rdquo;
       </p>
 
-      <div className="flex items-center gap-3">
-        <div className={`w-10 h-10 rounded-full bg-gradient-to-br ${t.gradient} shrink-0 shadow-lg shadow-black/20`}>
+      <div className="flex items-center gap-3 pt-4 border-t border-white/[0.04]">
+        <div className={`w-8 h-8 rounded-full bg-gradient-to-br ${t.gradient} shrink-0 opacity-80`}>
           <div className="w-full h-full rounded-full bg-gradient-to-t from-black/20 to-transparent" />
         </div>
         <div>
-          <p className="text-text-primary text-sm font-semibold">{t.name}</p>
-          <p className="text-text-muted text-xs">{t.role}</p>
+          <p className="text-text-primary text-sm font-medium">{t.name}</p>
+          <p className="text-text-muted text-[11px]">{t.role}</p>
         </div>
       </div>
     </div>
@@ -104,20 +107,19 @@ function TestimonialCard({ t }: { t: (typeof testimonials)[0] }) {
 }
 
 export default function Testimonials() {
-  const row1 = testimonials.slice(0, 6);
-  const row2 = testimonials.slice(6);
+  const allCards = [...testimonials, ...testimonials, ...testimonials];
 
   return (
-    <section id="depoimentos" className="relative py-24 md:py-36 bg-surface-1 overflow-hidden">
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/[0.04] to-transparent" />
+    <section id="depoimentos" className="relative py-20 md:py-28 bg-surface-1 overflow-hidden">
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/[0.03] to-transparent" />
 
       <div className="max-w-6xl mx-auto px-6">
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="text-[11px] font-bold tracking-[0.15em] uppercase text-brand-gold mb-4"
+            className="text-[11px] font-bold tracking-[0.15em] uppercase text-brand-gold/80 mb-4"
           >
             Quem já faz parte
           </motion.p>
@@ -126,39 +128,23 @@ export default function Testimonials() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="font-[var(--font-display)] font-bold gradient-text-white tracking-[-0.02em]"
-            style={{ fontSize: "clamp(1.8rem, 4vw, 3rem)" }}
+            style={{ fontSize: "clamp(1.6rem, 3.5vw, 2.5rem)" }}
           >
             Resultados Reais de Membros Reais
           </motion.h2>
         </div>
       </div>
 
-      {/* Row 1 — scrolls left */}
-      <div className="relative mb-5">
-        <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-surface-1 to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-surface-1 to-transparent z-10 pointer-events-none" />
-        <motion.div
-          className="flex"
-          animate={{ x: [0, -(row1.length * 380)] }}
-          transition={{ x: { repeat: Infinity, repeatType: "loop", duration: 40, ease: "linear" } }}
-        >
-          {[...row1, ...row1, ...row1].map((t, i) => (
-            <TestimonialCard key={`r1-${i}`} t={t} />
-          ))}
-        </motion.div>
-      </div>
-
-      {/* Row 2 — scrolls right */}
       <div className="relative">
-        <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-surface-1 to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-surface-1 to-transparent z-10 pointer-events-none" />
+        <div className="absolute left-0 top-0 bottom-0 w-24 md:w-40 bg-gradient-to-r from-surface-1 via-surface-1/80 to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-24 md:w-40 bg-gradient-to-l from-surface-1 via-surface-1/80 to-transparent z-10 pointer-events-none" />
         <motion.div
           className="flex"
-          animate={{ x: [-(row2.length * 380), 0] }}
-          transition={{ x: { repeat: Infinity, repeatType: "loop", duration: 35, ease: "linear" } }}
+          animate={{ x: [0, -(testimonials.length * 356)] }}
+          transition={{ x: { repeat: Infinity, repeatType: "loop", duration: 50, ease: "linear" } }}
         >
-          {[...row2, ...row2, ...row2].map((t, i) => (
-            <TestimonialCard key={`r2-${i}`} t={t} />
+          {allCards.map((t, i) => (
+            <TestimonialCard key={`t-${i}`} t={t} />
           ))}
         </motion.div>
       </div>

@@ -30,7 +30,7 @@ const sharedAchievements = [
   { icon: Building2, text: "Projetos com Hostinger, Pipefy e outras empresas de tecnologia" },
   { icon: Eye, text: "De 0 a 4M+ de visualizações/mês e 170k+ seguidores em menos de 1 ano" },
   { icon: Users, text: "Criadores de uma comunidade com centenas de CEOs e donos de negócio" },
-  { icon: Cpu, text: "Criadores do Galaria AI Operational System — sistema operacional proprietário com agentes autônomos gerindo departamentos inteiros em holdings bilionárias" },
+  { icon: Cpu, text: "Criadores do Galaria AI Operational System — sistema operacional proprietário com agentes autônomos gerindo departamentos inteiros em holding de múltiplos 10 dígitos" },
 ];
 
 export default function Founders() {
@@ -83,7 +83,7 @@ export default function Founders() {
           </h2>
           <p className="text-text-secondary max-w-2xl mx-auto leading-relaxed">
             De projetos com grandes empresas de tecnologia à criação de um sistema operacional
-            com agentes autônomos para holdings bilionárias.
+            com agentes autônomos para holding de múltiplos 10 dígitos.
           </p>
         </motion.div>
 

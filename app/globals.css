@@ -59,6 +59,7 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  color: transparent;
 }
 
 .gradient-text-white {
@@ -66,6 +67,7 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  color: transparent;
 }
 
 .gradient-text-white-strong {
@@ -73,6 +75,15 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  color: transparent;
+}
+
+/* Ensure gradient text works through child elements (SplitText chars, etc.) */
+.gradient-text-gold *,
+.gradient-text-white *,
+.gradient-text-white-strong * {
+  -webkit-text-fill-color: inherit;
+  color: inherit;
 }
 
 /* CTA shimmer — auto-sweeping highlight */
