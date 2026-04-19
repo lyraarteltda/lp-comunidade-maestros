@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Image from "next/image";
 import { Building2, Users, Eye, TrendingUp, Cpu, DollarSign } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -12,14 +13,14 @@ const founders = [
   {
     name: "Arthur Endo",
     role: "Co-founder & CEO",
-    gradient: "from-brand-gold via-amber-500 to-orange-600",
+    image: "/founders/arthur.jpg",
     bio: "Pioneiro em IA aplicada a negócios. Doutor Honoris Causa e especialista no desenvolvimento de sistemas autônomos para médias e grandes empresas. Criador do único curso de violão 5 estrelas entre os top 5 da Hotmart, com 20.000+ alunos e 6.000+ afiliados — escalado inteiramente com IA.",
     highlight: "Sistemas autônomos para empresas",
   },
   {
     name: "Lyria Zoccal",
     role: "Co-founder & CEO da Maestria e Lyria Academy",
-    gradient: "from-violet-500 via-purple-500 to-fuchsia-600",
+    image: "/founders/lyria.jpg",
     bio: "Formada em Administração de Empresas, com passagem por grandes empresas de SaaS como GoLive e TOTVS. CEO de duas empresas — Maestria e Lyria Academy — que juntas faturam mais de R$5M/ano. Especialista em soluções de IA para produção de conteúdo, bots de WhatsApp e agentes autônomos.",
     highlight: "CEO de 2 empresas · +R$5M/ano",
   },
@@ -129,10 +130,14 @@ export default function Founders() {
                 i === 1 ? "md:flex-row-reverse" : ""
               }`}
             >
-              <div className="shrink-0">
-                <div className={`w-24 h-24 md:w-28 md:h-28 rounded-2xl bg-gradient-to-br ${founder.gradient} shadow-lg shadow-brand-gold/10 flex items-center justify-center`}>
-                  <div className="w-full h-full rounded-2xl bg-gradient-to-t from-black/30 to-transparent" />
-                </div>
+              <div className="relative shrink-0 w-28 h-28 md:w-36 md:h-36 rounded-2xl overflow-hidden shadow-lg shadow-brand-gold/10 ring-1 ring-white/[0.06]">
+                <Image
+                  src={founder.image}
+                  alt={`${founder.name}, co-fundador da Maestria`}
+                  fill
+                  sizes="(max-width: 768px) 112px, 144px"
+                  className="object-cover object-top"
+                />
               </div>
 
               <div className={`flex-1 ${i === 1 ? "md:text-right" : ""}`}>
