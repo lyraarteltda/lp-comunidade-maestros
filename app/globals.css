@@ -74,6 +74,12 @@ body {
   color: transparent;
 }
 
+/* Inline-block chars need padding-bottom so the gradient background
+   covers descenders (g, y, p, q) when line-height < 1. */
+.char {
+  padding-bottom: 0.15em;
+}
+
 /* SplitText chars are inline-block (needed for GSAP transforms), which breaks
    parent background-clip:text in Safari. Apply gradient directly to each char. */
 .gradient-text-gold .char {
