@@ -137,10 +137,10 @@ export default function EntrarPage() {
                   style={{ fontSize: "clamp(1.75rem, 5vw, 2.5rem)" }}
                 >
                   <span className="gradient-text-white-strong">
-                    Comunidade Aberta dos
+                    Comunidade Aberta
                   </span>
                   <br />
-                  <span className="gradient-text-gold">Maestros da IA</span>
+                  <span className="gradient-text-gold">dos Maestros da IA</span>
                 </h1>
 
                 <p
