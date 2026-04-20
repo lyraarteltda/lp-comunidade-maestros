@@ -1,2 +1,2 @@
-# Redirect root of comunidadeaberta subdomain to /entrar
-https://comunidadeaberta.maestrosdaia.com/ https://comunidadeaberta.maestrosdaia.com/entrar 302
+# Redirect root of comunidadeaberta subdomain to /entrar (force overrides static file)
+https://comunidadeaberta.maestrosdaia.com/ https://comunidadeaberta.maestrosdaia.com/entrar 302!
