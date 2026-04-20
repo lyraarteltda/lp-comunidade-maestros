@@ -137,7 +137,7 @@ export default function EntrarPage() {
                   style={{ fontSize: "clamp(1.75rem, 5vw, 2.5rem)" }}
                 >
                   <span className="gradient-text-white-strong">
-                    Entre para a Comunidade
+                    Comunidade Aberta dos
                   </span>
                   <br />
                   <span className="gradient-text-gold">Maestros da IA</span>
