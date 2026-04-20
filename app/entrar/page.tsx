@@ -59,7 +59,7 @@ export default function EntrarPage() {
 
     try {
       const res = await fetch(
-        "https://n8n.maestrosdaia.com/webhook/community-signup",
+        "https://n8n.srv1055313.hstgr.cloud/webhook/circle-whatsapp-signup",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -234,7 +234,7 @@ export default function EntrarPage() {
                       className="w-full bg-surface-1 border border-white/[0.06] rounded-xl px-4 py-3 text-text-primary placeholder:text-text-muted focus:border-brand-gold/40 focus:ring-1 focus:ring-brand-gold/20 transition-colors outline-none"
                     />
                     <p className="text-text-muted text-xs mt-1.5">
-                      Enviaremos seu acesso por WhatsApp
+                      Você receberá um botão para liberar seu acesso via WhatsApp
                     </p>
                   </div>
 
@@ -332,7 +332,7 @@ export default function EntrarPage() {
                   </p>
 
                   <a
-                    href="https://wa.me/5511997352416?text=SIM%20Quero%20entrar%20na%20Comunidade%20Maestros%20da%20IA"
+                    href="https://wa.me/5511995631610?text=SIM%20Quero%20entrar%20na%20Comunidade%20Maestros%20da%20IA"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-[#25D366] hover:bg-[#20BD5A] text-white font-bold text-base sm:text-lg shadow-lg shadow-emerald-500/25 hover:shadow-emerald-500/40 transition-all duration-300 hover:scale-[1.03] active:scale-[0.98]"
