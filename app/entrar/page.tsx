@@ -9,6 +9,7 @@ import {
   CheckCircle2,
   MessageCircle,
   Loader2,
+  ShieldAlert,
 } from "lucide-react";
 import AnimatedSection from "../components/AnimatedSection";
 
@@ -269,6 +270,15 @@ export default function EntrarPage() {
                       </>
                     )}
                   </motion.button>
+
+                  {/* Verification warning */}
+                  <div className="flex items-start gap-2.5 rounded-xl bg-amber-500/[0.06] border border-amber-500/15 px-4 py-3">
+                    <ShieldAlert className="w-4 h-4 text-amber-400 mt-0.5 flex-shrink-0" />
+                    <p className="text-amber-200/80 text-xs leading-relaxed">
+                      Emails ou números de WhatsApp falsos serão identificados e
+                      não terão acesso aprovado na comunidade.
+                    </p>
+                  </div>
 
                   <p className="text-text-muted text-xs text-center">
                     Seus dados estão seguros e não serão compartilhados
