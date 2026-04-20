@@ -3,8 +3,6 @@ import { useState, useRef, FormEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Users,
-  Headphones,
-  Video,
   ArrowRight,
   CheckCircle2,
   MessageCircle,
@@ -28,11 +26,6 @@ function isValidWhatsApp(value: string): boolean {
   return digits.length >= 12 && digits.length <= 13;
 }
 
-const TRUST_SIGNALS = [
-  { icon: Users, label: "500+ alunos ativos", color: "text-brand-gold" },
-  { icon: Headphones, label: "Suporte diário 7/7", color: "text-emerald-400" },
-  { icon: Video, label: "Lives semanais ao vivo", color: "text-blue-400" },
-];
 
 export default function EntrarPage() {
   const [name, setName] = useState("");
@@ -332,7 +325,7 @@ export default function EntrarPage() {
                   </p>
 
                   <a
-                    href="https://wa.me/5511995631610?text=SIM%20Quero%20entrar%20na%20Comunidade%20Maestros%20da%20IA"
+                    href="https://wa.me/5511995631610?text=Ol%C3%A1!%20Gostaria%20de%20entrar%20na%20Comunidade%20Aberta%20dos%20Maestros%20da%20IA!"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-[#25D366] hover:bg-[#20BD5A] text-white font-bold text-base sm:text-lg shadow-lg shadow-emerald-500/25 hover:shadow-emerald-500/40 transition-all duration-300 hover:scale-[1.03] active:scale-[0.98]"
@@ -356,21 +349,6 @@ export default function EntrarPage() {
             </motion.div>
           )}
         </AnimatePresence>
-
-        {/* Trust signals */}
-        <AnimatedSection delay={0.3} className="mt-10">
-          <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-8">
-            {TRUST_SIGNALS.map((signal) => (
-              <div
-                key={signal.label}
-                className="flex items-center gap-2 text-text-tertiary"
-              >
-                <signal.icon className={`w-4 h-4 ${signal.color}`} />
-                <span className="text-xs sm:text-sm">{signal.label}</span>
-              </div>
-            ))}
-          </div>
-        </AnimatedSection>
 
         {/* Footer link */}
         <div className="mt-8 text-text-muted text-xs">
