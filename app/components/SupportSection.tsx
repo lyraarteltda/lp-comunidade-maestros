@@ -5,6 +5,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { MessageSquare, Clock, CheckCircle2, Shield, Zap } from "lucide-react";
+import { useTrackSection } from "../hooks/useTrackSection";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -40,8 +41,9 @@ function StatCounter({ value, suffix, label, delay }: { value: number; suffix: s
 }
 
 export default function SupportSection() {
+  const trackRef = useTrackSection('support');
   return (
-    <section className="relative py-16 md:py-24 bg-surface-1 noise-bg overflow-hidden">
+    <section ref={trackRef} className="relative py-16 md:py-24 bg-surface-1 noise-bg overflow-hidden">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/[0.04] to-transparent" />
 
       <div className="max-w-6xl mx-auto px-6">

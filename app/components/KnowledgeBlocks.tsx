@@ -14,6 +14,7 @@ import {
   Megaphone,
   type LucideIcon,
 } from "lucide-react";
+import { useTrackSection } from "../hooks/useTrackSection";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -104,6 +105,7 @@ const gridPositions = [
 ];
 
 export default function KnowledgeBlocks() {
+  const trackRef = useTrackSection('knowledge');
   const gridRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
@@ -126,7 +128,7 @@ export default function KnowledgeBlocks() {
   }, { scope: gridRef });
 
   return (
-    <section id="trilhas" className="relative py-16 md:py-24 bg-surface-1 overflow-hidden">
+    <section ref={trackRef} id="trilhas" className="relative py-16 md:py-24 bg-surface-1 overflow-hidden">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/[0.04] to-transparent" />
 
       <div className="max-w-6xl mx-auto px-6">

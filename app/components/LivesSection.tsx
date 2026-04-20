@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import { Play, Calendar, MessageCircle, Zap, Radio } from "lucide-react";
+import { useTrackSection } from "../hooks/useTrackSection";
 
 const topicExamples = [
   {
@@ -34,8 +35,9 @@ const topicExamples = [
 ];
 
 export default function LivesSection() {
+  const trackRef = useTrackSection('lives');
   return (
-    <section id="lives" className="relative py-16 md:py-24 bg-surface-2 overflow-hidden">
+    <section ref={trackRef} id="lives" className="relative py-16 md:py-24 bg-surface-2 overflow-hidden">
       <div className="absolute -top-1/4 right-0 w-[600px] h-[600px] rounded-full bg-violet-500/[0.025] blur-[140px]" />
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-brand-gold/[0.02] blur-[120px]" />
 

@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import { Video, BookOpen, Headphones, RefreshCw, Gift } from "lucide-react";
+import { useTrackSection } from "../hooks/useTrackSection";
 
 const pillars = [
   {
@@ -69,8 +70,9 @@ const accentMap: Record<string, { icon: string; border: string; tag: string }> =
 };
 
 export default function PillarsSection() {
+  const trackRef = useTrackSection('pillars');
   return (
-    <section id="pilares" aria-labelledby="pilares-heading" className="relative py-24 md:py-32 bg-surface-2 noise-bg overflow-hidden">
+    <section ref={trackRef} id="pilares" aria-labelledby="pilares-heading" className="relative py-24 md:py-32 bg-surface-2 noise-bg overflow-hidden">
       <div className="absolute -top-1/3 left-1/3 w-[700px] h-[700px] rounded-full bg-brand-gold/[0.02] blur-[150px]" />
 
       <div className="relative z-10 max-w-6xl mx-auto px-6">

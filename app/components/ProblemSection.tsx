@@ -1,10 +1,11 @@
 "use client";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { AlertTriangle, Clock, HelpCircle, Users } from "lucide-react";
+import posthog from "posthog-js";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -64,6 +65,25 @@ export default function ProblemSection() {
       },
     });
   }, { scope: sectionRef });
+
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el || !posthog.__loaded) return;
+    let firedView = false;
+    let dwellStart: number | null = null;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        if (!firedView) { posthog.capture('section_viewed', { section: 'problem' }); firedView = true; }
+        dwellStart = performance.now();
+      } else if (dwellStart != null) {
+        const dwellMs = Math.round(performance.now() - dwellStart);
+        if (dwellMs > 500) posthog.capture('section_dwell', { section: 'problem', dwell_ms: dwellMs });
+        dwellStart = null;
+      }
+    }, { threshold: 0.4 });
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <section ref={sectionRef} className="relative pt-8 md:pt-12 lg:pt-16 pb-16 md:pb-24 bg-surface-1 noise-bg overflow-hidden">

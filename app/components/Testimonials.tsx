@@ -2,6 +2,7 @@
 import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Star, Quote, Play, Pause } from "lucide-react";
+import { useTrackSection } from "../hooks/useTrackSection";
 
 interface VideoTestimonial {
   name: string;
@@ -193,11 +194,12 @@ function TextCard({ t }: { t: TextTestimonial }) {
 }
 
 export default function Testimonials() {
+  const trackRef = useTrackSection('testimonials');
   const videoCards = [...videoTestimonials, ...videoTestimonials, ...videoTestimonials];
   const textCards = [...textTestimonials, ...textTestimonials, ...textTestimonials, ...textTestimonials];
 
   return (
-    <section id="depoimentos" className="relative py-24 md:py-32 bg-surface-1 overflow-hidden">
+    <section ref={trackRef} id="depoimentos" className="relative py-24 md:py-32 bg-surface-1 overflow-hidden">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/[0.03] to-transparent" />
 
       <div className="max-w-6xl mx-auto px-6">

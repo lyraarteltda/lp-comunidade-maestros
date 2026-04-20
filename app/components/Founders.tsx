@@ -6,6 +6,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
 import { Building2, Users, Eye, TrendingUp, Cpu, DollarSign } from "lucide-react";
+import { useTrackSection } from "../hooks/useTrackSection";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -35,6 +36,7 @@ const sharedAchievements = [
 ];
 
 export default function Founders() {
+  const trackRef = useTrackSection('founders');
   const statsRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
@@ -59,7 +61,7 @@ export default function Founders() {
   }, { scope: statsRef });
 
   return (
-    <section className="relative py-24 md:py-32 bg-surface-2 noise-bg overflow-hidden">
+    <section ref={trackRef} className="relative py-24 md:py-32 bg-surface-2 noise-bg overflow-hidden">
       <div className="absolute -bottom-1/3 -left-1/4 w-[700px] h-[700px] rounded-full bg-brand-gold/[0.025] blur-[160px]" />
       <div className="absolute top-0 right-0 w-[400px] h-[400px] rounded-full bg-violet-500/[0.02] blur-[120px]" />
 

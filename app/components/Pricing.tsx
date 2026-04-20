@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import { ArrowRight, Check, Sparkles, Shield, Lock, RefreshCw, AlertTriangle, MessageCircle, Gift } from "lucide-react";
+import { useTrackSection } from "../hooks/useTrackSection";
 
 const CHECKOUT_URL = "https://pay.onprofit.com.br/M5Ene7El?off=ZNpmS2";
 
@@ -18,8 +19,9 @@ const included = [
 
 
 export default function Pricing() {
+  const trackRef = useTrackSection('pricing');
   return (
-    <section id="pricing" aria-labelledby="pricing-heading" className="relative py-24 md:py-32 bg-surface-0 noise-bg overflow-hidden">
+    <section ref={trackRef} id="pricing" aria-labelledby="pricing-heading" className="relative py-24 md:py-32 bg-surface-0 noise-bg overflow-hidden">
       {/* Layered background atmosphere */}
       <div className="absolute inset-0">
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[800px] rounded-full bg-brand-gold/[0.04] blur-[200px]" />
@@ -150,6 +152,8 @@ export default function Pricing() {
                 href={CHECKOUT_URL}
                 target="_blank"
                 rel="noopener noreferrer"
+                data-ph-capture-attribute-cta="pricing_main_checkout"
+                data-ph-capture-attribute-position="pricing_card"
                 whileHover={{ scale: 1.02, y: -1 }}
                 whileTap={{ scale: 0.98 }}
                 transition={{ type: "spring", stiffness: 400, damping: 20 }}

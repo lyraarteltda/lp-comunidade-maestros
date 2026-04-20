@@ -1,12 +1,14 @@
 "use client";
 import { motion } from "framer-motion";
 import { ArrowRight, Sparkles, Users, TrendingUp, Clock } from "lucide-react";
+import { useTrackSection } from "../hooks/useTrackSection";
 
 const CHECKOUT_URL = "https://pay.onprofit.com.br/M5Ene7El?off=ZNpmS2";
 
 export default function FinalCTA() {
+  const trackRef = useTrackSection('final_cta');
   return (
-    <section aria-labelledby="final-cta-heading" className="relative py-24 md:py-32 bg-surface-0 overflow-hidden">
+    <section ref={trackRef} aria-labelledby="final-cta-heading" className="relative py-24 md:py-32 bg-surface-0 overflow-hidden">
       {/* Dramatic ambient glow */}
       <div className="absolute inset-0">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] rounded-full bg-brand-gold/[0.06] blur-[200px]" />
@@ -77,6 +79,8 @@ export default function FinalCTA() {
             href={CHECKOUT_URL}
             target="_blank"
             rel="noopener noreferrer"
+            data-ph-capture-attribute-cta="final_cta_checkout"
+            data-ph-capture-attribute-position="final_cta"
             whileHover={{ scale: 1.04, y: -3 }}
             whileTap={{ scale: 0.97 }}
             transition={{ type: "spring", stiffness: 400, damping: 17 }}

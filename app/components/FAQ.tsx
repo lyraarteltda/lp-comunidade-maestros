@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, Plus, Minus } from "lucide-react";
+import { useTrackSection } from "../hooks/useTrackSection";
 
 const faqs = [
   {
@@ -87,8 +88,9 @@ function FAQItem({ faq, index }: { faq: (typeof faqs)[0]; index: number }) {
 }
 
 export default function FAQ() {
+  const trackRef = useTrackSection('faq');
   return (
-    <section id="faq" aria-labelledby="faq-heading" className="relative py-12 md:py-16 bg-surface-1">
+    <section ref={trackRef} id="faq" aria-labelledby="faq-heading" className="relative py-12 md:py-16 bg-surface-1">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/[0.04] to-transparent" />
 
       <div className="max-w-3xl mx-auto px-6">
