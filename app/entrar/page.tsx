@@ -27,6 +27,18 @@ function isValidPhone(countryCode: string, localDigits: string): boolean {
   return localDigits.length >= 8 && localDigits.length <= 12;
 }
 
+function getPasswordErrors(pw: string): string[] {
+  const errors: string[] = [];
+  if (pw.length < 6) errors.push("6+ caracteres");
+  if (!/[A-Z]/.test(pw)) errors.push("1 letra maiúscula");
+  if (!/[0-9]/.test(pw)) errors.push("1 número");
+  if (!/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?`~]/.test(pw)) errors.push("1 símbolo (!@$*...)");
+  return errors;
+}
+
+function isValidPassword(pw: string): boolean {
+  return getPasswordErrors(pw).length === 0;
+}
 
 export default function EntrarPage() {
   const [name, setName] = useState("");
@@ -50,7 +62,7 @@ export default function EntrarPage() {
     name.trim().length >= 2 &&
     /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) &&
     isValidPhone(countryCode, phoneDigits) &&
-    senha.length > 0 &&
+    isValidPassword(senha) &&
     senha === confirmSenha;
 
   async function handleSubmit(e: FormEvent) {
@@ -281,7 +293,7 @@ export default function EntrarPage() {
                         type={showSenha ? "text" : "password"}
                         required
                         autoComplete="new-password"
-                        placeholder="Crie sua senha"
+                        placeholder="Ex: Senha@123"
                         value={senha}
                         onChange={(e) => setSenha(e.target.value)}
                         className="w-full bg-surface-1 border border-white/[0.06] rounded-xl px-4 py-3 pr-12 text-text-primary placeholder:text-text-muted focus:border-brand-gold/40 focus:ring-1 focus:ring-brand-gold/20 transition-colors outline-none"
@@ -295,6 +307,27 @@ export default function EntrarPage() {
                         {showSenha ? <EyeOff className="w-4.5 h-4.5" /> : <Eye className="w-4.5 h-4.5" />}
                       </button>
                     </div>
+                    {senha.length > 0 && (
+                      <div className="flex flex-wrap gap-2 mt-2">
+                        {[
+                          { label: "6+ chars", ok: senha.length >= 6 },
+                          { label: "A-Z", ok: /[A-Z]/.test(senha) },
+                          { label: "0-9", ok: /[0-9]/.test(senha) },
+                          { label: "!@$*", ok: /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?`~]/.test(senha) },
+                        ].map((r) => (
+                          <span
+                            key={r.label}
+                            className={`text-[10px] font-medium px-2 py-0.5 rounded-full border transition-colors ${
+                              r.ok
+                                ? "text-emerald-400 border-emerald-500/30 bg-emerald-500/[0.08]"
+                                : "text-text-muted border-white/[0.06] bg-surface-1"
+                            }`}
+                          >
+                            {r.ok ? "✓" : "•"} {r.label}
+                          </span>
+                        ))}
+                      </div>
+                    )}
                   </div>
 
                   {/* Confirmar Senha */}
@@ -425,8 +458,11 @@ export default function EntrarPage() {
                     Quase lá!
                   </h2>
 
-                  <p className="text-text-secondary leading-relaxed mb-6">
-                    Clique no botão abaixo para liberar seu acesso à comunidade.
+                  <p className="text-text-secondary leading-relaxed mb-4">
+                    Enviamos um e-mail de confirmação para ativar sua conta na comunidade.
+                  </p>
+                  <p className="text-text-muted text-sm leading-relaxed mb-6">
+                    Depois de confirmar seu e-mail, clique no botão abaixo para liberar seu acesso via WhatsApp.
                   </p>
 
                   <a
