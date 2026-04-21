@@ -8,39 +8,47 @@ import {
   MessageCircle,
   Loader2,
   ShieldAlert,
+  Eye,
+  EyeOff,
 } from "lucide-react";
 import AnimatedSection from "../components/AnimatedSection";
 
-function formatWhatsApp(value: string): string {
-  const digits = value.replace(/\D/g, "").slice(0, 13);
+function formatLocalPhone(digits: string): string {
   if (digits.length === 0) return "";
-  if (digits.length <= 2) return `+${digits}`;
-  if (digits.length <= 4) return `+${digits.slice(0, 2)} ${digits.slice(2)}`;
-  if (digits.length <= 9)
-    return `+${digits.slice(0, 2)} ${digits.slice(2, 4)} ${digits.slice(4)}`;
-  return `+${digits.slice(0, 2)} ${digits.slice(2, 4)} ${digits.slice(4, 9)}-${digits.slice(9)}`;
+  if (digits.length <= 2) return `(${digits}`;
+  if (digits.length <= 7) return `(${digits.slice(0, 2)}) ${digits.slice(2)}`;
+  return `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7)}`;
 }
 
-function isValidWhatsApp(value: string): boolean {
-  const digits = value.replace(/\D/g, "");
-  return digits.length >= 12 && digits.length <= 13;
+function isValidPhone(countryCode: string, localDigits: string): boolean {
+  if (countryCode === "55") {
+    return localDigits.length === 11;
+  }
+  return localDigits.length >= 8 && localDigits.length <= 12;
 }
 
 
 export default function EntrarPage() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [whatsapp, setWhatsapp] = useState("");
+  const [countryCode, setCountryCode] = useState("55");
+  const [phoneLocal, setPhoneLocal] = useState("");
+  const [senha, setSenha] = useState("");
+  const [showSenha, setShowSenha] = useState(false);
   const [honeypot, setHoneypot] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [error, setError] = useState("");
   const formRef = useRef<HTMLFormElement>(null);
 
+  const phoneDigits = phoneLocal.replace(/\D/g, "");
+  const maxLocalDigits = countryCode === "55" ? 11 : 12;
+
   const isFormValid =
     name.trim().length >= 2 &&
     /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) &&
-    isValidWhatsApp(whatsapp);
+    isValidPhone(countryCode, phoneDigits) &&
+    senha.length >= 6;
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
@@ -59,7 +67,8 @@ export default function EntrarPage() {
           body: JSON.stringify({
             name: name.trim(),
             email: email.trim(),
-            whatsapp: whatsapp.replace(/\D/g, ""),
+            whatsapp: countryCode + phoneDigits,
+            senha: senha,
           }),
         }
       );
@@ -209,26 +218,80 @@ export default function EntrarPage() {
                   {/* WhatsApp */}
                   <div>
                     <label
-                      htmlFor="whatsapp"
+                      htmlFor="phone-local"
                       className="block text-sm font-medium text-text-secondary mb-1.5"
                     >
                       WhatsApp
                     </label>
-                    <input
-                      id="whatsapp"
-                      type="tel"
-                      required
-                      autoComplete="tel"
-                      placeholder="+55 11 99999-9999"
-                      value={whatsapp}
-                      onChange={(e) =>
-                        setWhatsapp(formatWhatsApp(e.target.value))
-                      }
-                      className="w-full bg-surface-1 border border-white/[0.06] rounded-xl px-4 py-3 text-text-primary placeholder:text-text-muted focus:border-brand-gold/40 focus:ring-1 focus:ring-brand-gold/20 transition-colors outline-none"
-                    />
+                    <div className="flex gap-2">
+                      <div className="relative flex-shrink-0 w-[5.5rem]">
+                        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-text-muted text-sm pointer-events-none">+</span>
+                        <input
+                          id="country-code"
+                          type="tel"
+                          autoComplete="tel-country-code"
+                          value={countryCode}
+                          onChange={(e) => {
+                            const digits = e.target.value.replace(/\D/g, "").slice(0, 4);
+                            setCountryCode(digits);
+                          }}
+                          className="w-full bg-surface-1 border border-white/[0.06] rounded-xl pl-7 pr-2 py-3 text-text-primary text-center focus:border-brand-gold/40 focus:ring-1 focus:ring-brand-gold/20 transition-colors outline-none"
+                        />
+                      </div>
+                      <div className="relative flex-1">
+                        <input
+                          id="phone-local"
+                          type="tel"
+                          required
+                          autoComplete="tel-national"
+                          placeholder={countryCode === "55" ? "(11) 99999-9999" : "Número"}
+                          value={formatLocalPhone(phoneDigits.slice(0, maxLocalDigits))}
+                          onChange={(e) => {
+                            const raw = e.target.value.replace(/\D/g, "").slice(0, maxLocalDigits);
+                            setPhoneLocal(raw);
+                          }}
+                          className="w-full bg-surface-1 border border-white/[0.06] rounded-xl px-4 py-3 text-text-primary placeholder:text-text-muted focus:border-brand-gold/40 focus:ring-1 focus:ring-brand-gold/20 transition-colors outline-none"
+                        />
+                        {phoneDigits.length > 0 && (
+                          <span className={`absolute right-3 top-1/2 -translate-y-1/2 text-xs font-medium ${isValidPhone(countryCode, phoneDigits) ? "text-emerald-400" : "text-text-muted"}`}>
+                            {phoneDigits.length}/{countryCode === "55" ? 11 : "8+"}
+                          </span>
+                        )}
+                      </div>
+                    </div>
                     <p className="text-text-muted text-xs mt-1.5">
                       Você receberá um botão para liberar seu acesso via WhatsApp
                     </p>
+                  </div>
+
+                  {/* Senha */}
+                  <div>
+                    <label
+                      htmlFor="senha"
+                      className="block text-sm font-medium text-text-secondary mb-1.5"
+                    >
+                      Senha
+                    </label>
+                    <div className="relative">
+                      <input
+                        id="senha"
+                        type={showSenha ? "text" : "password"}
+                        required
+                        autoComplete="new-password"
+                        placeholder="Mínimo 6 caracteres"
+                        value={senha}
+                        onChange={(e) => setSenha(e.target.value)}
+                        className="w-full bg-surface-1 border border-white/[0.06] rounded-xl px-4 py-3 pr-12 text-text-primary placeholder:text-text-muted focus:border-brand-gold/40 focus:ring-1 focus:ring-brand-gold/20 transition-colors outline-none"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => setShowSenha(!showSenha)}
+                        className="absolute right-3 top-1/2 -translate-y-1/2 text-text-muted hover:text-text-secondary transition-colors"
+                        aria-label={showSenha ? "Esconder senha" : "Mostrar senha"}
+                      >
+                        {showSenha ? <EyeOff className="w-4.5 h-4.5" /> : <Eye className="w-4.5 h-4.5" />}
+                      </button>
+                    </div>
                   </div>
 
                   {/* Error */}
