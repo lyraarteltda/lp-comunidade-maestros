@@ -53,6 +53,7 @@ export default function EntrarPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [error, setError] = useState("");
+  const [tried, setTried] = useState(false);
   const formRef = useRef<HTMLFormElement>(null);
 
   const phoneDigits = phoneLocal.replace(/\D/g, "");
@@ -65,9 +66,14 @@ export default function EntrarPage() {
     isValidPassword(senha) &&
     senha === confirmSenha;
 
+  const passwordErrors = getPasswordErrors(senha);
+  const hasPasswordErrors = passwordErrors.length > 0;
+  const passwordMismatch = senha.length > 0 && confirmSenha.length > 0 && senha !== confirmSenha;
+
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
     if (honeypot) return;
+    setTried(true);
     if (!isFormValid) return;
 
     setIsSubmitting(true);
@@ -283,20 +289,29 @@ export default function EntrarPage() {
                   <div>
                     <label
                       htmlFor="senha"
-                      className="block text-sm font-medium text-text-secondary mb-1.5"
+                      className="block text-sm font-medium text-text-secondary mb-1"
                     >
-                      Senha
+                      Crie uma senha para a comunidade
                     </label>
+                    <p className="text-text-muted text-xs mb-2 leading-relaxed">
+                      Exemplo: <span className="text-text-secondary font-medium">Maria@2024</span> — precisa ter letra maiúscula, número e símbolo
+                    </p>
                     <div className="relative">
                       <input
                         id="senha"
                         type={showSenha ? "text" : "password"}
                         required
                         autoComplete="new-password"
-                        placeholder="Ex: Senha@123"
+                        placeholder="Digite sua senha aqui"
                         value={senha}
                         onChange={(e) => setSenha(e.target.value)}
-                        className="w-full bg-surface-1 border border-white/[0.06] rounded-xl px-4 py-3 pr-12 text-text-primary placeholder:text-text-muted focus:border-brand-gold/40 focus:ring-1 focus:ring-brand-gold/20 transition-colors outline-none"
+                        className={`w-full bg-surface-1 border rounded-xl px-4 py-3 pr-12 text-text-primary placeholder:text-text-muted focus:ring-1 transition-colors outline-none ${
+                          tried && hasPasswordErrors
+                            ? "border-red-500/40 focus:border-red-500/60 focus:ring-red-500/20"
+                            : senha.length > 0 && !hasPasswordErrors
+                            ? "border-emerald-500/40 focus:border-emerald-500/60 focus:ring-emerald-500/20"
+                            : "border-white/[0.06] focus:border-brand-gold/40 focus:ring-brand-gold/20"
+                        }`}
                       />
                       <button
                         type="button"
@@ -307,26 +322,36 @@ export default function EntrarPage() {
                         {showSenha ? <EyeOff className="w-4.5 h-4.5" /> : <Eye className="w-4.5 h-4.5" />}
                       </button>
                     </div>
-                    {senha.length > 0 && (
-                      <div className="flex flex-wrap gap-2 mt-2">
-                        {[
-                          { label: "6+ chars", ok: senha.length >= 6 },
-                          { label: "A-Z", ok: /[A-Z]/.test(senha) },
-                          { label: "0-9", ok: /[0-9]/.test(senha) },
-                          { label: "!@$*", ok: /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?`~]/.test(senha) },
-                        ].map((r) => (
-                          <span
-                            key={r.label}
-                            className={`text-[10px] font-medium px-2 py-0.5 rounded-full border transition-colors ${
-                              r.ok
-                                ? "text-emerald-400 border-emerald-500/30 bg-emerald-500/[0.08]"
-                                : "text-text-muted border-white/[0.06] bg-surface-1"
-                            }`}
-                          >
-                            {r.ok ? "✓" : "•"} {r.label}
+                    <div className="mt-2 space-y-0.5">
+                      {[
+                        { label: "Mínimo 6 caracteres", ok: senha.length >= 6 },
+                        { label: "Uma letra maiúscula (A, B, C...)", ok: /[A-Z]/.test(senha) },
+                        { label: "Um número (1, 2, 3...)", ok: /[0-9]/.test(senha) },
+                        { label: "Um símbolo (@ ! * $ # ...)", ok: /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?`~]/.test(senha) },
+                      ].map((r) => (
+                        <div
+                          key={r.label}
+                          className={`flex items-center gap-2 text-xs transition-colors ${
+                            senha.length === 0
+                              ? "text-text-muted"
+                              : r.ok
+                              ? "text-emerald-400"
+                              : tried
+                              ? "text-red-400"
+                              : "text-text-muted"
+                          }`}
+                        >
+                          <span className="w-4 text-center flex-shrink-0">
+                            {senha.length === 0 ? "○" : r.ok ? "✓" : tried ? "✗" : "○"}
                           </span>
-                        ))}
-                      </div>
+                          {r.label}
+                        </div>
+                      ))}
+                    </div>
+                    {tried && hasPasswordErrors && senha.length > 0 && (
+                      <p className="text-red-400 text-xs mt-1.5 font-medium">
+                        Corrija os itens marcados acima para continuar
+                      </p>
                     )}
                   </div>
 
@@ -380,12 +405,22 @@ export default function EntrarPage() {
                     </motion.p>
                   )}
 
+                  {tried && !isFormValid && !error && (
+                    <motion.p
+                      initial={{ opacity: 0, y: -5 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="text-amber-300 text-sm text-center bg-amber-500/[0.08] border border-amber-500/15 rounded-lg px-4 py-2"
+                    >
+                      Preencha todos os campos corretamente para continuar
+                    </motion.p>
+                  )}
+
                   {/* Submit */}
                   <motion.button
                     type="submit"
-                    disabled={isSubmitting || !isFormValid}
-                    whileHover={isFormValid && !isSubmitting ? { scale: 1.02, y: -1 } : {}}
-                    whileTap={isFormValid && !isSubmitting ? { scale: 0.98 } : {}}
+                    disabled={isSubmitting}
+                    whileHover={!isSubmitting ? { scale: 1.02, y: -1 } : {}}
+                    whileTap={!isSubmitting ? { scale: 0.98 } : {}}
                     transition={{ type: "spring", stiffness: 400, damping: 17 }}
                     className="cta-shimmer w-full flex items-center justify-center gap-3 bg-brand-gold text-surface-0 font-bold px-8 py-4 rounded-xl text-base shadow-lg shadow-brand-gold/20 disabled:opacity-50 disabled:cursor-not-allowed disabled:shadow-none transition-opacity"
                   >
