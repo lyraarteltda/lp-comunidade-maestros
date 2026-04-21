@@ -34,7 +34,9 @@ export default function EntrarPage() {
   const [countryCode, setCountryCode] = useState("55");
   const [phoneLocal, setPhoneLocal] = useState("");
   const [senha, setSenha] = useState("");
+  const [confirmSenha, setConfirmSenha] = useState("");
   const [showSenha, setShowSenha] = useState(false);
+  const [showConfirmSenha, setShowConfirmSenha] = useState(false);
   const [honeypot, setHoneypot] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -48,7 +50,8 @@ export default function EntrarPage() {
     name.trim().length >= 2 &&
     /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) &&
     isValidPhone(countryCode, phoneDigits) &&
-    senha.length >= 6;
+    senha.length >= 6 &&
+    senha === confirmSenha;
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
@@ -292,6 +295,45 @@ export default function EntrarPage() {
                         {showSenha ? <EyeOff className="w-4.5 h-4.5" /> : <Eye className="w-4.5 h-4.5" />}
                       </button>
                     </div>
+                  </div>
+
+                  {/* Confirmar Senha */}
+                  <div>
+                    <label
+                      htmlFor="confirm-senha"
+                      className="block text-sm font-medium text-text-secondary mb-1.5"
+                    >
+                      Confirmar Senha
+                    </label>
+                    <div className="relative">
+                      <input
+                        id="confirm-senha"
+                        type={showConfirmSenha ? "text" : "password"}
+                        required
+                        autoComplete="new-password"
+                        placeholder="Repita sua senha"
+                        value={confirmSenha}
+                        onChange={(e) => setConfirmSenha(e.target.value)}
+                        className={`w-full bg-surface-1 border rounded-xl px-4 py-3 pr-12 text-text-primary placeholder:text-text-muted focus:ring-1 transition-colors outline-none ${
+                          confirmSenha.length > 0 && confirmSenha !== senha
+                            ? "border-red-500/40 focus:border-red-500/60 focus:ring-red-500/20"
+                            : confirmSenha.length > 0 && confirmSenha === senha
+                            ? "border-emerald-500/40 focus:border-emerald-500/60 focus:ring-emerald-500/20"
+                            : "border-white/[0.06] focus:border-brand-gold/40 focus:ring-brand-gold/20"
+                        }`}
+                      />
+                      <button
+                        type="button"
+                        onClick={() => setShowConfirmSenha(!showConfirmSenha)}
+                        className="absolute right-3 top-1/2 -translate-y-1/2 text-text-muted hover:text-text-secondary transition-colors"
+                        aria-label={showConfirmSenha ? "Esconder senha" : "Mostrar senha"}
+                      >
+                        {showConfirmSenha ? <EyeOff className="w-4.5 h-4.5" /> : <Eye className="w-4.5 h-4.5" />}
+                      </button>
+                    </div>
+                    {confirmSenha.length > 0 && confirmSenha !== senha && (
+                      <p className="text-red-400 text-xs mt-1.5">As senhas não coincidem</p>
+                    )}
                   </div>
 
                   {/* Error */}
