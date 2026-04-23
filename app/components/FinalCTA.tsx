@@ -2,11 +2,11 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Sparkles, Users, TrendingUp, Clock } from "lucide-react";
 import { useTrackSection } from "../hooks/useTrackSection";
-
-const CHECKOUT_URL = "https://pay.onprofit.com.br/M5Ene7El?off=ZNpmS2";
+import { useCheckoutUrl } from "../hooks/useCheckoutUrl";
 
 export default function FinalCTA() {
   const trackRef = useTrackSection('final_cta');
+  const checkoutUrl = useCheckoutUrl();
   return (
     <section ref={trackRef} aria-labelledby="final-cta-heading" className="relative py-24 md:py-32 bg-surface-0 overflow-hidden">
       {/* Dramatic ambient glow */}
@@ -76,7 +76,7 @@ export default function FinalCTA() {
           </div>
 
           <motion.a
-            href={CHECKOUT_URL}
+            href={checkoutUrl}
             target="_blank"
             rel="noopener noreferrer"
             data-ph-capture-attribute-cta="final_cta_checkout"

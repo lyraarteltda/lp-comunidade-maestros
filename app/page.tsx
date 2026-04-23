@@ -1,4 +1,5 @@
 "use client";
+import { Suspense } from "react";
 import SmoothScroll from "./components/SmoothScroll";
 import ScrollProgress from "./components/ScrollProgress";
 import Header from "./components/Header";
@@ -19,6 +20,7 @@ import Footer from "./components/Footer";
 
 export default function Home() {
   return (
+    <Suspense>
     <SmoothScroll>
       <ScrollProgress />
       <Header />
@@ -44,5 +46,6 @@ export default function Home() {
       <Footer />
 
     </SmoothScroll>
+    </Suspense>
   );
 }

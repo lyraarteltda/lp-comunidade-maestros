@@ -2,8 +2,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Check, Sparkles, Shield, Lock, RefreshCw, AlertTriangle, MessageCircle, Gift } from "lucide-react";
 import { useTrackSection } from "../hooks/useTrackSection";
-
-const CHECKOUT_URL = "https://pay.onprofit.com.br/M5Ene7El?off=ZNpmS2";
+import { useCheckoutUrl } from "../hooks/useCheckoutUrl";
 
 const included = [
   "Lives semanais ao vivo com fundadores e especialistas convidados",
@@ -20,6 +19,7 @@ const included = [
 
 export default function Pricing() {
   const trackRef = useTrackSection('pricing');
+  const checkoutUrl = useCheckoutUrl();
   return (
     <section ref={trackRef} id="pricing" aria-labelledby="pricing-heading" className="relative py-24 md:py-32 bg-surface-0 noise-bg overflow-hidden">
       {/* Layered background atmosphere */}
@@ -149,7 +149,7 @@ export default function Pricing() {
 
               {/* CTA */}
               <motion.a
-                href={CHECKOUT_URL}
+                href={checkoutUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 data-ph-capture-attribute-cta="pricing_main_checkout"
