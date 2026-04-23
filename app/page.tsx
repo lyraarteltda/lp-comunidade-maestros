@@ -12,6 +12,7 @@ import LivesSection from "./components/LivesSection";
 import SupportSection from "./components/SupportSection";
 import UpdatesSection from "./components/UpdatesSection";
 import Testimonials from "./components/Testimonials";
+import ForWhomSection from "./components/ForWhomSection";
 import Founders from "./components/Founders";
 import Pricing from "./components/Pricing";
 import FAQ from "./components/FAQ";
@@ -38,6 +39,7 @@ export default function Home() {
         <SupportSection />
         <UpdatesSection />
         <Testimonials />
+        <ForWhomSection />
         <Founders />
         <Pricing />
         <FAQ />

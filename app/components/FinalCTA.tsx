@@ -44,34 +44,34 @@ export default function FinalCTA() {
           <h2
             id="final-cta-heading"
             className="font-[var(--font-display)] font-extrabold tracking-[-0.03em] mb-6"
-            style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)" }}
+            style={{ fontSize: "clamp(1.6rem, 4vw, 2.8rem)" }}
           >
-            <span className="gradient-text-white-strong">O Futuro É de</span>
+            <span className="gradient-text-white-strong">Semana Que Vem Tem Live Nova.</span>
             <br />
-            <span className="gradient-text-gold">Quem Age Agora</span>
+            <span className="gradient-text-gold">Você Vai Estar Dentro ou Vai Ficar Sabendo Depois?</span>
           </h2>
 
           <p className="text-text-secondary leading-relaxed mb-10 max-w-xl mx-auto" style={{ fontSize: "clamp(1rem, 1.5vw, 1.125rem)" }}>
-            A cada semana, novas ferramentas surgem, estratégias são validadas e
-            oportunidades aparecem. Quem está dentro, aproveita.
-            Quem está fora, fica pra trás.
+            Enquanto você pensa, os membros da comunidade já estão implementando
+            o sistema desta semana. Cada semana que passa é uma live, uma ferramenta
+            e uma oportunidade que você não recupera.
           </p>
 
           {/* Urgency indicators */}
           <div className="flex items-center justify-center gap-6 mb-10 text-text-tertiary">
             <div className="flex items-center gap-2 text-xs">
-              <Users className="w-3.5 h-3.5 text-brand-gold" />
-              <span>+500 membros</span>
+              <Clock className="w-3.5 h-3.5 text-blue-400" />
+              <span>Acesso imediato</span>
             </div>
             <div className="h-3 w-px bg-white/[0.08]" />
             <div className="flex items-center gap-2 text-xs">
               <TrendingUp className="w-3.5 h-3.5 text-emerald-400" />
-              <span>Preço de lançamento</span>
+              <span>3 vagas com preço atual</span>
             </div>
             <div className="h-3 w-px bg-white/[0.08] hidden sm:block" />
             <div className="hidden sm:flex items-center gap-2 text-xs">
-              <Clock className="w-3.5 h-3.5 text-blue-400" />
-              <span>Acesso imediato</span>
+              <Users className="w-3.5 h-3.5 text-brand-gold" />
+              <span>Garantia 7 dias</span>
             </div>
           </div>
 
@@ -87,7 +87,7 @@ export default function FinalCTA() {
             className="cta-shimmer inline-flex items-center gap-3 bg-brand-gold text-surface-0 font-bold px-12 py-5 rounded-xl text-lg shadow-xl shadow-brand-gold/25"
             style={{ animation: "pulse-gold 3s infinite" }}
           >
-            Quero Fazer Parte da Comunidade
+            Entrar Agora e Receber Meu Primeiro Sistema
             <ArrowRight className="w-5 h-5" />
           </motion.a>
 

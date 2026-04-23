@@ -12,32 +12,32 @@ gsap.registerPlugin(ScrollTrigger);
 const painPoints = [
   {
     icon: Clock,
-    title: "Cursos estáticos",
-    description: "Você aprende algo, e em semanas já está desatualizado. IA muda rápido demais para conteúdo congelado.",
+    title: "Cursos que nascem velhos",
+    description: "Você compra um curso de IA, estuda 3 semanas, e quando termina, metade das ferramentas já mudou. O conteúdo congela — o mercado não.",
     accent: "from-red-500/20 to-orange-500/10",
     iconColor: "text-red-400",
     iconBg: "bg-red-500/10",
   },
   {
     icon: HelpCircle,
-    title: "Zero suporte real",
-    description: "Travou em uma automação? Em um agente? Ninguém pra perguntar. Google não resolve o seu contexto.",
+    title: "Travou? Google não resolve SEU problema",
+    description: "Seu webhook do n8n deu erro 403 às 11 da noite. Você busca no Google, acha 14 respostas genéricas de 2024, nenhuma pro seu cenário. Quem você pergunta?",
     accent: "from-orange-500/20 to-amber-500/10",
     iconColor: "text-orange-400",
     iconBg: "bg-orange-500/10",
   },
   {
     icon: AlertTriangle,
-    title: "Tudo muda toda semana",
-    description: "Novas IAs, frameworks, APIs. Impossível acompanhar sozinho e saber o que realmente importa.",
+    title: "47 ferramentas novas essa semana. Qual importa?",
+    description: "Manus, Devin, Claude Code, Gemini 3, GPT-5... toda semana nasce uma IA \"revolucionária\". Sem um filtro curado, você testa tudo e não domina nada.",
     accent: "from-amber-500/20 to-yellow-500/10",
     iconColor: "text-amber-400",
     iconBg: "bg-amber-500/10",
   },
   {
     icon: Users,
-    title: "Comunidades genéricas",
-    description: "Sem foco, sem profundidade, sem resultado. Conteúdo raso que não move o ponteiro do seu negócio.",
+    title: "Grupos com 500 pessoas e zero profundidade",
+    description: "Você entra num grupo de WhatsApp sobre IA. 200 mensagens por dia, memes, links aleatórios, e ninguém que realmente usa IA pra faturar. Barulho sem sinal.",
     accent: "from-yellow-500/20 to-red-500/10",
     iconColor: "text-yellow-400",
     iconBg: "bg-yellow-500/10",
@@ -112,11 +112,13 @@ export default function ProblemSection() {
               className="font-[var(--font-display)] font-bold tracking-[-0.02em] mb-6"
               style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}
             >
-              <span className="gradient-text-white">Aprender IA Sozinho</span>
+              <span className="gradient-text-white">Você Passa Horas</span>
               <br />
-              <span className="text-text-tertiary">É Uma Corrida Que Você</span>
+              <span className="gradient-text-white">Pesquisando IA Sozinho —</span>
               <br />
-              <span className="text-text-tertiary">Nunca Vai Ganhar</span>
+              <span className="text-text-tertiary">E Quando Finalmente Aprende,</span>
+              <br />
+              <span className="text-text-tertiary">Já Ficou Obsoleto</span>
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, x: -20 }}
@@ -125,9 +127,9 @@ export default function ProblemSection() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-text-secondary text-sm leading-relaxed max-w-md"
             >
-              O mercado de IA se reinventa a cada 90 dias. Quem tenta aprender sozinho
-              fica preso num ciclo: descobre uma ferramenta, começa a usar, e quando domina,
-              já existe algo melhor. É exaustivo — e desnecessário.
+              É a esteira da IA: você descobre uma ferramenta, passa 2 semanas aprendendo,
+              monta seu primeiro fluxo... e descobre que já saiu algo melhor. O mercado se
+              reinventa a cada 90 dias. Sozinho, você nunca sai desse ciclo.
             </motion.p>
           </div>
 

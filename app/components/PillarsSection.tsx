@@ -1,13 +1,13 @@
 "use client";
 import { motion } from "framer-motion";
-import { Video, BookOpen, Headphones, RefreshCw, Gift } from "lucide-react";
+import { Video, BookOpen, Headphones, RefreshCw, Users } from "lucide-react";
 import { useTrackSection } from "../hooks/useTrackSection";
 
 const pillars = [
   {
     icon: Video,
-    title: "Lives Semanais Estratégicas",
-    description: "Toda semana, uma sessão ao vivo: tendências, ferramentas novas, estratégias de negócio e Q&A direto com fundadores e especialistas.",
+    title: "Lives Semanais com Quem Fatura Milhões com IA",
+    description: "Não é teoria de professor — é estratégia de quem implementa. Toda semana, fundadores e especialistas convidados mostram exatamente o que estão usando pra gerar resultado com IA agora.",
     detail: "Todas ficam gravadas",
     accent: "violet",
     gradient: "from-violet-500 to-purple-600",
@@ -17,9 +17,9 @@ const pillars = [
   },
   {
     icon: BookOpen,
-    title: "+20h de Conteúdo Estruturado",
-    description: "Blocos de conhecimento com sistemas acionáveis. Cada trilha é um sistema completo que você implementa.",
-    detail: "7 trilhas práticas",
+    title: "7 Trilhas de Sistemas Prontos pra Implementar",
+    description: "De automação com n8n a vendas autônomas com agentes de IA. Cada trilha é um sistema que você copia, cola e roda no seu negócio.",
+    detail: "+20h de conteúdo prático",
     accent: "gold",
     gradient: "from-brand-gold to-amber-600",
     bgGlow: "bg-brand-gold/[0.06]",
@@ -28,9 +28,9 @@ const pillars = [
   },
   {
     icon: Headphones,
-    title: "Suporte Rápido",
-    description: "Suporte rápido com especialistas que já implementaram na prática.",
-    detail: "Respostas reais de quem vive IA",
+    title: "Suporte de Quem Já Implementou na Prática",
+    description: "Travou no webhook? Agente dando erro? Pergunta pra quem já resolveu esse exato problema — não pra um chatbot genérico.",
+    detail: "Respostas reais em horas",
     accent: "emerald",
     gradient: "from-emerald-500 to-teal-600",
     bgGlow: "bg-emerald-500/[0.06]",
@@ -39,9 +39,9 @@ const pillars = [
   },
   {
     icon: RefreshCw,
-    title: "Atualizações Constantes",
-    description: "Conteúdo que evolui com o mercado. Novas ferramentas, agentes e automações — você recebe tudo primeiro.",
-    detail: "Novidades toda semana",
+    title: "Conteúdo Que Envelhece? Aqui Não.",
+    description: "O mercado muda toda semana — e o conteúdo da Comunidade acompanha. Novas ferramentas, agentes e automações entram antes de virar notícia.",
+    detail: "Atualizado toda semana",
     accent: "blue",
     gradient: "from-blue-500 to-cyan-600",
     bgGlow: "bg-blue-500/[0.06]",
@@ -49,10 +49,10 @@ const pillars = [
     featured: false,
   },
   {
-    icon: Gift,
-    title: "1 Sorteio por Mês",
-    description: "Implementações práticas feitas ao vivo para membros da comunidade. Todo mês, um membro é selecionado para ter seu projeto implementado.",
-    detail: "Exclusivo para membros",
+    icon: Users,
+    title: "Rede de CEOs e Empreendedores que Usam IA",
+    description: "Não é grupo de curiosos — é uma rede de profissionais que usam IA pra faturar. Troque experiências, parcerias e atalhos com quem está no mesmo nível.",
+    detail: "Networking de alto nível",
     accent: "rose",
     gradient: "from-rose-500 to-pink-600",
     bgGlow: "bg-rose-500/[0.06]",

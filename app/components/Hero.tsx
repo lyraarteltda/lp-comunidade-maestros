@@ -163,20 +163,23 @@ export default function Hero() {
           </div>
         </motion.div>
 
-        {/* Headline — massive, split text animated, 3-line layout */}
+        {/* Headline — massive, split text animated, 4-line layout */}
         <div className="text-center mb-8">
           <h1
-            className="font-[var(--font-display)] font-extrabold leading-[0.95] tracking-[-0.04em]"
-            style={{ fontSize: "clamp(1.85rem, 6.5vw, 5.5rem)" }}
+            className="font-[var(--font-display)] font-extrabold leading-[0.95] tracking-[-0.03em]"
+            style={{ fontSize: "clamp(1.5rem, 5vw, 4rem)" }}
           >
             <span className="block gradient-text-white-strong">
-              <SplitText text="A Comunidade Que" delay={0.2} />
+              <SplitText text="Toda Semana, Você Recebe" delay={0.2} />
             </span>
             <span className="block mt-1 md:mt-2 gradient-text-white-strong">
-              <SplitText text="Te Mantém na" delay={0.4} />
+              <SplitText text="Sistemas e Estratégias de IA" delay={0.35} />
             </span>
             <span className="block mt-1 md:mt-2">
-              <SplitText text="Vanguarda da IA" delay={0.55} className="gradient-text-gold" />
+              <SplitText text="Que Seus Concorrentes Vão" delay={0.5} className="gradient-text-gold" />
+            </span>
+            <span className="block mt-1 md:mt-2">
+              <SplitText text="Descobrir em 6 Meses" delay={0.65} className="gradient-text-gold" />
             </span>
           </h1>
         </div>
@@ -185,13 +188,13 @@ export default function Hero() {
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.7, delay: 0.9, ease: [0.22, 1, 0.36, 1] }}
           className="max-w-2xl mx-auto text-center text-text-secondary leading-relaxed mb-12"
           style={{ fontSize: "clamp(1rem, 1.6vw, 1.2rem)" }}
         >
-          Lives semanais com especialistas, +20 horas de sistemas prontos pra implementar,
-          100+ agentes plug &amp; play e conteúdo que evolui com o mercado. Tudo que você precisa
-          pra dominar IA — sem ficar pra trás.
+          Pare de estudar IA sozinho e comece a implementar. Lives semanais com quem já
+          faturou milhões usando IA, 7 trilhas práticas com sistemas copy-paste, e suporte
+          real de especialistas — tudo por menos que o preço de um almoço executivo por semana.
         </motion.p>
 
       </div>

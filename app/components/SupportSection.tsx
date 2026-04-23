@@ -138,9 +138,9 @@ export default function SupportSection() {
                 <span className="gradient-text-white">Fique Travado</span>
               </h2>
               <p className="text-text-secondary leading-relaxed mb-8 max-w-md">
-                Dúvidas respondidas por quem já implementou — especialistas
-                que vivem IA todos os dias. Sem robô, sem FAQ genérica,
-                sem esperar semanas.
+                Travou no webhook do n8n às 11 da noite? Agente de IA respondendo
+                lixo? Automação rodando em loop? Posta na comunidade e recebe
+                resposta de quem já resolveu esse exato problema — em horas, não em dias.
               </p>
 
               <div className="space-y-4">

@@ -68,9 +68,9 @@ export default function LivesSection() {
               </h2>
 
               <p className="text-text-secondary leading-relaxed mb-8 max-w-md">
-                Cada semana, uma sessão ao vivo com foco estratégico. Ferramentas
-                mais recentes, cases reais e suas dúvidas respondidas ao vivo.
-                Nada de teoria — só o que você precisa pra aplicar.
+                Imagine terminar cada semana sabendo exatamente qual ferramenta de IA
+                usar, como automatizar o próximo processo do seu negócio, e com um
+                sistema novo pra implementar na segunda-feira. Isso é o que cada live entrega.
               </p>
 
               <div className="flex flex-wrap gap-2.5">

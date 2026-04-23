@@ -5,15 +5,15 @@ import { useTrackSection } from "../hooks/useTrackSection";
 import { useCheckoutUrl } from "../hooks/useCheckoutUrl";
 
 const included = [
-  "Lives semanais ao vivo com fundadores e especialistas convidados",
-  "+20h de sistemas prontos para implementar no seu negócio",
-  "7 trilhas completas: de automação a vendas autônomas com IA",
-  "Suporte rápido com quem já faturou milhões usando IA",
-  "Conteúdo atualizado toda semana — acompanha o ritmo do mercado",
-  "Rede exclusiva de CEOs e empreendedores que usam IA na prática",
+  "Lives semanais com quem fatura milhões usando IA (52 por ano)",
+  "7 trilhas com +20h de sistemas prontos pra copiar e implementar",
+  "Suporte de especialistas que já resolveram o SEU tipo de problema",
+  "100+ agentes de IA prontos pra copiar, colar e rodar no seu negócio",
+  "Arsenal de 100+ ferramentas, prompts e templates testados em produção",
+  "Conteúdo atualizado toda semana — nunca fica obsoleto",
+  "Rede exclusiva de CEOs e empreendedores que usam IA pra faturar",
   "Biblioteca completa de gravações — assista quando e onde quiser",
-  "Arsenal de 100+ ferramentas, prompts e templates testados",
-  "100+ agentes de IA prontos pra copiar, colar e rodar",
+  "Bônus: Curso Claude Code do zero ao avançado (Valor: R$497)",
 ];
 
 
@@ -74,7 +74,8 @@ export default function Pricing() {
             <AlertTriangle className="w-5 h-5 text-amber-400 shrink-0 mt-0.5" />
             <p className="text-sm text-text-secondary leading-relaxed">
               <span className="font-bold text-text-primary">Estamos em 117/120 vagas.</span>{" "}
-              Quando chegarmos em 120, a mensalidade sobe. Quem entrar agora tem{" "}
+              Limitamos a 120 membros para manter a qualidade do suporte individual.
+              Quando lotarmos, a mensalidade sobe para R$147. Quem entrar agora tem{" "}
               <span className="font-bold text-brand-gold">assinatura congelada</span>{" "}
               no preço atual — para sempre.
             </p>
@@ -86,7 +87,7 @@ export default function Pricing() {
               <span className="font-semibold text-brand-gold">Bônus para os 3 últimos:</span>{" "}
               curso completo de{" "}
               <span className="font-bold text-text-primary">Claude Code: do zero ao avançado</span>{" "}
-              (em breve).
+              — Valor: R$497.
             </p>
           </div>
         </motion.div>
@@ -115,9 +116,31 @@ export default function Pricing() {
             </div>
 
             <div className="p-8 md:p-10">
+              {/* Value stack */}
+              <div className="space-y-2.5 mb-8">
+                {[
+                  { item: "Lives semanais com especialistas (52/ano)", value: "R$6.000" },
+                  { item: "7 trilhas com +20h de sistemas prontos", value: "R$3.000" },
+                  { item: "Suporte individual de especialistas", value: "R$2.400" },
+                  { item: "100+ agentes e templates prontos", value: "R$1.500" },
+                  { item: "Rede exclusiva de CEOs e empreendedores", value: "R$1.200" },
+                  { item: "Atualizações semanais de conteúdo", value: "R$1.200" },
+                ].map((row) => (
+                  <div key={row.item} className="flex items-center justify-between text-sm">
+                    <span className="text-text-secondary">{row.item}</span>
+                    <span className="text-text-muted line-through ml-3 shrink-0">{row.value}/ano</span>
+                  </div>
+                ))}
+                <div className="h-px bg-gradient-to-r from-transparent via-brand-gold/15 to-transparent" />
+                <div className="flex items-center justify-between text-sm font-semibold">
+                  <span className="text-text-primary">Valor total de mercado</span>
+                  <span className="text-text-muted line-through">R$15.300/ano</span>
+                </div>
+              </div>
+
               {/* Price */}
               <div className="text-center mb-10">
-                <p className="text-text-muted text-xs tracking-wider uppercase mb-4">Investimento mensal</p>
+                <p className="text-text-muted text-xs tracking-wider uppercase mb-4">Seu investimento</p>
                 <div className="flex items-baseline justify-center gap-1.5">
                   <span className="text-text-tertiary text-lg font-medium">R$</span>
                   <span className="font-[var(--font-display)] font-extrabold text-5xl md:text-6xl tracking-tight gradient-text-gold">
@@ -164,7 +187,7 @@ export default function Pricing() {
                   animation: "pulse-gold 3s infinite",
                 }}
               >
-                Garantir Minha Vaga
+                Garantir Minha Vaga Antes Que o Preço Suba
                 <ArrowRight className="w-5 h-5" />
               </motion.a>
 
