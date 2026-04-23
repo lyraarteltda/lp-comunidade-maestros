@@ -1,5 +1,5 @@
 "use client";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
 import { Star, Quote, Play, Pause } from "lucide-react";
 import { useTrackSection } from "../hooks/useTrackSection";
@@ -115,20 +115,72 @@ function VideoCard({ t }: { t: VideoTestimonial }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
-  const togglePlay = () => {
+  const handleClick = useCallback(() => {
     if (!videoRef.current) return;
+    const v = videoRef.current;
+
+    const isMobile = window.innerWidth < 768;
+    if (isMobile) {
+      v.muted = false;
+      v.controls = true;
+      const asAny = v as unknown as {
+        webkitEnterFullscreen?: () => void;
+        requestFullscreen?: () => Promise<void>;
+      };
+      if (asAny.webkitEnterFullscreen) {
+        asAny.webkitEnterFullscreen();
+      } else if (asAny.requestFullscreen) {
+        asAny.requestFullscreen().catch(() => {});
+      }
+      v.play().catch(() => {});
+      setIsPlaying(true);
+      return;
+    }
+
     if (isPlaying) {
-      videoRef.current.pause();
+      v.pause();
       setIsPlaying(false);
     } else {
-      videoRef.current.play();
+      v.play();
       setIsPlaying(true);
     }
-  };
+  }, [isPlaying]);
+
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v) return;
+    const onExitFullscreen = () => {
+      const fsEl =
+        document.fullscreenElement ??
+        (document as unknown as { webkitFullscreenElement?: Element }).webkitFullscreenElement;
+      if (!fsEl) {
+        v.muted = true;
+        v.controls = false;
+        v.currentTime = 0;
+        v.play().catch(() => {});
+        setIsPlaying(false);
+      }
+    };
+    const onWebkitEnd = () => {
+      v.muted = true;
+      v.controls = false;
+      v.currentTime = 0;
+      v.play().catch(() => {});
+      setIsPlaying(false);
+    };
+    document.addEventListener("fullscreenchange", onExitFullscreen);
+    document.addEventListener("webkitfullscreenchange", onExitFullscreen);
+    v.addEventListener("webkitendfullscreen", onWebkitEnd);
+    return () => {
+      document.removeEventListener("fullscreenchange", onExitFullscreen);
+      document.removeEventListener("webkitfullscreenchange", onExitFullscreen);
+      v.removeEventListener("webkitendfullscreen", onWebkitEnd);
+    };
+  }, []);
 
   return (
     <div className="shrink-0 w-[280px] md:w-[300px] rounded-2xl overflow-hidden mx-2 border border-white/[0.06] bg-surface-2/60 backdrop-blur-sm group">
-      <div className="relative aspect-[9/14] bg-surface-3 cursor-pointer" onClick={togglePlay}>
+      <div className="relative aspect-[9/14] bg-surface-3 cursor-pointer" onClick={handleClick}>
         <video
           ref={videoRef}
           src={t.videoSrc}
@@ -136,9 +188,10 @@ function VideoCard({ t }: { t: VideoTestimonial }) {
           playsInline
           preload="metadata"
           muted
+          data-testimonial
           className="w-full h-full object-cover"
           onEnded={() => setIsPlaying(false)}
-          onPlay={() => { if (videoRef.current) videoRef.current.muted = false; }}
+          onPlay={() => { if (videoRef.current && window.innerWidth >= 768) videoRef.current.muted = false; }}
         />
         <div className={`absolute inset-0 bg-gradient-to-t from-surface-0/90 via-surface-0/20 to-transparent transition-opacity duration-300 ${isPlaying ? "opacity-0 hover:opacity-100" : "opacity-100"}`}>
           <div className="absolute inset-0 flex items-center justify-center">
