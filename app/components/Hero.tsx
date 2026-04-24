@@ -119,7 +119,7 @@ export default function Hero() {
   return (
     <section
       ref={sectionRef}
-      className="relative flex items-center justify-center overflow-hidden bg-surface-0 noise-bg"
+      className="relative flex items-center justify-center overflow-hidden bg-surface-0 noise-bg min-h-[90vh] md:min-h-[85vh]"
     >
       {/* Layered mesh gradient background with parallax */}
       <div className="absolute inset-0">

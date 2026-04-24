@@ -51,7 +51,7 @@ export default function Header() {
             Maestros<span className="text-brand-gold">.</span>
           </a>
 
-          <nav className="hidden md:flex items-center gap-8">
+          <nav aria-label="Principal" className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
               <a
                 key={link.href}
@@ -74,7 +74,7 @@ export default function Header() {
 
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden text-text-primary p-2"
+            className="md:hidden text-text-primary p-2 min-w-[44px] min-h-[44px] flex items-center justify-center"
             aria-label="Menu"
             aria-expanded={mobileOpen}
           >
@@ -92,7 +92,7 @@ export default function Header() {
             transition={{ duration: 0.3 }}
             className="fixed inset-0 z-40 bg-surface-0/95 backdrop-blur-xl pt-20"
           >
-            <nav className="flex flex-col items-center gap-6 py-12">
+            <nav aria-label="Menu mobile" className="flex flex-col items-center gap-6 py-12">
               {navLinks.map((link) => (
                 <a
                   key={link.href}

@@ -13,7 +13,7 @@ const pillars = [
     accent: "violet",
     gradient: "from-violet-500 to-purple-600",
     bgGlow: "bg-violet-500/[0.06]",
-    span: "md:col-span-2 md:row-span-2",
+    span: "md:col-span-2 lg:col-span-2 lg:row-span-2",
     featured: true,
   },
   {
@@ -111,7 +111,7 @@ export default function PillarsSection() {
         </div>
 
         {/* Bento grid */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
           {pillars.map((pillar, i) => {
             const Icon = pillar.icon;
             const colors = accentMap[pillar.accent];

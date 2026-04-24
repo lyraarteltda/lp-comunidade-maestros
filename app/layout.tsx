@@ -22,6 +22,17 @@ export const metadata: Metadata = {
   title: "Comunidade Maestros da IA — Vanguarda em Inteligência Artificial",
   description:
     "Acesso contínuo a lives semanais, +20h de conteúdo estruturado em blocos de conhecimento, suporte de especialistas e atualizações constantes. R$97/mês.",
+  keywords: [
+    "IA para negócios",
+    "automação com IA",
+    "curso inteligência artificial",
+    "IA para empreendedores",
+    "agentes de IA",
+    "comunidade IA",
+    "automação n8n",
+    "inteligência artificial prática",
+  ],
+  authors: [{ name: "Maestria Academy" }],
   openGraph: {
     title: "Comunidade Maestros da IA — Vanguarda em Inteligência Artificial",
     description:
@@ -44,10 +55,21 @@ export const metadata: Metadata = {
     title: "Comunidade Maestros da IA",
     description:
       "Lives semanais com especialistas, +20h de conteúdo, 100+ agentes. R$97/mês.",
+    images: ["/og-image.png"],
+  },
+  alternates: {
+    canonical: "https://comunidade.maestrosdaia.com",
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-snippet": -1,
+      "max-image-preview": "large",
+      "max-video-preview": -1,
+    },
   },
 };
 

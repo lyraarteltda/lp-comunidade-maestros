@@ -19,7 +19,7 @@ export default function Footer() {
               href="https://instagram.com/maestrosdaia"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-text-muted hover:text-text-primary transition-colors p-1"
+              className="text-text-muted hover:text-text-primary transition-colors p-2.5 min-w-[44px] min-h-[44px] flex items-center justify-center"
               aria-label="Instagram"
             >
               <svg className="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -32,7 +32,7 @@ export default function Footer() {
               href="https://tiktok.com/@maestrosdaia"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-text-muted hover:text-text-primary transition-colors p-1"
+              className="text-text-muted hover:text-text-primary transition-colors p-2.5 min-w-[44px] min-h-[44px] flex items-center justify-center"
               aria-label="TikTok"
             >
               <svg className="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="currentColor">
@@ -43,7 +43,7 @@ export default function Footer() {
               href="https://wa.me/5511995631610"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-text-muted hover:text-text-primary transition-colors p-1"
+              className="text-text-muted hover:text-text-primary transition-colors p-2.5 min-w-[44px] min-h-[44px] flex items-center justify-center"
               aria-label="WhatsApp"
             >
               <svg className="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="currentColor">
