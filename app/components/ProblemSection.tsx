@@ -58,7 +58,7 @@ export default function ProblemSection() {
       stagger: 0.12,
       duration: 0.7,
       ease: "power3.out",
-      clearProps: "transform,opacity",
+      clearProps: "all",
       scrollTrigger: {
         trigger: sectionRef.current,
         start: "top 70%",

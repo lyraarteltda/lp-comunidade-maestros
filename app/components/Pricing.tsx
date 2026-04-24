@@ -168,8 +168,6 @@ export default function Pricing() {
                 ))}
               </div>
 
-              <div className="mb-10" />
-
               {/* CTA */}
               <motion.a
                 href={checkoutUrl}

@@ -4,8 +4,9 @@ import { motion } from "framer-motion";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Sparkles } from "lucide-react";
+import { Sparkles, ArrowRight } from "lucide-react";
 import posthog from "posthog-js";
+import { useCheckoutUrl } from "../hooks/useCheckoutUrl";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -15,10 +16,14 @@ function SplitText({ text, className, delay = 0 }: { text: string; className?: s
   useGSAP(() => {
     if (!ref.current) return;
     const chars = ref.current.querySelectorAll(".char");
-    gsap.from(chars, {
+    gsap.fromTo(chars, {
       y: 80,
       rotateX: -40,
       filter: "blur(8px)",
+    }, {
+      y: 0,
+      rotateX: 0,
+      filter: "blur(0px)",
       stagger: 0.025,
       duration: 0.7,
       delay,
@@ -47,6 +52,7 @@ function SplitText({ text, className, delay = 0 }: { text: string; className?: s
 
 export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
+  const checkoutUrl = useCheckoutUrl();
 
   useGSAP(() => {
     if (!sectionRef.current) return;
@@ -167,7 +173,7 @@ export default function Hero() {
         <div className="text-center mb-8">
           <h1
             className="font-[var(--font-display)] font-extrabold leading-[0.95] tracking-[-0.03em]"
-            style={{ fontSize: "clamp(1.5rem, 5vw, 4rem)" }}
+            style={{ fontSize: "clamp(2rem, 5vw, 4rem)" }}
           >
             <span className="block gradient-text-white-strong">
               <SplitText text="Toda Semana, Você Recebe" delay={0.2} />
@@ -189,13 +195,43 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.9, ease: [0.22, 1, 0.36, 1] }}
-          className="max-w-2xl mx-auto text-center text-text-secondary leading-relaxed mb-12"
+          className="max-w-2xl mx-auto text-center text-text-secondary leading-relaxed mb-10"
           style={{ fontSize: "clamp(1rem, 1.6vw, 1.2rem)" }}
         >
           Pare de estudar IA sozinho e comece a implementar. Lives semanais com quem já
           faturou milhões usando IA, 7 trilhas práticas com sistemas copy-paste, e suporte
           real de especialistas — tudo por menos que o preço de um almoço executivo por semana.
         </motion.p>
+
+        {/* CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 1.1, ease: [0.22, 1, 0.36, 1] }}
+          className="flex flex-col items-center gap-4"
+        >
+          <motion.a
+            href={checkoutUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-ph-capture-attribute-cta="hero_checkout"
+            data-ph-capture-attribute-position="hero"
+            whileHover={{ scale: 1.04, y: -2 }}
+            whileTap={{ scale: 0.97 }}
+            transition={{ type: "spring", stiffness: 400, damping: 17 }}
+            className="cta-shimmer inline-flex items-center gap-3 font-bold px-10 py-4 rounded-xl text-lg shadow-xl shadow-brand-gold/20"
+            style={{
+              background: "linear-gradient(135deg, #F5A623 0%, #CC8400 100%)",
+              color: "var(--color-surface-0)",
+            }}
+          >
+            Garantir Minha Vaga — R$97/mês
+            <ArrowRight className="w-5 h-5" />
+          </motion.a>
+          <p className="text-text-tertiary text-xs">
+            Garantia incondicional de 7 dias · Cancele quando quiser
+          </p>
+        </motion.div>
 
       </div>
 

@@ -99,7 +99,7 @@ export default function Founders() {
             className="glass-card rounded-2xl p-4 md:p-8 mb-10 grid grid-cols-3 gap-3 md:gap-6 divide-x divide-white/[0.06]"
           >
             <div className="text-center">
-              <div className="font-[var(--font-display)] font-bold text-sm md:text-3xl gradient-text-gold">
+              <div className="font-[var(--font-display)] font-bold text-xl md:text-3xl gradient-text-gold">
                 <span className="founder-stat" data-value="5000000">5.000.000</span>
               </div>
               <div className="text-text-muted text-xs mt-1">Faturamento anual em R$</div>

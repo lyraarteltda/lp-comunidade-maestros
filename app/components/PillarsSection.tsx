@@ -1,7 +1,8 @@
 "use client";
 import { motion } from "framer-motion";
-import { Video, BookOpen, Headphones, RefreshCw, Users } from "lucide-react";
+import { Video, BookOpen, Headphones, RefreshCw, Users, ArrowRight } from "lucide-react";
 import { useTrackSection } from "../hooks/useTrackSection";
+import { useCheckoutUrl } from "../hooks/useCheckoutUrl";
 
 const pillars = [
   {
@@ -71,6 +72,7 @@ const accentMap: Record<string, { icon: string; border: string; tag: string }> =
 
 export default function PillarsSection() {
   const trackRef = useTrackSection('pillars');
+  const checkoutUrl = useCheckoutUrl();
   return (
     <section ref={trackRef} id="pilares" aria-labelledby="pilares-heading" className="relative py-24 md:py-32 bg-surface-2 noise-bg overflow-hidden">
       <div className="absolute -top-1/3 left-1/3 w-[700px] h-[700px] rounded-full bg-brand-gold/[0.02] blur-[150px]" />
@@ -122,7 +124,7 @@ export default function PillarsSection() {
                 transition={{ duration: 0.6, delay: i * 0.1 }}
                 whileHover={{ y: -4, transition: { duration: 0.25, type: "spring", stiffness: 300 } }}
                 className={`group relative glass-card rounded-2xl overflow-hidden transition-colors duration-500 ${pillar.span} ${
-                  pillar.featured ? "p-8 md:p-10" : "p-7"
+                  pillar.featured ? "p-8 md:p-10 border-brand-gold/15" : "p-7"
                 }`}
               >
                 {/* Top accent line on hover */}
@@ -158,6 +160,37 @@ export default function PillarsSection() {
             );
           })}
         </div>
+
+        {/* Mid-page CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3 }}
+          className="text-center mt-14"
+        >
+          <motion.a
+            href={checkoutUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-ph-capture-attribute-cta="pillars_checkout"
+            data-ph-capture-attribute-position="pillars"
+            whileHover={{ scale: 1.03, y: -2 }}
+            whileTap={{ scale: 0.97 }}
+            transition={{ type: "spring", stiffness: 400, damping: 17 }}
+            className="cta-shimmer inline-flex items-center gap-3 font-bold px-10 py-4 rounded-xl text-base shadow-lg shadow-brand-gold/15"
+            style={{
+              background: "linear-gradient(135deg, #F5A623 0%, #CC8400 100%)",
+              color: "var(--color-surface-0)",
+            }}
+          >
+            Quero Acesso a Tudo Isso — R$97/mês
+            <ArrowRight className="w-5 h-5" />
+          </motion.a>
+          <p className="text-text-tertiary text-xs mt-3">
+            Garantia de 7 dias · Cancele quando quiser
+          </p>
+        </motion.div>
       </div>
     </section>
   );

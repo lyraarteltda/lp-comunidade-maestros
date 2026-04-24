@@ -1,7 +1,8 @@
 "use client";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ArrowRight } from "lucide-react";
+import { useCheckoutUrl } from "../hooks/useCheckoutUrl";
 
 const navLinks = [
   { label: "Pilares", href: "#pilares" },
@@ -14,6 +15,7 @@ const navLinks = [
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const checkoutUrl = useCheckoutUrl();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
@@ -43,11 +45,20 @@ export default function Header() {
               <a
                 key={link.href}
                 href={link.href}
-                className="text-[13px] text-text-tertiary hover:text-text-primary transition-colors duration-200 font-medium"
+                className="text-[13px] text-text-secondary hover:text-text-primary transition-colors duration-200 font-medium"
               >
                 {link.label}
               </a>
             ))}
+            <a
+              href={checkoutUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-[13px] font-bold px-4 py-2 rounded-lg bg-brand-gold text-surface-0 hover:bg-brand-gold-light transition-colors duration-200"
+            >
+              Entrar
+              <ArrowRight className="w-3.5 h-3.5" />
+            </a>
           </nav>
 
           <button
@@ -80,6 +91,16 @@ export default function Header() {
                   {link.label}
                 </a>
               ))}
+              <a
+                href={checkoutUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setMobileOpen(false)}
+                className="inline-flex items-center gap-2 text-lg font-bold px-8 py-3 rounded-xl bg-brand-gold text-surface-0 mt-4"
+              >
+                Entrar na Comunidade
+                <ArrowRight className="w-5 h-5" />
+              </a>
             </nav>
           </motion.div>
         )}

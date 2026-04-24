@@ -119,7 +119,7 @@ export default function KnowledgeBlocks() {
       stagger: 0.08,
       duration: 0.6,
       ease: "power3.out",
-      clearProps: "transform,opacity",
+      clearProps: "all",
       scrollTrigger: {
         trigger: gridRef.current,
         start: "top 75%",

@@ -3,9 +3,9 @@
 @theme inline {
   --color-surface-0: #09090B;
   --color-surface-1: #0C1018;
-  --color-surface-2: #141A24;
-  --color-surface-3: #1C2333;
-  --color-surface-4: #242C3D;
+  --color-surface-2: #1A2232;
+  --color-surface-3: #232D3F;
+  --color-surface-4: #2C3750;
 
   --color-brand-gold: #F5A623;
   --color-brand-gold-light: #FFD666;
@@ -13,8 +13,8 @@
 
   --color-text-primary: #F0F6FC;
   --color-text-secondary: #B8C4D4;
-  --color-text-tertiary: #7D8CA1;
-  --color-text-muted: #4A5568;
+  --color-text-tertiary: #94A3B8;
+  --color-text-muted: #64748B;
 
   --font-display: var(--font-space-grotesk);
   --font-body: var(--font-geist-sans);
@@ -134,10 +134,10 @@ body {
 
 /* Glass card system */
 .glass-card {
-  background: rgba(22, 27, 34, 0.6);
+  background: rgba(22, 27, 34, 0.8);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(240, 246, 252, 0.06);
+  border: 1px solid rgba(240, 246, 252, 0.10);
 }
 
 .glass-card-hover {
@@ -172,7 +172,7 @@ body {
 /* Section connector — gradient line between sections */
 .section-connector {
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(240, 246, 252, 0.06), transparent);
+  background: linear-gradient(90deg, transparent, rgba(245, 166, 35, 0.12), transparent);
 }
 
 /* Floating decorative orb */
