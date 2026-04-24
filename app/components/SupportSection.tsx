@@ -43,7 +43,7 @@ function StatCounter({ value, suffix, label, delay }: { value: number; suffix: s
 export default function SupportSection() {
   const trackRef = useTrackSection('support');
   return (
-    <section ref={trackRef} className="relative py-16 md:py-24 bg-surface-1 noise-bg overflow-hidden">
+    <section ref={trackRef} aria-labelledby="support-heading" className="relative py-16 md:py-24 bg-surface-1 noise-bg overflow-hidden">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/[0.04] to-transparent" />
 
       <div className="max-w-6xl mx-auto px-6">
@@ -130,6 +130,7 @@ export default function SupportSection() {
                 Suporte real
               </p>
               <h2
+                id="support-heading"
                 className="font-[var(--font-display)] font-bold tracking-[-0.02em] mb-6"
                 style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}
               >

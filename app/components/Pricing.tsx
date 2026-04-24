@@ -178,11 +178,10 @@ export default function Pricing() {
                 whileHover={{ scale: 1.02, y: -1 }}
                 whileTap={{ scale: 0.98 }}
                 transition={{ type: "spring", stiffness: 400, damping: 20 }}
-                className="cta-shimmer w-full flex items-center justify-center gap-3 font-bold py-4 rounded-xl text-lg shadow-xl shadow-brand-gold/15"
+                className="cta-shimmer w-full flex items-center justify-center gap-3 font-bold py-4 rounded-xl text-lg shadow-xl shadow-brand-gold/20"
                 style={{
                   background: "linear-gradient(135deg, #F5A623 0%, #CC8400 100%)",
                   color: "var(--color-surface-0)",
-                  animation: "pulse-gold 3s infinite",
                 }}
               >
                 Garantir Minha Vaga Antes Que o Preço Suba

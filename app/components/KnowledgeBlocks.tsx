@@ -99,7 +99,7 @@ const gridPositions = [
   "",
   "",
   "md:col-span-2",
-  "",
+  "md:col-span-2",
   "",
   "md:col-span-3",
 ];
@@ -128,7 +128,7 @@ export default function KnowledgeBlocks() {
   }, { scope: gridRef });
 
   return (
-    <section ref={trackRef} id="trilhas" className="relative py-16 md:py-24 bg-surface-1 overflow-hidden">
+    <section ref={trackRef} id="trilhas" aria-labelledby="trilhas-heading" className="relative py-16 md:py-24 bg-surface-1 overflow-hidden">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/[0.04] to-transparent" />
 
       <div className="max-w-6xl mx-auto px-6">
@@ -142,6 +142,7 @@ export default function KnowledgeBlocks() {
             Trilhas de conhecimento
           </motion.p>
           <motion.h2
+            id="trilhas-heading"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}

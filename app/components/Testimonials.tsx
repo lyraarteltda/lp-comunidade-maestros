@@ -180,13 +180,13 @@ function VideoCard({ t }: { t: VideoTestimonial }) {
 
   return (
     <div className="shrink-0 w-[280px] md:w-[300px] rounded-2xl overflow-hidden mx-2 border border-white/[0.06] bg-surface-2/60 backdrop-blur-sm group">
-      <div className="relative aspect-[9/14] bg-surface-3 cursor-pointer" onClick={handleClick}>
+      <div className="relative aspect-[9/14] bg-surface-3 cursor-pointer" role="button" aria-label={`${isPlaying ? "Pausar" : "Reproduzir"} depoimento de ${t.name}`} tabIndex={0} onClick={handleClick} onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); handleClick(); } }}>
         <video
           ref={videoRef}
           src={t.videoSrc}
           poster={t.videoSrc.replace('.mp4', '-poster.jpg')}
           playsInline
-          preload="metadata"
+          preload="none"
           muted
           data-testimonial
           className="w-full h-full object-cover"
@@ -248,11 +248,11 @@ function TextCard({ t }: { t: TextTestimonial }) {
 
 export default function Testimonials() {
   const trackRef = useTrackSection('testimonials');
-  const videoCards = [...videoTestimonials, ...videoTestimonials, ...videoTestimonials];
-  const textCards = [...textTestimonials, ...textTestimonials, ...textTestimonials, ...textTestimonials];
+  const videoCards = [...videoTestimonials, ...videoTestimonials];
+  const textCards = [...textTestimonials, ...textTestimonials];
 
   return (
-    <section ref={trackRef} id="depoimentos" className="relative py-24 md:py-32 bg-surface-1 overflow-hidden">
+    <section ref={trackRef} id="depoimentos" aria-labelledby="depoimentos-heading" className="relative py-24 md:py-32 bg-surface-1 overflow-hidden">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/[0.03] to-transparent" />
 
       <div className="max-w-6xl mx-auto px-6">
@@ -266,6 +266,7 @@ export default function Testimonials() {
             Quem já faz parte
           </motion.p>
           <motion.h2
+            id="depoimentos-heading"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -277,34 +278,30 @@ export default function Testimonials() {
         </div>
       </div>
 
-      {/* Video testimonials row — scrolls left */}
+      {/* Video testimonials row — CSS marquee scrolling left */}
       <div className="relative mb-5">
         <div className="absolute left-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-r from-surface-1 via-surface-1/80 to-transparent z-10 pointer-events-none" />
         <div className="absolute right-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-l from-surface-1 via-surface-1/80 to-transparent z-10 pointer-events-none" />
-        <motion.div
-          className="flex"
-          animate={{ x: [0, -(videoTestimonials.length * 316)] }}
-          transition={{ x: { repeat: Infinity, repeatType: "loop", duration: 45, ease: "linear" } }}
-        >
-          {videoCards.map((t, i) => (
-            <VideoCard key={`v-${i}`} t={t} />
-          ))}
-        </motion.div>
+        <div className="overflow-hidden">
+          <div className="marquee-left" style={{ "--marquee-duration": "45s" } as React.CSSProperties}>
+            {videoCards.map((t, i) => (
+              <VideoCard key={`v-${i}`} t={t} />
+            ))}
+          </div>
+        </div>
       </div>
 
-      {/* Text testimonials row — scrolls right */}
+      {/* Text testimonials row — CSS marquee scrolling right */}
       <div className="relative">
         <div className="absolute left-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-r from-surface-1 via-surface-1/80 to-transparent z-10 pointer-events-none" />
         <div className="absolute right-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-l from-surface-1 via-surface-1/80 to-transparent z-10 pointer-events-none" />
-        <motion.div
-          className="flex"
-          animate={{ x: [-(textTestimonials.length * 316), 0] }}
-          transition={{ x: { repeat: Infinity, repeatType: "loop", duration: 40, ease: "linear" } }}
-        >
-          {textCards.map((t, i) => (
-            <TextCard key={`t-${i}`} t={t} />
-          ))}
-        </motion.div>
+        <div className="overflow-hidden">
+          <div className="marquee-right" style={{ "--marquee-duration": "40s" } as React.CSSProperties}>
+            {textCards.map((t, i) => (
+              <TextCard key={`t-${i}`} t={t} />
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );

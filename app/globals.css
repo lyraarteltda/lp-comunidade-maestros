@@ -14,7 +14,7 @@
   --color-text-primary: #F0F6FC;
   --color-text-secondary: #B8C4D4;
   --color-text-tertiary: #94A3B8;
-  --color-text-muted: #64748B;
+  --color-text-muted: #7B8BA2;
 
   --font-display: var(--font-space-grotesk);
   --font-body: var(--font-geist-sans);
@@ -197,8 +197,26 @@ body {
 }
 
 @keyframes pulse-gold {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(245, 166, 35, 0.35); }
-  50% { box-shadow: 0 0 0 18px rgba(245, 166, 35, 0); }
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.015); opacity: 0.92; }
+}
+
+/* Infinite horizontal marquee — CSS-only, no JS re-renders */
+@keyframes marquee-left {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@keyframes marquee-right {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+.marquee-left {
+  display: flex;
+  animation: marquee-left var(--marquee-duration, 45s) linear infinite;
+}
+.marquee-right {
+  display: flex;
+  animation: marquee-right var(--marquee-duration, 40s) linear infinite;
 }
 
 @keyframes spin-slow {

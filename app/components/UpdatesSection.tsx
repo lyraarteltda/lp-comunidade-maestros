@@ -37,7 +37,7 @@ const updates = [
 export default function UpdatesSection() {
   const trackRef = useTrackSection('updates');
   return (
-    <section ref={trackRef} className="relative py-16 md:py-24 bg-surface-2 noise-bg overflow-hidden">
+    <section ref={trackRef} aria-labelledby="updates-heading" className="relative py-16 md:py-24 bg-surface-2 noise-bg overflow-hidden">
       <div className="relative z-10 max-w-6xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           {/* Left: headline */}
@@ -52,6 +52,7 @@ export default function UpdatesSection() {
                 Em constante evolução
               </p>
               <h2
+                id="updates-heading"
                 className="font-[var(--font-display)] font-bold tracking-[-0.02em] mb-6"
                 style={{ fontSize: "clamp(1.8rem, 3vw, 2.5rem)" }}
               >

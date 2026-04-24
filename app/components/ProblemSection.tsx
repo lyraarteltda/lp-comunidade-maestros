@@ -86,7 +86,7 @@ export default function ProblemSection() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative pt-8 md:pt-12 lg:pt-16 pb-16 md:pb-24 bg-surface-1 noise-bg overflow-hidden">
+    <section ref={sectionRef} aria-labelledby="problem-heading" className="relative pt-8 md:pt-12 lg:pt-16 pb-16 md:pb-24 bg-surface-1 noise-bg overflow-hidden">
       {/* Decorative gradient */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-red-500/[0.03] blur-[150px]" />
 
@@ -105,6 +105,7 @@ export default function ProblemSection() {
               O problema
             </motion.p>
             <motion.h2
+              id="problem-heading"
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}

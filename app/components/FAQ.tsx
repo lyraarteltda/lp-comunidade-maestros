@@ -52,6 +52,7 @@ function FAQItem({ faq, index }: { faq: (typeof faqs)[0]; index: number }) {
     >
       <button
         onClick={() => setOpen(!open)}
+        aria-expanded={open}
         className="w-full flex items-center justify-between py-5 md:py-6 text-left group"
       >
         <span className={`text-sm md:text-base font-medium pr-6 transition-colors duration-200 ${
@@ -90,7 +91,7 @@ function FAQItem({ faq, index }: { faq: (typeof faqs)[0]; index: number }) {
 export default function FAQ() {
   const trackRef = useTrackSection('faq');
   return (
-    <section ref={trackRef} id="faq" aria-labelledby="faq-heading" className="relative py-12 md:py-16 bg-surface-1">
+    <section ref={trackRef} id="faq" aria-labelledby="faq-heading" className="relative py-20 md:py-28 bg-surface-1">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/[0.04] to-transparent" />
 
       <div className="max-w-3xl mx-auto px-6">

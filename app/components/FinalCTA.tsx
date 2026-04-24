@@ -84,8 +84,12 @@ export default function FinalCTA() {
             whileHover={{ scale: 1.04, y: -3 }}
             whileTap={{ scale: 0.97 }}
             transition={{ type: "spring", stiffness: 400, damping: 17 }}
-            className="cta-shimmer inline-flex items-center gap-3 bg-brand-gold text-surface-0 font-bold px-12 py-5 rounded-xl text-lg shadow-xl shadow-brand-gold/25"
-            style={{ animation: "pulse-gold 3s infinite" }}
+            className="cta-shimmer inline-flex items-center gap-3 font-bold px-12 py-5 rounded-xl text-lg shadow-xl shadow-brand-gold/25"
+            style={{
+              background: "linear-gradient(135deg, #F5A623 0%, #CC8400 100%)",
+              color: "var(--color-surface-0)",
+              animation: "pulse-gold 3s infinite",
+            }}
           >
             Entrar Agora e Receber Meu Primeiro Sistema
             <ArrowRight className="w-5 h-5" />

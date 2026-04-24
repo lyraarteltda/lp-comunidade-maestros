@@ -61,7 +61,7 @@ export default function Founders() {
   }, { scope: statsRef });
 
   return (
-    <section ref={trackRef} className="relative py-24 md:py-32 bg-surface-2 noise-bg overflow-hidden">
+    <section ref={trackRef} aria-labelledby="founders-heading" className="relative py-24 md:py-32 bg-surface-2 noise-bg overflow-hidden">
       <div className="absolute -bottom-1/3 -left-1/4 w-[700px] h-[700px] rounded-full bg-brand-gold/[0.025] blur-[160px]" />
       <div className="absolute top-0 right-0 w-[400px] h-[400px] rounded-full bg-violet-500/[0.02] blur-[120px]" />
 
@@ -77,6 +77,7 @@ export default function Founders() {
             Quem está por trás
           </p>
           <h2
+            id="founders-heading"
             className="font-[var(--font-display)] font-bold tracking-[-0.02em] mb-4"
             style={{ fontSize: "clamp(1.8rem, 4vw, 3rem)" }}
           >
@@ -139,6 +140,7 @@ export default function Founders() {
                   fill
                   sizes="(max-width: 768px) 112px, 144px"
                   className="object-cover object-top"
+                  loading="lazy"
                 />
               </div>
 
