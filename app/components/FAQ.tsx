@@ -101,7 +101,7 @@ export default function FAQ() {
             viewport={{ once: true }}
             className="text-[11px] font-bold tracking-[0.15em] uppercase text-brand-gold mb-4"
           >
-            Dúvidas frequentes
+            Tire suas dúvidas
           </motion.p>
           <motion.h2
             id="faq-heading"

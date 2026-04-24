@@ -10,7 +10,7 @@ export default function Footer() {
               Maestros<span className="text-brand-gold">.</span>
             </p>
             <p className="text-text-muted text-xs">
-              Lyra Arte LTDA &mdash; Todos os direitos reservados
+              Lyra Arte LTDA &mdash; CNPJ 48.028.646/0001-00
             </p>
           </div>
 
@@ -52,11 +52,32 @@ export default function Footer() {
             </a>
           </div>
 
-          <div className="text-text-muted text-xs text-center md:text-right">
-            <a href="https://wa.me/5511995631610" className="hover:text-text-secondary transition-colors">
+          <div className="flex flex-col items-center md:items-end gap-2">
+            <div className="flex items-center gap-4 text-text-muted text-xs">
+              <a href="/termos" className="hover:text-text-secondary transition-colors">
+                Termos de Uso
+              </a>
+              <span className="text-white/[0.08]">|</span>
+              <a href="/privacidade" className="hover:text-text-secondary transition-colors">
+                Privacidade
+              </a>
+              <span className="text-white/[0.08]">|</span>
+              <a href="https://wa.me/5511995631610" target="_blank" rel="noopener noreferrer" className="hover:text-text-secondary transition-colors">
+                Contato
+              </a>
+            </div>
+            <a href="https://wa.me/5511995631610" className="text-text-muted text-xs hover:text-text-secondary transition-colors">
               +55 11 99563-1610
             </a>
           </div>
+        </div>
+
+        <div className="mt-8 pt-6 border-t border-white/[0.04] text-center">
+          <p className="text-text-muted text-[10px]">
+            Todos os direitos reservados &copy; {new Date().getFullYear()} Lyra Arte LTDA. Este site
+            não faz parte do Facebook, Google ou qualquer outra plataforma de anúncios. Os
+            resultados apresentados são de membros reais e podem variar.
+          </p>
         </div>
       </div>
     </footer>

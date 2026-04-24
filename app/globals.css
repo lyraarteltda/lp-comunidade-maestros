@@ -78,6 +78,7 @@ body {
    covers descenders (g, y, p, q) when line-height < 1. */
 .char {
   padding-bottom: 0.15em;
+  word-spacing: normal;
 }
 
 /* SplitText chars are inline-block (needed for GSAP transforms), which breaks

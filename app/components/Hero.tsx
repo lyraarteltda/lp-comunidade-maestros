@@ -32,17 +32,26 @@ function SplitText({ text, className, delay = 0 }: { text: string; className?: s
     });
   }, { scope: ref });
 
+  const words = text.split(" ");
+
   return (
     <span ref={ref} className={className}>
       <span className="sr-only">{text}</span>
       <span aria-hidden="true">
-        {text.split("").map((char, i) => (
-          <span
-            key={i}
-            className="char inline-block"
-            style={{ transformOrigin: "bottom center" }}
-          >
-            {char === " " ? "\u00A0" : char}
+        {words.map((word, wi) => (
+          <span key={wi} className="inline-block whitespace-nowrap">
+            {word.split("").map((char, ci) => (
+              <span
+                key={ci}
+                className="char inline-block"
+                style={{ transformOrigin: "bottom center" }}
+              >
+                {char}
+              </span>
+            ))}
+            {wi < words.length - 1 && (
+              <span className="char inline-block" style={{ transformOrigin: "bottom center" }}>{" "}</span>
+            )}
           </span>
         ))}
       </span>
@@ -169,11 +178,11 @@ export default function Hero() {
           </div>
         </motion.div>
 
-        {/* Headline — massive, split text animated, 4-line layout */}
+        {/* Headline */}
         <div className="text-center mb-8">
           <h1
-            className="font-[var(--font-display)] font-extrabold leading-[0.95] tracking-[-0.03em]"
-            style={{ fontSize: "clamp(2rem, 5vw, 4rem)" }}
+            className="font-[var(--font-display)] font-extrabold leading-[1.05] tracking-[-0.03em]"
+            style={{ fontSize: "clamp(1.75rem, 5vw, 4rem)" }}
           >
             <span className="block gradient-text-white-strong">
               <SplitText text="Toda Semana, Você Recebe" delay={0.2} />

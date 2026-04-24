@@ -30,6 +30,14 @@ export const metadata: Metadata = {
     locale: "pt_BR",
     url: "https://comunidade.maestrosdaia.com",
     siteName: "Maestros da IA",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Comunidade Maestros da IA — Lives semanais, sistemas prontos, suporte real",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
