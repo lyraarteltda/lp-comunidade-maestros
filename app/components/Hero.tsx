@@ -7,6 +7,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Sparkles, ArrowRight } from "lucide-react";
 import posthog from "posthog-js";
 import { useCheckoutUrl } from "../hooks/useCheckoutUrl";
+import { useScarcity } from "../hooks/useScarcity";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -62,6 +63,7 @@ function SplitText({ text, className, delay = 0 }: { text: string; className?: s
 export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
   const checkoutUrl = useCheckoutUrl();
+  const { price } = useScarcity();
 
   useGSAP(() => {
     if (!sectionRef.current) return;
@@ -234,7 +236,7 @@ export default function Hero() {
               color: "var(--color-surface-0)",
             }}
           >
-            Garantir Minha Vaga — R$97/mês
+            Garantir Minha Vaga — R${price}/mês
             <ArrowRight className="w-5 h-5" />
           </motion.a>
           <p className="text-text-tertiary text-xs">

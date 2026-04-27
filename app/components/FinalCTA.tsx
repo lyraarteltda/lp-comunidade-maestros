@@ -3,10 +3,12 @@ import { motion } from "framer-motion";
 import { ArrowRight, Sparkles, Users, TrendingUp, Clock } from "lucide-react";
 import { useTrackSection } from "../hooks/useTrackSection";
 import { useCheckoutUrl } from "../hooks/useCheckoutUrl";
+import { useScarcity } from "../hooks/useScarcity";
 
 export default function FinalCTA() {
   const trackRef = useTrackSection('final_cta');
   const checkoutUrl = useCheckoutUrl();
+  const { remaining } = useScarcity();
   return (
     <section ref={trackRef} aria-labelledby="final-cta-heading" className="relative py-24 md:py-32 bg-surface-0 overflow-hidden">
       {/* Dramatic ambient glow */}
@@ -66,7 +68,7 @@ export default function FinalCTA() {
             <div className="h-3 w-px bg-white/[0.08]" />
             <div className="flex items-center gap-2 text-xs">
               <TrendingUp className="w-3.5 h-3.5 text-emerald-400" />
-              <span>3 vagas com preço atual</span>
+              <span>{remaining} {remaining === 1 ? "vaga" : "vagas"} com preço atual</span>
             </div>
             <div className="h-3 w-px bg-white/[0.08] hidden sm:block" />
             <div className="hidden sm:flex items-center gap-2 text-xs">

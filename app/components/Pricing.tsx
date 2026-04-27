@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Check, Sparkles, Shield, Lock, RefreshCw, AlertTriangle, MessageCircle, Gift } from "lucide-react";
 import { useTrackSection } from "../hooks/useTrackSection";
 import { useCheckoutUrl } from "../hooks/useCheckoutUrl";
+import { useScarcity } from "../hooks/useScarcity";
 
 const included = [
   "Lives semanais com quem fatura milhões usando IA (52 por ano)",
@@ -20,6 +21,7 @@ const included = [
 export default function Pricing() {
   const trackRef = useTrackSection('pricing');
   const checkoutUrl = useCheckoutUrl();
+  const { filled, remaining, price } = useScarcity();
   return (
     <section ref={trackRef} id="pricing" aria-labelledby="pricing-heading" className="relative py-24 md:py-32 bg-surface-0 noise-bg overflow-hidden">
       {/* Layered background atmosphere */}
@@ -73,7 +75,7 @@ export default function Pricing() {
           <div className="flex items-start gap-3">
             <AlertTriangle className="w-5 h-5 text-amber-400 shrink-0 mt-0.5" />
             <p className="text-sm text-text-secondary leading-relaxed">
-              <span className="font-bold text-text-primary">Estamos em 117/120 vagas.</span>{" "}
+              <span className="font-bold text-text-primary">Estamos em {filled}/120 vagas.</span>{" "}
               Limitamos a 120 membros para manter a qualidade do suporte individual.
               Quando lotarmos, a mensalidade sobe para R$147. Quem entrar agora tem{" "}
               <span className="font-bold text-brand-gold">assinatura congelada</span>{" "}
@@ -84,7 +86,7 @@ export default function Pricing() {
           <div className="flex items-start gap-3">
             <Gift className="w-5 h-5 text-brand-gold shrink-0 mt-0.5" />
             <p className="text-sm text-text-secondary leading-relaxed">
-              <span className="font-semibold text-brand-gold">Bônus para os 3 últimos:</span>{" "}
+              <span className="font-semibold text-brand-gold">Bônus {remaining === 1 ? "para o último" : `para os ${remaining} últimos`}:</span>{" "}
               curso completo de{" "}
               <span className="font-bold text-text-primary">Claude Code: do zero ao avançado</span>{" "}
               — Valor: R$497.
@@ -144,13 +146,19 @@ export default function Pricing() {
                 <div className="flex items-baseline justify-center gap-1.5">
                   <span className="text-text-tertiary text-lg font-medium">R$</span>
                   <span className="font-[var(--font-display)] font-extrabold text-5xl md:text-6xl tracking-tight gradient-text-gold">
-                    97
+                    {price}
                   </span>
                   <span className="text-text-muted text-sm">/mês</span>
                 </div>
-                <p className="text-brand-gold/60 text-xs mt-3 font-medium tracking-wide">
-                  Preço especial de lançamento
-                </p>
+                {price === 97 ? (
+                  <p className="text-brand-gold/60 text-xs mt-3 font-medium tracking-wide">
+                    Preço especial de lançamento
+                  </p>
+                ) : (
+                  <p className="text-red-400/80 text-xs mt-3 font-medium tracking-wide">
+                    Preço reajustado — vagas quase esgotadas
+                  </p>
+                )}
               </div>
 
               {/* Divider */}
