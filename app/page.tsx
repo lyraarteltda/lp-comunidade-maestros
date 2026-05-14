@@ -16,7 +16,6 @@ const Testimonials = dynamic(() => import("./components/Testimonials"));
 const ForWhomSection = dynamic(() => import("./components/ForWhomSection"));
 const Founders = dynamic(() => import("./components/Founders"));
 const Pricing = dynamic(() => import("./components/Pricing"));
-const FAQ = dynamic(() => import("./components/FAQ"));
 const FinalCTA = dynamic(() => import("./components/FinalCTA"));
 const Footer = dynamic(() => import("./components/Footer"));
 
@@ -43,7 +42,6 @@ export default function Home() {
         <ForWhomSection />
         <Founders />
         <Pricing />
-        <FAQ />
         <FinalCTA />
       </main>
       <Footer />

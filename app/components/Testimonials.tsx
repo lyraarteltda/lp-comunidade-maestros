@@ -24,7 +24,7 @@ const videoTestimonials: VideoTestimonial[] = [
     name: "Rodrigo",
     role: "Empresário",
     videoSrc: "/Rodrigo.mp4",
-    quote: "Formação bem clara e prática. Comunidade WhatsApp muito forte — o suporte faz diferença real.",
+    quote: "Conteúdo bem claro e prático. Comunidade WhatsApp muito forte — o suporte faz diferença real.",
     gradient: "from-violet-500 to-purple-600",
   },
   {
@@ -106,7 +106,7 @@ const textTestimonials: TextTestimonial[] = [
   {
     name: "Juliana",
     role: "Empreendedora Digital",
-    quote: "O suporte é o que faz a diferença. Não é FAQ genérica — são especialistas que entendem o contexto do seu negócio.",
+    quote: "O suporte é o que faz a diferença. Não é resposta genérica — são especialistas que entendem o contexto do seu negócio.",
     gradient: "from-sky-500 to-blue-600",
   },
 ];
