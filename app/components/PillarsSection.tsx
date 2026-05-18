@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Video, BookOpen, Headphones, RefreshCw, Users, ArrowRight } from "lucide-react";
 import { useTrackSection } from "../hooks/useTrackSection";
 import { useCheckoutUrl } from "../hooks/useCheckoutUrl";
+import { useScarcity } from "../hooks/useScarcity";
 
 const pillars = [
   {
@@ -73,6 +74,7 @@ const accentMap: Record<string, { icon: string; border: string; tag: string }> =
 export default function PillarsSection() {
   const trackRef = useTrackSection('pillars');
   const checkoutUrl = useCheckoutUrl();
+  const { price } = useScarcity();
   return (
     <section ref={trackRef} id="pilares" aria-labelledby="pilares-heading" className="relative py-24 md:py-32 bg-surface-2 noise-bg overflow-hidden">
       <div className="absolute -top-1/3 left-1/3 w-[700px] h-[700px] rounded-full bg-brand-gold/[0.02] blur-[150px]" />
@@ -184,7 +186,7 @@ export default function PillarsSection() {
               color: "var(--color-surface-0)",
             }}
           >
-            Quero Acesso a Tudo Isso — R$97/mês
+            Quero Acesso a Tudo Isso — R${price}/mês
             <ArrowRight className="w-5 h-5" />
           </motion.a>
           <p className="text-text-tertiary text-xs mt-3">
