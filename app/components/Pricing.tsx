@@ -34,8 +34,8 @@ export default function Pricing() {
       <div className="relative z-10 max-w-4xl mx-auto px-6">
         <div className="text-center mb-14">
           <motion.p
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ y: 15 }}
+            whileInView={{ y: 0 }}
             viewport={{ once: true }}
             className="text-[11px] font-bold tracking-[0.15em] uppercase text-brand-gold mb-4"
           >
@@ -43,8 +43,8 @@ export default function Pricing() {
           </motion.p>
           <motion.h2
             id="pricing-heading"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ y: 20 }}
+            whileInView={{ y: 0 }}
             viewport={{ once: true }}
             className="font-[var(--font-display)] font-bold tracking-[-0.02em]"
             style={{ fontSize: "clamp(1.8rem, 4vw, 3rem)" }}
@@ -53,8 +53,8 @@ export default function Pricing() {
             <span className="gradient-text-gold">Evolução</span>
           </motion.h2>
           <motion.p
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ y: 15 }}
+            whileInView={{ y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
             className="mt-4 text-text-secondary max-w-xl mx-auto"
@@ -66,8 +66,8 @@ export default function Pricing() {
 
         {/* Scarcity callout */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ y: 20 }}
+          whileInView={{ y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.15 }}
           className="max-w-lg mx-auto mb-8 rounded-xl border border-amber-500/20 bg-amber-500/[0.06] px-5 py-4 space-y-3"
@@ -95,8 +95,8 @@ export default function Pricing() {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 40, scale: 0.97 }}
-          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          initial={{ y: 40, scale: 0.97 }}
+          whileInView={{ y: 0, scale: 1 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.7 }}
           className="relative max-w-lg mx-auto"
@@ -219,8 +219,8 @@ export default function Pricing() {
 
         {/* Support guarantee */}
         <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ y: 15 }}
+          whileInView={{ y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
           className="max-w-lg mx-auto mt-8 flex items-center justify-center gap-2.5 text-text-tertiary"

@@ -257,18 +257,13 @@ export default function Testimonials() {
 
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-12">
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="text-[11px] font-bold tracking-[0.15em] uppercase text-brand-gold/80 mb-4"
-          >
+          <p className="text-[11px] font-bold tracking-[0.15em] uppercase text-brand-gold/80 mb-4">
             Quem já faz parte
-          </motion.p>
+          </p>
           <motion.h2
             id="depoimentos-heading"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ y: 20 }}
+            whileInView={{ y: 0 }}
             viewport={{ once: true }}
             className="font-[var(--font-display)] font-bold gradient-text-white tracking-[-0.02em]"
             style={{ fontSize: "clamp(1.6rem, 3.5vw, 2.5rem)" }}

@@ -46,8 +46,8 @@ export default function LivesSection() {
           {/* Left: content */}
           <div className="lg:col-span-5">
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ x: -30 }}
+              whileInView={{ x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
@@ -101,8 +101,8 @@ export default function LivesSection() {
               return (
                 <motion.div
                   key={i}
-                  initial={{ opacity: 0, x: 50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  initial={{ x: 50 }}
+                  whileInView={{ x: 0 }}
                   viewport={{ once: true, margin: "-40px" }}
                   transition={{ duration: 0.5, delay: i * 0.1 }}
                   whileHover={{ x: -4, transition: { duration: 0.2 } }}

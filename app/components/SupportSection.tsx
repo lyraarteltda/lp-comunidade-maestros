@@ -50,8 +50,8 @@ export default function SupportSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
           {/* Left: chat mockup */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 20 }}
-            whileInView={{ opacity: 1, scale: 1, y: 0 }}
+            initial={{ scale: 0.95, y: 20 }}
+            whileInView={{ scale: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.7 }}
             className="lg:col-span-6 relative"
@@ -121,8 +121,8 @@ export default function SupportSection() {
           {/* Right: content */}
           <div className="lg:col-span-6">
             <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ x: 30 }}
+              whileInView={{ x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
@@ -155,8 +155,8 @@ export default function SupportSection() {
                   return (
                     <motion.div
                       key={i}
-                      initial={{ opacity: 0, x: 20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
+                      initial={{ x: 20 }}
+                      whileInView={{ x: 0 }}
                       viewport={{ once: true }}
                       transition={{ delay: i * 0.08 }}
                       className="flex items-center gap-3.5"

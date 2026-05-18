@@ -73,12 +73,51 @@ export const metadata: Metadata = {
   },
 };
 
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "Preciso saber programar?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Não! Nosso conteúdo é 100% prático e feito para não-programadores. Nossos próprios fundadores não sabiam programar quando começaram.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Qual a diferença da Comunidade para a Formação?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "A Comunidade é um acesso contínuo com lives semanais, suporte de especialistas e atualizações constantes. A Formação é um programa intensivo de 10 semanas.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Por quanto tempo tenho acesso?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Enquanto sua assinatura estiver ativa, você tem acesso a tudo: conteúdo, lives, suporte e atualizações.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Tem garantia?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Sim! Garantia incondicional de 7 dias. Se por qualquer motivo você sentir que não é pra você, devolvemos 100% do seu investimento.",
+      },
+    },
+  ],
+};
+
 const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: "Maestros da IA",
   url: "https://maestrosdaia.com",
-  description: "Comunidade de Inteligência Artificial para empreendedores brasileiros.",
+  description: "Comunidade e formação em Inteligência Artificial para empreendedores brasileiros.",
 };
 
 const courseJsonLd = {
@@ -106,6 +145,10 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className={`${spaceGrotesk.variable} ${inter.variable}`}>
       <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}

@@ -82,8 +82,8 @@ export default function PillarsSection() {
       <div className="relative z-10 max-w-6xl mx-auto px-6">
         <div className="text-center mb-16 md:mb-20">
           <motion.p
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ y: 15 }}
+            whileInView={{ y: 0 }}
             viewport={{ once: true }}
             className="text-[11px] font-bold tracking-[0.15em] uppercase text-brand-gold mb-4"
           >
@@ -91,8 +91,8 @@ export default function PillarsSection() {
           </motion.p>
           <motion.h2
             id="pilares-heading"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ y: 20 }}
+            whileInView={{ y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
             className="font-[var(--font-display)] font-bold gradient-text-white tracking-[-0.02em]"
@@ -101,8 +101,8 @@ export default function PillarsSection() {
             Os 5 Pilares da Comunidade
           </motion.h2>
           <motion.p
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ y: 15 }}
+            whileInView={{ y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
             className="mt-4 text-text-secondary max-w-xl mx-auto"
@@ -120,8 +120,8 @@ export default function PillarsSection() {
             return (
               <motion.div
                 key={pillar.title}
-                initial={{ opacity: 0, y: 40, scale: 0.97 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                initial={{ y: 40, scale: 0.97 }}
+                whileInView={{ y: 0, scale: 1 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.6, delay: i * 0.1 }}
                 whileHover={{ y: -4, transition: { duration: 0.25, type: "spring", stiffness: 300 } }}
@@ -165,8 +165,8 @@ export default function PillarsSection() {
 
         {/* Mid-page CTA */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ y: 20 }}
+          whileInView={{ y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.3 }}
           className="text-center mt-14"

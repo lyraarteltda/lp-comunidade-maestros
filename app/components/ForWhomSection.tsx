@@ -26,8 +26,8 @@ export default function ForWhomSection() {
       <div className="relative z-10 max-w-5xl mx-auto px-6">
         <div className="text-center mb-14">
           <motion.p
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ y: 15 }}
+            whileInView={{ y: 0 }}
             viewport={{ once: true }}
             className="text-[11px] font-bold tracking-[0.15em] uppercase text-brand-gold mb-4"
           >
@@ -35,8 +35,8 @@ export default function ForWhomSection() {
           </motion.p>
           <motion.h2
             id="for-whom-heading"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ y: 20 }}
+            whileInView={{ y: 0 }}
             viewport={{ once: true }}
             className="font-[var(--font-display)] font-bold gradient-text-white tracking-[-0.02em]"
             style={{ fontSize: "clamp(1.8rem, 4vw, 3rem)" }}
@@ -48,8 +48,8 @@ export default function ForWhomSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
           {/* For whom */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ x: -30 }}
+            whileInView={{ x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
             className="glass-card rounded-2xl p-7 md:p-8"
@@ -72,8 +72,8 @@ export default function ForWhomSection() {
 
           {/* Not for whom */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ x: 30 }}
+            whileInView={{ x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
             className="glass-card rounded-2xl p-7 md:p-8"

@@ -112,10 +112,8 @@ export default function KnowledgeBlocks() {
     if (!gridRef.current) return;
     gsap.fromTo(gridRef.current.querySelectorAll(".kb-card"), {
       scale: 0.92,
-      opacity: 0,
     }, {
       scale: 1,
-      opacity: 1,
       stagger: 0.08,
       duration: 0.6,
       ease: "power3.out",
@@ -133,18 +131,13 @@ export default function KnowledgeBlocks() {
 
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-16">
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="text-[11px] font-bold tracking-[0.15em] uppercase text-brand-gold mb-4"
-          >
+          <p className="text-[11px] font-bold tracking-[0.15em] uppercase text-brand-gold mb-4">
             Trilhas de conhecimento
-          </motion.p>
+          </p>
           <motion.h2
             id="trilhas-heading"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ y: 20 }}
+            whileInView={{ y: 0 }}
             viewport={{ once: true }}
             className="font-[var(--font-display)] font-bold gradient-text-white tracking-[-0.02em]"
             style={{ fontSize: "clamp(1.8rem, 4vw, 3rem)" }}
@@ -152,8 +145,8 @@ export default function KnowledgeBlocks() {
             Os Sistemas que Você Vai Dominar
           </motion.h2>
           <motion.p
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ y: 15 }}
+            whileInView={{ y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
             className="mt-4 text-text-secondary max-w-xl mx-auto"

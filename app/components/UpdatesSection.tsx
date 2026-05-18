@@ -43,8 +43,8 @@ export default function UpdatesSection() {
           {/* Left: headline */}
           <div className="lg:col-span-4">
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ x: -20 }}
+              whileInView={{ x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
@@ -80,8 +80,8 @@ export default function UpdatesSection() {
                   return (
                     <motion.div
                       key={i}
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
+                      initial={{ x: -20 }}
+                      whileInView={{ x: 0 }}
                       viewport={{ once: true, margin: "-40px" }}
                       transition={{ duration: 0.5, delay: i * 0.08 }}
                       className="relative pl-12"
@@ -112,17 +112,11 @@ export default function UpdatesSection() {
               </div>
             </div>
 
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.4 }}
-              className="ml-12 mt-6"
-            >
+            <div className="ml-12 mt-6">
               <p className="text-text-muted text-sm">
                 E muito mais a cada semana...
               </p>
-            </motion.div>
+            </div>
           </div>
         </div>
       </div>

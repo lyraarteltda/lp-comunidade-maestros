@@ -51,10 +51,8 @@ export default function ProblemSection() {
     if (!sectionRef.current) return;
     gsap.fromTo(sectionRef.current.querySelectorAll(".pain-card"), {
       x: -60,
-      opacity: 0,
     }, {
       x: 0,
-      opacity: 1,
       stagger: 0.12,
       duration: 0.7,
       ease: "power3.out",
@@ -96,8 +94,8 @@ export default function ProblemSection() {
           {/* Left column — dramatic statement */}
           <div className="lg:col-span-5 lg:sticky lg:top-32">
             <motion.p
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ x: -20 }}
+              whileInView={{ x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
               className="text-[11px] font-bold tracking-[0.15em] uppercase text-red-400/80 mb-4"
@@ -106,8 +104,8 @@ export default function ProblemSection() {
             </motion.p>
             <motion.h2
               id="problem-heading"
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ x: -20 }}
+              whileInView={{ x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
               className="font-[var(--font-display)] font-bold tracking-[-0.02em] mb-6"
@@ -122,8 +120,8 @@ export default function ProblemSection() {
               <span className="text-text-tertiary">Já Ficou Obsoleto</span>
             </motion.h2>
             <motion.p
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ x: -20 }}
+              whileInView={{ x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-text-secondary text-sm leading-relaxed max-w-md"

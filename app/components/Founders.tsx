@@ -68,8 +68,8 @@ export default function Founders() {
       <div className="relative z-10 max-w-5xl mx-auto px-6">
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ y: 20 }}
+          whileInView={{ y: 0 }}
           viewport={{ once: true }}
           className="text-center mb-16"
         >
@@ -94,8 +94,8 @@ export default function Founders() {
         {/* Stats bar */}
         <div ref={statsRef}>
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ y: 20 }}
+            whileInView={{ y: 0 }}
             viewport={{ once: true }}
             className="glass-card rounded-2xl p-4 md:p-8 mb-10 grid grid-cols-3 gap-3 md:gap-6 divide-x divide-white/[0.06]"
           >
@@ -125,8 +125,8 @@ export default function Founders() {
           {founders.map((founder, i) => (
             <motion.div
               key={founder.name}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ y: 40 }}
+              whileInView={{ y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.6, delay: i * 0.15 }}
               className={`glass-card rounded-2xl p-8 md:p-10 flex flex-col md:flex-row items-center gap-8 ${
@@ -160,8 +160,8 @@ export default function Founders() {
 
         {/* Shared achievements */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ y: 30 }}
+          whileInView={{ y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
           className="mt-10 glass-card rounded-2xl p-8 md:p-10"
@@ -185,13 +185,7 @@ export default function Founders() {
         </motion.div>
 
         {/* Quote */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.3 }}
-          className="mt-10 text-center"
-        >
+        <div className="mt-10 text-center">
           <div className="relative inline-block">
             <div className="absolute -inset-1 rounded-xl bg-gradient-to-r from-brand-gold/10 via-transparent to-brand-gold/10 blur-sm" />
             <p className="relative glass-card rounded-xl px-8 py-4 text-sm text-text-secondary italic">
@@ -199,7 +193,7 @@ export default function Founders() {
               primeiro, domina o mercado.&rdquo;
             </p>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
