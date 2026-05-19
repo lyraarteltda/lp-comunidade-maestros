@@ -520,6 +520,10 @@ export default function EntrarPage() {
                     Ao clicar, o WhatsApp abrirá com uma mensagem pronta. É só
                     enviar para receber seu link de acesso!
                   </p>
+                  <p className="text-text-muted text-[11px] mt-3 max-w-xs mx-auto">
+                    Ao clicar, você aceita nossa{" "}
+                    <a href="https://politica.maestrosdaia.com/" className="underline hover:text-text-tertiary transition-colors">Política de Privacidade</a>.
+                  </p>
                 </div>
               </div>
             </motion.div>
