@@ -58,8 +58,8 @@ export default function Footer() {
                 Termos de Uso
               </a>
               <span className="text-white/[0.08]">|</span>
-              <a href="/privacidade" className="hover:text-text-secondary transition-colors">
-                Privacidade
+              <a href="https://politica.maestrosdaia.com/" className="hover:text-text-secondary transition-colors">
+                Política de Privacidade
               </a>
               <span className="text-white/[0.08]">|</span>
               <a href="https://wa.me/5511995631610" target="_blank" rel="noopener noreferrer" className="hover:text-text-secondary transition-colors">

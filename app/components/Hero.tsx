@@ -242,6 +242,10 @@ export default function Hero() {
           <p className="text-text-tertiary text-xs">
             Garantia incondicional de 7 dias · Cancele quando quiser
           </p>
+          <p className="text-text-muted text-[11px] mt-3 max-w-md mx-auto">
+            Ao clicar, você concorda em receber mensagens da Maestros da IA e aceita nossa{" "}
+            <a href="https://politica.maestrosdaia.com/" className="underline hover:text-text-tertiary transition-colors">Política de Privacidade</a>.
+          </p>
         </motion.div>
 
       </div>
