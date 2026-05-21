@@ -25,11 +25,7 @@ function buildFaqs(price: number) {
     },
     {
       question: "Como funciona o suporte?",
-      answer: "Você posta sua dúvida na comunidade e nossa equipe responde — geralmente em poucas horas, não em dias. A diferença: quem responde já implementou exatamente o que você está tentando fazer. Travou no n8n? Quem responde já montou 50 automações no n8n. Agente dando erro? Quem responde já construiu dezenas de agentes. Não é suporte genérico — é mentoria disfarçada de suporte.",
-    },
-    {
-      question: "E se eu já fiz a Formação?",
-      answer: "A Formação te deu a fundação. A Comunidade te dá a evolução. Os sistemas são diferentes — a Formação ensina o framework, a Comunidade entrega sistemas novos toda semana que você implementa em cima do que aprendeu. Pense assim: a Formação é o diploma, a Comunidade é o laboratório onde você continua praticando com suporte.",
+      answer: "Qualquer dúvida, dificuldade, trava ou bloqueio que você encontrar não vai parar o seu progresso. O suporte técnico está disponível 7 dias por semana para todos os membros — ninguém fica sem resposta. Diferente de cursos onde você paga, assiste e nunca mais tem com quem contar, aqui a lógica é outra: como a assinatura é mensal, o compromisso é entregar o melhor serviço possível para que você continue evoluindo e queira ficar. Seu avanço é a nossa prioridade.",
     },
     {
       question: "Posso cancelar a qualquer momento?",
