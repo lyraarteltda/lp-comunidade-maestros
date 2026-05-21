@@ -75,9 +75,14 @@ export default function Pricing() {
           <div className="flex items-start gap-3">
             <AlertTriangle className="w-5 h-5 text-amber-400 shrink-0 mt-0.5" />
             <p className="text-sm text-text-secondary leading-relaxed">
-              <span className="font-bold text-text-primary">Estamos em {filled}/120 vagas.</span>{" "}
-              Limitamos a 120 membros para manter a qualidade do suporte individual.
-              Quando lotarmos, a mensalidade sobe para R$147. Quem entrar agora tem{" "}
+              <span className="font-bold text-text-primary">Estamos em {filled}/800 vagas.</span>{" "}
+              Limitamos a 800 membros para manter a qualidade do suporte e das lives.{" "}
+              {price === 97 ? (
+                <>Quando lotarmos, a mensalidade sobe para R$120.</>
+              ) : (
+                <>Preço reajustado — últimas vagas disponíveis.</>
+              )}{" "}
+              Quem entrar agora tem{" "}
               <span className="font-bold text-brand-gold">assinatura congelada</span>{" "}
               no preço atual — para sempre.
             </p>

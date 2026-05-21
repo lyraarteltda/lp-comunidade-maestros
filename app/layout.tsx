@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://comunidade.maestrosdaia.com"),
   title: "Comunidade Maestros da IA — Vanguarda em Inteligência Artificial",
   description:
-    "Acesso contínuo a lives semanais, +20h de conteúdo estruturado em blocos de conhecimento, suporte de especialistas e atualizações constantes. R$97/mês.",
+    "Acesso contínuo a lives semanais, +20h de conteúdo estruturado em blocos de conhecimento, suporte de especialistas e atualizações constantes. A partir de R$97/mês.",
   keywords: [
     "IA para negócios",
     "automação com IA",
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Comunidade Maestros da IA — Vanguarda em Inteligência Artificial",
     description:
-      "Lives semanais com especialistas, +20h de conteúdo estruturado, 100+ agentes prontos, suporte 7/7. Tudo por R$97/mês.",
+      "Lives semanais com especialistas, +20h de conteúdo estruturado, 100+ agentes prontos, suporte 7/7. A partir de R$97/mês.",
     type: "website",
     locale: "pt_BR",
     url: "https://comunidade.maestrosdaia.com",
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Comunidade Maestros da IA",
     description:
-      "Lives semanais com especialistas, +20h de conteúdo, 100+ agentes. R$97/mês.",
+      "Lives semanais com especialistas, +20h de conteúdo, 100+ agentes. A partir de R$97/mês.",
     images: ["/og-image.png"],
   },
   alternates: {
