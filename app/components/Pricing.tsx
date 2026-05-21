@@ -218,10 +218,6 @@ export default function Pricing() {
                   <span>Cancele quando quiser</span>
                 </div>
               </div>
-              <p className="text-text-muted text-[11px] mt-4 text-center max-w-sm mx-auto">
-                Ao clicar, você concorda em receber mensagens da Maestros da IA e aceita nossa{" "}
-                <a href="https://politica.maestrosdaia.com/" className="underline hover:text-text-tertiary transition-colors">Política de Privacidade</a>.
-              </p>
             </div>
           </div>
         </motion.div>
