@@ -76,15 +76,9 @@ export default function Pricing() {
             <AlertTriangle className="w-5 h-5 text-amber-400 shrink-0 mt-0.5" />
             <p className="text-sm text-text-secondary leading-relaxed">
               <span className="font-bold text-text-primary">Estamos em {filled}/800 vagas.</span>{" "}
-              Limitamos a 800 membros para manter a qualidade do suporte e das lives.{" "}
-              {price === 97 ? (
-                <>Quando lotarmos, a mensalidade sobe para R$120.</>
-              ) : (
-                <>Preço reajustado — últimas vagas disponíveis.</>
-              )}{" "}
-              Quem entrar agora tem{" "}
-              <span className="font-bold text-brand-gold">assinatura congelada</span>{" "}
-              no preço atual — para sempre.
+              O preço sobe a cada 100 novos membros porque você não está comprando apenas um curso. Aqui você tem suporte técnico diário, lives semanais ao vivo e acesso direto a quem resolve problemas reais. Tudo isso exige tempo e dedicação. Conforme a comunidade cresce, o acesso se torna mais exclusivo e o valor aumenta: mais conexões, mais networking, mais experiências compartilhadas entre quem já está implementando IA de verdade. Quem entrou antes paga menos e recebe mais. Sua{" "}
+              <span className="font-bold text-brand-gold">assinatura fica congelada</span>{" "}
+              no preço de hoje, para sempre.
             </p>
           </div>
           <div className="h-px bg-amber-500/15" />
