@@ -5,7 +5,7 @@ import { useTrackSection } from "../hooks/useTrackSection";
 import { useCheckoutUrl } from "../hooks/useCheckoutUrl";
 import { useScarcity } from "../hooks/useScarcity";
 
-const included = [
+const baseIncluded = [
   "Lives semanais com quem fatura milhões usando IA (52 por ano)",
   "7 trilhas com +20h de sistemas prontos pra copiar e implementar",
   "Suporte de especialistas que já resolveram o SEU tipo de problema",
@@ -14,7 +14,6 @@ const included = [
   "Conteúdo atualizado toda semana — nunca fica obsoleto",
   "Rede exclusiva de CEOs e empreendedores que usam IA pra faturar",
   "Biblioteca completa de gravações — assista quando e onde quiser",
-  "Bônus: Curso Claude Code do zero ao avançado (Valor: R$497)",
 ];
 
 
@@ -75,22 +74,26 @@ export default function Pricing() {
           <div className="flex items-start gap-3">
             <AlertTriangle className="w-5 h-5 text-amber-400 shrink-0 mt-0.5" />
             <p className="text-sm text-text-secondary leading-relaxed">
-              <span className="font-bold text-text-primary">Estamos em {filled}/800 vagas.</span>{" "}
+              <span className="font-bold text-text-primary">Estamos em {filled}/{price === 97 ? 800 : 900} vagas.</span>{" "}
               O preço sobe a cada 100 novos membros porque você não está comprando apenas um curso. Aqui você tem suporte técnico diário, lives semanais ao vivo e acesso direto a quem resolve problemas reais. Tudo isso exige tempo e dedicação. Conforme a comunidade cresce, o acesso se torna mais exclusivo e o valor aumenta: mais conexões, mais networking, mais experiências compartilhadas entre quem já está implementando IA de verdade. Quem entrou antes paga menos e recebe mais. Sua{" "}
               <span className="font-bold text-brand-gold">assinatura fica congelada</span>{" "}
               no preço de hoje, para sempre.
             </p>
           </div>
-          <div className="h-px bg-amber-500/15" />
-          <div className="flex items-start gap-3">
-            <Gift className="w-5 h-5 text-brand-gold shrink-0 mt-0.5" />
-            <p className="text-sm text-text-secondary leading-relaxed">
-              <span className="font-semibold text-brand-gold">Bônus {remaining === 1 ? "para o último" : `para os ${remaining} últimos`}:</span>{" "}
-              curso completo de{" "}
-              <span className="font-bold text-text-primary">Claude Code: do zero ao avançado</span>{" "}
-              — Valor: R$497.
-            </p>
-          </div>
+          {remaining > 0 && (
+            <>
+              <div className="h-px bg-amber-500/15" />
+              <div className="flex items-start gap-3">
+                <Gift className="w-5 h-5 text-brand-gold shrink-0 mt-0.5" />
+                <p className="text-sm text-text-secondary leading-relaxed">
+                  <span className="font-semibold text-brand-gold">Bônus {remaining === 1 ? "para o último" : `para os ${remaining} últimos`}:</span>{" "}
+                  curso completo de{" "}
+                  <span className="font-bold text-text-primary">Claude Code: do zero ao avançado</span>{" "}
+                  — Valor: R$497.
+                </p>
+              </div>
+            </>
+          )}
         </motion.div>
 
         <motion.div
@@ -165,7 +168,7 @@ export default function Pricing() {
 
               {/* Included list */}
               <div className="space-y-3.5 mb-6">
-                {included.map((item) => (
+                {[...baseIncluded, ...(price === 97 ? ["Bônus: Curso Claude Code do zero ao avançado (Valor: R$497)"] : [])].map((item) => (
                   <div key={item} className="flex items-start gap-3">
                     <div className="w-5 h-5 rounded-full bg-brand-gold/[0.07] border border-brand-gold/10 flex items-center justify-center shrink-0 mt-0.5">
                       <Check className="w-3 h-3 text-brand-gold" />

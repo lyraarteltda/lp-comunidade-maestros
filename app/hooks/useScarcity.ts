@@ -12,6 +12,11 @@ const VACANCY_SCHEDULE = [
   { afterHours: 0,  filled: 791 },
 ];
 
+const PHASE2_BASE = 831;
+const PHASE2_PER_HOUR = 5;
+const PHASE2_CAP = 899;
+const PRICE_FLIP_HOURS = 48;
+
 export function useScarcity() {
   const [filled, setFilled] = useState(791);
   const [price, setPrice] = useState(97);
@@ -26,11 +31,15 @@ export function useScarcity() {
       }
       const hours = (now - Number(stored)) / 3_600_000;
 
-      for (const tier of VACANCY_SCHEDULE) {
-        if (hours >= tier.afterHours) { setFilled(tier.filled); break; }
+      if (hours >= PRICE_FLIP_HOURS) {
+        setPrice(120);
+        const hoursPast = hours - PRICE_FLIP_HOURS;
+        setFilled(Math.min(PHASE2_BASE + Math.floor(hoursPast) * PHASE2_PER_HOUR, PHASE2_CAP));
+      } else {
+        for (const tier of VACANCY_SCHEDULE) {
+          if (hours >= tier.afterHours) { setFilled(tier.filled); break; }
+        }
       }
-
-      if (hours >= 48) setPrice(120);
     } catch { /* localStorage unavailable — keep safe defaults */ }
   }, []);
 
