@@ -30,7 +30,7 @@ const founders = [
 const sharedAchievements = [
   { icon: DollarSign, text: "Ecossistema de R$5M+ de faturamento anual construído em menos de 2 anos" },
   { icon: Building2, text: "Projetos com Hostinger, Pipefy e outras empresas de tecnologia" },
-  { icon: Eye, text: "De 0 a 4M+ de visualizações/mês e 170k+ seguidores em menos de 1 ano" },
+  { icon: Eye, text: "De 0 a 4M+ de visualizações/mês e 200k+ seguidores em menos de 1 ano" },
   { icon: Users, text: "Criadores de uma comunidade com centenas de CEOs e donos de negócio" },
   { icon: Cpu, text: "Criadores do Galaria AI Operational System — sistema operacional proprietário com agentes autônomos gerindo departamentos inteiros em holding de múltiplos 10 dígitos" },
 ];
@@ -107,7 +107,7 @@ export default function Founders() {
             </div>
             <div className="text-center">
               <div className="font-[var(--font-display)] font-bold text-xl md:text-3xl text-text-primary">
-                <span className="founder-stat" data-value="170">170</span>k+
+                <span className="founder-stat" data-value="200">200</span>k+
               </div>
               <div className="text-text-muted text-xs mt-1">Seguidores em &lt;1 ano</div>
             </div>

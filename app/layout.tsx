@@ -82,15 +82,15 @@ const faqJsonLd = {
       name: "Preciso saber programar?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Não! Nosso conteúdo é 100% prático e feito para não-programadores. Nossos próprios fundadores não sabiam programar quando começaram.",
+        text: "Não. A Comunidade é feita para quem quer resultado rápido, não para desenvolvedores. Todo o conteúdo é focado em implementação prática. Temos membros com mais de 70 anos de idade implementando tudo sem dificuldades.",
       },
     },
     {
       "@type": "Question",
-      name: "Qual a diferença da Comunidade para a Formação?",
+      name: "Precisarei comprar outros produtos depois?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "A Comunidade é um acesso contínuo com lives semanais, suporte de especialistas e atualizações constantes. A Formação é um programa intensivo de 10 semanas.",
+        text: "Não. Todo o conteúdo gravado — as 7 trilhas, o Curso de Claude Code, os 100+ agentes e templates, e todas as atualizações semanais — está incluído na sua assinatura. Não existe módulo travado ou curso extra pra desbloquear.",
       },
     },
     {

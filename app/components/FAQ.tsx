@@ -9,11 +9,11 @@ function buildFaqs(price: number) {
   return [
     {
       question: "Preciso saber programar?",
-      answer: "Não. O Arthur é músico. A Lyria é administradora. 80% dos membros nunca escreveram uma linha de código. Tudo que ensinamos é feito pra ser implementado por não-programadores — com ferramentas no-code, templates prontos e tutoriais passo a passo. Se você sabe usar WhatsApp, consegue implementar o que ensinamos.",
+      answer: "Não. A Comunidade é feita para quem quer resultado rápido, não para desenvolvedores. Todo o conteúdo é focado em implementação prática — só tocamos em assuntos técnicos quando são realmente necessários para construir algo que gera resultado. Temos membros com mais de 70 anos de idade implementando tudo sem dificuldades. E se travar em algum ponto, nosso suporte técnico está disponível diariamente para te ajudar.",
     },
     {
-      question: "Qual a diferença da Comunidade para a Formação?",
-      answer: `A Formação Maestros da IA é um programa intensivo de 10 semanas que custa R$3.000 — é o mergulho profundo pra quem quer dominar IA do zero. A Comunidade (R$${price}/mês) é o acesso contínuo: lives semanais, suporte, atualizações e networking. São complementares, não substitutos. Muitos membros fazem a Formação primeiro e entram na Comunidade pra continuar evoluindo. Outros começam pela Comunidade porque querem testar o nível antes de investir na Formação.`,
+      question: "Precisarei comprar outros produtos depois?",
+      answer: "Não. Todo o conteúdo gravado — as 7 trilhas, o Curso de Claude Code, os 100+ agentes e templates, e todas as atualizações semanais — está incluído na sua assinatura. Não existe módulo travado ou curso extra pra desbloquear. Nossa proposta é formar uma comunidade que permaneça conosco no longo prazo, e por isso conseguimos cobrar um valor tão acessível por mês. Temos também um Clube de Negócios AI e programas de implementação para empresas, mas você não precisa adquirir nada disso para ter acesso a 100% dos cursos gravados, lives, suporte técnico ou espaços de interação.",
     },
     {
       question: "Por quanto tempo tenho acesso?",
