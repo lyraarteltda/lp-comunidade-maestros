@@ -11,55 +11,6 @@ import { useScarcity } from "../hooks/useScarcity";
 
 gsap.registerPlugin(ScrollTrigger);
 
-function SplitText({ text, className, delay = 0 }: { text: string; className?: string; delay?: number }) {
-  const ref = useRef<HTMLSpanElement>(null);
-
-  useGSAP(() => {
-    if (!ref.current) return;
-    const chars = ref.current.querySelectorAll(".char");
-    gsap.fromTo(chars, {
-      y: 80,
-      rotateX: -40,
-      filter: "blur(8px)",
-    }, {
-      y: 0,
-      rotateX: 0,
-      filter: "blur(0px)",
-      stagger: 0.025,
-      duration: 0.7,
-      delay,
-      ease: "power3.out",
-      clearProps: "transform,filter",
-    });
-  }, { scope: ref });
-
-  const words = text.split(" ");
-
-  return (
-    <span ref={ref} className={className}>
-      <span className="sr-only">{text}</span>
-      <span aria-hidden="true">
-        {words.map((word, wi) => (
-          <span key={wi} className="inline-block whitespace-nowrap">
-            {word.split("").map((char, ci) => (
-              <span
-                key={ci}
-                className="char inline-block"
-                style={{ transformOrigin: "bottom center" }}
-              >
-                {char}
-              </span>
-            ))}
-            {wi < words.length - 1 && (
-              <span className="char inline-block" style={{ transformOrigin: "bottom center" }}>{" "}</span>
-            )}
-          </span>
-        ))}
-      </span>
-    </span>
-  );
-}
-
 export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
   const checkoutUrl = useCheckoutUrl();
@@ -180,24 +131,16 @@ export default function Hero() {
           </div>
         </motion.div>
 
-        {/* Headline */}
+        {/* Headline — static text (headline reveal animation removed for faster LCP) */}
         <div className="text-center mb-8">
           <h1
             className="font-[var(--font-display)] font-extrabold leading-[1.05] tracking-[-0.03em]"
             style={{ fontSize: "clamp(1.75rem, 5vw, 4rem)" }}
           >
-            <span className="block gradient-text-white-strong">
-              <SplitText text="Toda Semana, Você Recebe" delay={0.2} />
-            </span>
-            <span className="block mt-1 md:mt-2 gradient-text-white-strong">
-              <SplitText text="Sistemas e Estratégias de IA" delay={0.35} />
-            </span>
-            <span className="block mt-1 md:mt-2">
-              <SplitText text="Que Seus Concorrentes Vão" delay={0.5} className="gradient-text-gold" />
-            </span>
-            <span className="block mt-1 md:mt-2">
-              <SplitText text="Descobrir em 6 Meses" delay={0.65} className="gradient-text-gold" />
-            </span>
+            <span className="block gradient-text-white-strong">Toda Semana, Você Recebe</span>
+            <span className="block mt-1 md:mt-2 gradient-text-white-strong">Sistemas e Estratégias de IA</span>
+            <span className="block mt-1 md:mt-2 gradient-text-gold">Que Seus Concorrentes Vão</span>
+            <span className="block mt-1 md:mt-2 gradient-text-gold">Descobrir em 6 Meses</span>
           </h1>
         </div>
 
