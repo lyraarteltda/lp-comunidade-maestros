@@ -1,6 +1,5 @@
 "use client";
 import { useRef, useEffect } from "react";
-import { motion } from "framer-motion";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -116,20 +115,15 @@ export default function Hero() {
       />
 
       <div className="relative z-10 max-w-5xl mx-auto px-6 pt-28 pb-8 md:pt-36 md:pb-12 lg:pt-44 lg:pb-16">
-        {/* Overline badge */}
-        <motion.div
-          initial={{ opacity: 0, y: 20, scale: 0.95 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="flex justify-center mb-8"
-        >
+        {/* Overline badge — CSS entrance so it paints independent of JS hydration */}
+        <div className="flex justify-center mb-8 hero-anim" style={{ animationDelay: "0s" }}>
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-gold/[0.08] border border-brand-gold/15">
             <Sparkles className="w-3.5 h-3.5 text-brand-gold" />
             <span className="text-[11px] font-bold text-brand-gold tracking-[0.12em] uppercase">
               Comunidade Exclusiva
             </span>
           </div>
-        </motion.div>
+        </div>
 
         {/* Headline — static text (headline reveal animation removed for faster LCP) */}
         <div className="text-center mb-8">
@@ -144,36 +138,25 @@ export default function Hero() {
           </h1>
         </div>
 
-        {/* Subheadline */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.9, ease: [0.22, 1, 0.36, 1] }}
-          className="max-w-2xl mx-auto text-center text-text-secondary leading-relaxed mb-10"
-          style={{ fontSize: "clamp(1rem, 1.6vw, 1.2rem)" }}
+        {/* Subheadline — CSS entrance (no framer-motion opacity gate that delayed LCP) */}
+        <p
+          className="max-w-2xl mx-auto text-center text-text-secondary leading-relaxed mb-10 hero-anim"
+          style={{ fontSize: "clamp(1rem, 1.6vw, 1.2rem)", animationDelay: "0.12s" }}
         >
           Pare de estudar IA sozinho e comece a implementar. Lives semanais com quem já
           faturou milhões usando IA, 7 trilhas práticas com sistemas copy-paste, e suporte
           real de especialistas — tudo por menos que o preço de um almoço executivo por semana.
-        </motion.p>
+        </p>
 
         {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 1.1, ease: [0.22, 1, 0.36, 1] }}
-          className="flex flex-col items-center gap-4"
-        >
-          <motion.a
+        <div className="flex flex-col items-center gap-4 hero-anim" style={{ animationDelay: "0.22s" }}>
+          <a
             href={checkoutUrl}
             target="_blank"
             rel="noopener noreferrer"
             data-ph-capture-attribute-cta="hero_checkout"
             data-ph-capture-attribute-position="hero"
-            whileHover={{ scale: 1.04, y: -2 }}
-            whileTap={{ scale: 0.97 }}
-            transition={{ type: "spring", stiffness: 400, damping: 17 }}
-            className="cta-shimmer inline-flex items-center gap-3 font-bold px-10 py-4 rounded-xl text-lg shadow-xl shadow-brand-gold/20"
+            className="cta-shimmer inline-flex items-center gap-3 font-bold px-10 py-4 rounded-xl text-lg shadow-xl shadow-brand-gold/20 transition-transform duration-200 ease-out hover:scale-[1.04] hover:-translate-y-0.5 active:scale-[0.97]"
             style={{
               background: "linear-gradient(135deg, #F5A623 0%, #CC8400 100%)",
               color: "var(--color-surface-0)",
@@ -181,11 +164,11 @@ export default function Hero() {
           >
             Garantir Minha Vaga — R${price}/mês
             <ArrowRight className="w-5 h-5" />
-          </motion.a>
+          </a>
           <p className="text-text-tertiary text-xs">
             Garantia incondicional de 7 dias · Cancele quando quiser
           </p>
-        </motion.div>
+        </div>
 
       </div>
 
