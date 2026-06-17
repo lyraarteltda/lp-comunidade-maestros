@@ -128,8 +128,8 @@ export default function Hero() {
         {/* Headline — static text (headline reveal animation removed for faster LCP) */}
         <div className="text-center mb-8">
           <h1
-            className="font-[var(--font-display)] font-extrabold leading-[1.05] tracking-[-0.03em]"
-            style={{ fontSize: "clamp(1.75rem, 5vw, 4rem)" }}
+            className="font-[var(--font-display)] font-extrabold leading-[1.05] tracking-[-0.03em] [text-wrap:balance]"
+            style={{ fontSize: "clamp(1.25rem, 5vw, 4rem)" }}
           >
             <span className="block gradient-text-white-strong">Toda Semana, Você Recebe</span>
             <span className="block mt-1 md:mt-2 gradient-text-white-strong">Sistemas e Estratégias de IA</span>
