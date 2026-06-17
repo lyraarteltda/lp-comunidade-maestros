@@ -20,9 +20,9 @@ const founders = [
   },
   {
     name: "Lyria Zoccal",
-    role: "Co-founder & CEO da Maestria e Lyria Academy",
+    role: "Co-founder & CEO da Maestria e Lyra Academy",
     image: "/founders/lyria.jpg",
-    bio: "Estudou administração de empresas, com passagem por grandes empresas de SaaS como GoLive e TOTVS. CEO de duas empresas — Maestria e Lyria Academy — que juntas faturam mais de R$5M/ano. Especialista em soluções de IA para produção de conteúdo, bots de WhatsApp e agentes autônomos.",
+    bio: "Estudou administração de empresas, com passagem por grandes empresas de SaaS como GoLive e TOTVS. CEO de duas empresas — Maestria e Lyra Academy — que juntas faturam mais de R$5M/ano. Especialista em soluções de IA para produção de conteúdo, bots de WhatsApp e agentes autônomos.",
     highlight: "CEO de 2 empresas · +R$5M/ano",
   },
 ];
