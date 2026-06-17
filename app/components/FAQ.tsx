@@ -29,7 +29,7 @@ function buildFaqs(price: number) {
     },
     {
       question: "Posso cancelar a qualquer momento?",
-      answer: "Sim, com um clique. Sem SAC, sem período mínimo, sem multa. Mas aqui vai o dado: nossa taxa de cancelamento é uma das mais baixas do mercado. Quando o conteúdo da semana já vale mais que a mensalidade, as pessoas ficam. Você não vai cancelar porque alguém travou o botão — vai ficar porque toda semana tem live nova, sistema novo, ferramenta nova.",
+      answer: "Sim. Sem SAC, sem período mínimo, sem multa. Mas aqui vai o dado: nossa taxa de cancelamento é uma das mais baixas do mercado. Quando o conteúdo da semana já vale mais que a mensalidade, as pessoas ficam. Você não vai cancelar porque alguém travou o botão — vai ficar porque toda semana tem live nova, sistema novo, ferramenta nova.",
     },
     {
       question: "Tem garantia?",

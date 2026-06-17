@@ -183,7 +183,7 @@ export default function Hero() {
             <ArrowRight className="w-5 h-5" />
           </motion.a>
           <p className="text-text-tertiary text-xs">
-            Garantia incondicional de 7 dias · Cancele quando quiser
+            Garantia incondicional de 7 dias
           </p>
         </motion.div>
 
