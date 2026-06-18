@@ -190,7 +190,7 @@ export default function PillarsSection() {
             <ArrowRight className="w-5 h-5" />
           </motion.a>
           <p className="text-text-tertiary text-xs mt-3">
-            Garantia de 7 dias
+            Garantia de 7 dias · Cancele quando quiser
           </p>
         </motion.div>
       </div>

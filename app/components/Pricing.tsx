@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { ArrowRight, Check, Sparkles, Shield, Lock, AlertTriangle, MessageCircle, Gift } from "lucide-react";
+import { ArrowRight, Check, Sparkles, Shield, Lock, RefreshCw, AlertTriangle, MessageCircle, Gift } from "lucide-react";
 import { useTrackSection } from "../hooks/useTrackSection";
 import { useCheckoutUrl } from "../hooks/useCheckoutUrl";
 import { useScarcity } from "../hooks/useScarcity";
@@ -208,6 +208,11 @@ export default function Pricing() {
                 <div className="flex items-center gap-1.5 text-[11px]">
                   <Lock className="w-3.5 h-3.5 text-brand-gold/40" />
                   <span>Pagamento seguro</span>
+                </div>
+                <div className="h-3 w-px bg-white/[0.06] hidden sm:block" />
+                <div className="hidden sm:flex items-center gap-1.5 text-[11px]">
+                  <RefreshCw className="w-3.5 h-3.5 text-brand-gold/40" />
+                  <span>Cancele quando quiser</span>
                 </div>
               </div>
             </div>

@@ -98,7 +98,7 @@ export default function FinalCTA() {
           </motion.a>
 
           <p className="text-text-muted text-xs mt-6">
-            Garantia incondicional de 7 dias
+            Garantia incondicional de 7 dias &middot; Cancele quando quiser
           </p>
         </motion.div>
       </div>
