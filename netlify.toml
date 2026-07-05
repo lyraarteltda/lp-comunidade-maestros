@@ -1,3 +1,8 @@
+# Build config for the Next.js static export (output: "export" -> ./out).
+# IMPORTANT: `command` MUST build the export. A previous empty command broke the
+# GitHub auto-deploy hook (it tried to publish a gitignored, non-existent `out/`
+# and errored). Netlify CI runs a fresh install + build, so this rebuilds the
+# static site on every push to main and publishes ./out.
 [build]
+  command = "npm run build"
   publish = "out"
-  command = ""
