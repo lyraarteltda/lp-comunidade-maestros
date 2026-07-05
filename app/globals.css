@@ -21,7 +21,12 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  /* Native smooth-scroll is intentionally OFF: it fights GSAP ScrollTrigger
+     `scrub` animations (the browser re-animates every programmatic scroll),
+     which caused the janky/stuck/frozen scrolling reported in production.
+     Anchor navigation is smoothed in JS instead (SmoothScroll.tsx, using the
+     behavior:'smooth' option, which is independent of this CSS property). */
+  scroll-behavior: auto;
 }
 
 body {
