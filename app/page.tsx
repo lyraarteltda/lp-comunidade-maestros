@@ -8,17 +8,17 @@ import Hero from "./components/Hero";
 import ProblemSection from "./components/ProblemSection";
 import PillarsSection from "./components/PillarsSection";
 
-const KnowledgeBlocks = dynamic(() => import("./components/KnowledgeBlocks"));
-const LivesSection = dynamic(() => import("./components/LivesSection"));
-const SupportSection = dynamic(() => import("./components/SupportSection"));
-const UpdatesSection = dynamic(() => import("./components/UpdatesSection"));
-const Testimonials = dynamic(() => import("./components/Testimonials"));
-const ForWhomSection = dynamic(() => import("./components/ForWhomSection"));
-const Founders = dynamic(() => import("./components/Founders"));
-const Pricing = dynamic(() => import("./components/Pricing"));
-const FAQ = dynamic(() => import("./components/FAQ"));
-const FinalCTA = dynamic(() => import("./components/FinalCTA"));
-const Footer = dynamic(() => import("./components/Footer"));
+const KnowledgeBlocks = dynamic(() => import("./components/KnowledgeBlocks"), { ssr: false });
+const LivesSection = dynamic(() => import("./components/LivesSection"), { ssr: false });
+const SupportSection = dynamic(() => import("./components/SupportSection"), { ssr: false });
+const UpdatesSection = dynamic(() => import("./components/UpdatesSection"), { ssr: false });
+const Testimonials = dynamic(() => import("./components/Testimonials"), { ssr: false });
+const ForWhomSection = dynamic(() => import("./components/ForWhomSection"), { ssr: false });
+const Founders = dynamic(() => import("./components/Founders"), { ssr: false });
+const Pricing = dynamic(() => import("./components/Pricing"), { ssr: false });
+const FAQ = dynamic(() => import("./components/FAQ"), { ssr: false });
+const FinalCTA = dynamic(() => import("./components/FinalCTA"), { ssr: false });
+const Footer = dynamic(() => import("./components/Footer"), { ssr: false });
 
 export default function Home() {
   return (

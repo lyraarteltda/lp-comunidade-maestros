@@ -156,6 +156,19 @@ body {
   will-change: transform;
 }
 
+/* Hero entrance — CSS-driven so the above-the-fold hero paints and animates
+   immediately at first render, independent of React/framer-motion hydration.
+   This keeps LCP close to FCP even on slow mobile devices. Reduced-motion users
+   are covered by the prefers-reduced-motion rule below (duration ~0 → instant). */
+@keyframes hero-rise {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-anim {
+  opacity: 0;
+  animation: hero-rise 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
 /* Keyframes */
 @keyframes float {
   0%, 100% { transform: translateY(0px) rotate(0deg); }
