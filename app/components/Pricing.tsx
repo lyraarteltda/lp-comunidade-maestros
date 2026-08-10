@@ -181,8 +181,6 @@ export default function Pricing() {
               {/* CTA */}
               <motion.a
                 href={checkoutUrl}
-                target="_blank"
-                rel="noopener noreferrer"
                 data-ph-capture-attribute-cta="pricing_main_checkout"
                 data-ph-capture-attribute-position="pricing_card"
                 whileHover={{ scale: 1.02, y: -1 }}

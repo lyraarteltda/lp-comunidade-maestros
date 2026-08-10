@@ -173,8 +173,6 @@ export default function PillarsSection() {
         >
           <motion.a
             href={checkoutUrl}
-            target="_blank"
-            rel="noopener noreferrer"
             data-ph-capture-attribute-cta="pillars_checkout"
             data-ph-capture-attribute-position="pillars"
             whileHover={{ scale: 1.03, y: -2 }}

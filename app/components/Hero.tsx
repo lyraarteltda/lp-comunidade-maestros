@@ -166,8 +166,6 @@ export default function Hero() {
         >
           <motion.a
             href={checkoutUrl}
-            target="_blank"
-            rel="noopener noreferrer"
             data-ph-capture-attribute-cta="hero_checkout"
             data-ph-capture-attribute-position="hero"
             whileHover={{ scale: 1.04, y: -2 }}

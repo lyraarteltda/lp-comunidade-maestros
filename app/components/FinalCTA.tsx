@@ -79,8 +79,6 @@ export default function FinalCTA() {
 
           <motion.a
             href={checkoutUrl}
-            target="_blank"
-            rel="noopener noreferrer"
             data-ph-capture-attribute-cta="final_cta_checkout"
             data-ph-capture-attribute-position="final_cta"
             whileHover={{ scale: 1.04, y: -3 }}

@@ -63,8 +63,6 @@ export default function Header() {
             ))}
             <a
               href={checkoutUrl}
-              target="_blank"
-              rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 text-[13px] font-bold px-4 py-2 rounded-lg bg-brand-gold text-surface-0 hover:bg-brand-gold-light transition-colors duration-200"
             >
               Entrar
@@ -105,8 +103,6 @@ export default function Header() {
               ))}
               <a
                 href={checkoutUrl}
-                target="_blank"
-                rel="noopener noreferrer"
                 onClick={() => setMobileOpen(false)}
                 className="inline-flex items-center gap-2 text-lg font-bold px-8 py-3 rounded-xl bg-brand-gold text-surface-0 mt-4"
               >
