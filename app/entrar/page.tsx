@@ -501,7 +501,7 @@ export default function EntrarPage() {
                   </p>
 
                   <a
-                    href="https://wa.me/5511995631610?text=Ol%C3%A1!%20Gostaria%20de%20entrar%20na%20Comunidade%20Aberta%20dos%20Maestros%20da%20IA!"
+                    href="https://wa.me/16562695233?text=Ol%C3%A1!%20Gostaria%20de%20entrar%20na%20Comunidade%20Aberta%20dos%20Maestros%20da%20IA!"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-[#25D366] hover:bg-[#20BD5A] text-white font-bold text-base sm:text-lg shadow-lg shadow-emerald-500/25 hover:shadow-emerald-500/40 transition-all duration-300 hover:scale-[1.03] active:scale-[0.98]"
