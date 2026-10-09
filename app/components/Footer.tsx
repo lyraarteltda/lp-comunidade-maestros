@@ -10,7 +10,7 @@ export default function Footer() {
               Maestros<span className="text-brand-gold">.</span>
             </p>
             <p className="text-text-muted text-xs">
-              Lyra Arte LTDA &mdash; CNPJ 48.028.646/0001-00
+              Maestria Academy LTDA &mdash; CNPJ 62.434.578/0001-03
             </p>
           </div>
 
@@ -43,6 +43,10 @@ export default function Footer() {
 
           <div className="flex flex-col items-center md:items-end gap-2">
             <div className="flex items-center gap-4 text-text-muted text-xs">
+              <a href="/about/" className="hover:text-text-secondary transition-colors">
+                Sobre
+              </a>
+              <span className="text-white/[0.08]">|</span>
               <a href="/termos" className="hover:text-text-secondary transition-colors">
                 Termos de Uso
               </a>
@@ -51,7 +55,7 @@ export default function Footer() {
                 Política de Privacidade
               </a>
               <span className="text-white/[0.08]">|</span>
-              <a href="mailto:contato@lyraarte.com" className="hover:text-text-secondary transition-colors">
+              <a href="mailto:contato@maestrosdaia.com" className="hover:text-text-secondary transition-colors">
                 Contato
               </a>
             </div>
