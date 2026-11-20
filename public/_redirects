@@ -1,2 +1,10 @@
+# Domínio principal → página atual da Comunidade (decisão D2 do Arthur, 20/11/2026).
+# Só a raiz e o www. comunidade-anterior. e comunidadeaberta. continuam servindo este site.
+# Qualquer caminho cai na página principal (a raiz antiga só tinha "/"); a query string (UTMs) é repassada.
+https://maestrosdaia.com/*      https://comunidade.maestrosdaia.com/  301!
+https://www.maestrosdaia.com/*  https://comunidade.maestrosdaia.com/  301!
+http://maestrosdaia.com/*       https://comunidade.maestrosdaia.com/  301!
+http://www.maestrosdaia.com/*   https://comunidade.maestrosdaia.com/  301!
+
 # Redirect root of comunidadeaberta subdomain to /entrar (force overrides static file)
 https://comunidadeaberta.maestrosdaia.com/ https://comunidadeaberta.maestrosdaia.com/entrar 302!
